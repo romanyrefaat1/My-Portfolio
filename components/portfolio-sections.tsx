@@ -178,7 +178,7 @@ export function WorkSection({
             Next.js · TypeScript · Supabase · PostgreSQL
           </div>
           <div className="project-ctas">
-            <Link href="#" className="project-link">
+            <Link href="https://missiono.vercel.app" target="_blank" className="project-link">
               Live product ↗
             </Link>
             <Link href="/missiono" className="project-link secondary">
@@ -506,7 +506,7 @@ export function ContactSection() {
         </p>
         <div className="contact-cta">
           <Link
-            href="mailto:hello@romany.dev"
+            href="mailto:refaatromany641@gmail.com"
             className="btn-primary"
             style={{ display: "inline-flex" }}
           >
