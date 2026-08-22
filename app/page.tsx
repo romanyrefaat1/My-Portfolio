@@ -1,10 +1,7 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Image from "next/image";
+import { useEffect, useState, useRef, MouseEvent } from "react";
 import Link from "next/link";
-import Marquee from "@/components/magicui/marquee";
-import { MagicCard } from "@/components/magicui/magic-card";
 
 export default function Home() {
   const [theme, setTheme] = useState("dark");
@@ -13,8 +10,15 @@ export default function Home() {
   const [processProgress, setProcessProgress] = useState(0);
 
   const processListRef = useRef<HTMLDivElement>(null);
+  const magicFrameRef = useRef<HTMLDivElement>(null);
 
-  // Theme & Scroll initialization
+  // Theme initialization (matching system preference if available)
+  useEffect(() => {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
+  }, []);
+
+  // Apply Theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
@@ -66,6 +70,16 @@ export default function Home() {
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
   const activeStepIndex = Math.min(3, Math.floor(processProgress * 4));
 
+  // Magic frame spotlight effect
+  const handleMagicMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!magicFrameRef.current) return;
+    const rect = magicFrameRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    magicFrameRef.current.style.setProperty("--mx", `${x}px`);
+    magicFrameRef.current.style.setProperty("--my", `${y}px`);
+  };
+
   return (
     <>
       <nav className={`nav ${isScrolled ? "scrolled" : ""}`} id="nav">
@@ -99,9 +113,14 @@ export default function Home() {
         <div className="nav-mobile-toggle">
           <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle dark mode" style={{ marginRight: "4px" }}>
              {theme === "dark" ? (
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
             ) : (
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" /></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              </svg>
             )}
           </button>
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Open menu">
@@ -120,9 +139,9 @@ export default function Home() {
       </div>
 
       <main id="top">
-        <section className="hero container-custom">
+        <section className="hero container">
           <div className="status-pill">
-            <span className="status-dot"></span> Available for freelance work
+            <span className="status-dot"></span> Open to opportunities
           </div>
           <h1>
             I build things.<br />
@@ -139,23 +158,33 @@ export default function Home() {
               </svg>
             </Link>
             <Link href="#contact" className="link-secondary">
-              Have a project in mind?
+              Have something in mind?
             </Link>
           </div>
         </section>
 
-        <section className="border-y border-border py-7 overflow-hidden bg-[var(--bg)]">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {["REACT", "NEXT.JS", "TYPESCRIPT", "SUPABASE", "POSTGRESQL", "TAILWIND CSS", "REACT", "NEXT.JS", "TYPESCRIPT"].map((tech, i) => (
-              <div key={i} className="flex items-center">
-                <span className="font-mono text-[13px] tracking-wider text-[var(--muted-fg)] px-5">{tech}</span>
-                <span className="font-mono text-[13px] text-[var(--border)] px-0">·</span>
-              </div>
-            ))}
-          </Marquee>
+        <section className="marquee-section">
+          <div className="marquee-track" id="marqueeTrack">
+            <div className="marquee-group">
+              <span>REACT</span><span className="dot">·</span>
+              <span>NEXT.JS</span><span className="dot">·</span>
+              <span>TYPESCRIPT</span><span className="dot">·</span>
+              <span>SUPABASE</span><span className="dot">·</span>
+              <span>POSTGRESQL</span><span className="dot">·</span>
+              <span>TAILWIND CSS</span><span className="dot">·</span>
+            </div>
+            <div className="marquee-group" aria-hidden="true">
+              <span>REACT</span><span className="dot">·</span>
+              <span>NEXT.JS</span><span className="dot">·</span>
+              <span>TYPESCRIPT</span><span className="dot">·</span>
+              <span>SUPABASE</span><span className="dot">·</span>
+              <span>POSTGRESQL</span><span className="dot">·</span>
+              <span>TAILWIND CSS</span><span className="dot">·</span>
+            </div>
+          </div>
         </section>
 
-        <section id="work" className="container-custom">
+        <section id="work" className="container">
           <div className="work-intro reveal">
             <div className="section-label">A FEW THINGS I'VE MADE</div>
             <h2 className="section-heading">Not just projects.</h2>
@@ -175,51 +204,66 @@ export default function Home() {
               </p>
             </div>
             
-            <MagicCard className="p-3 md:p-6 cursor-pointer bg-[var(--card)] rounded-2xl border border-[var(--border)] shadow-sm">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="relative aspect-[16/10] md:aspect-video rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--muted)]">
-                  <Image 
-                    src="/missiono-1.png" 
-                    alt="Missiono Dashboard View" 
-                    fill 
-                    className="object-cover hover:scale-[1.02] transition-transform duration-500 ease-[var(--ease)]" 
-                  />
-                </div>
-                <div className="relative aspect-[16/10] md:aspect-video rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--muted)] hidden md:block">
-                  <Image 
-                    src="/missiono-2.png" 
-                    alt="Missiono Task View" 
-                    fill 
-                    className="object-cover hover:scale-[1.02] transition-transform duration-500 ease-[var(--ease)]" 
-                  />
-                </div>
+            <div className="magic-frame" id="missionoFrame" ref={magicFrameRef} onMouseMove={handleMagicMouseMove}>
+              <div className="magic-spotlight" id="missionoSpotlight"></div>
+              <div className="shot-frame shot-frame-lg">
+                <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Missiono dashboard showing missions, tasks, and budget overview">
+                  <rect width="1200" height="700" fill="var(--muted)"/>
+                  <rect x="0" y="0" width="1200" height="72" fill="var(--card)"/>
+                  <circle cx="44" cy="36" r="6" fill="var(--accent)"/>
+                  <rect x="66" y="29" width="100" height="14" rx="3" fill="var(--fg)" opacity="0.7"/>
+                  <rect x="900" y="22" width="120" height="28" rx="8" fill="var(--accent)" opacity="0.85"/>
+                  <rect x="50" y="112" width="280" height="22" rx="3" fill="var(--fg)" opacity="0.75"/>
+                  <rect x="50" y="150" width="380" height="13" rx="3" fill="var(--muted-fg)" opacity="0.5"/>
+                  <rect x="50" y="210" width="330" height="160" rx="14" fill="var(--card)" stroke="var(--border)"/>
+                  <rect x="405" y="210" width="330" height="160" rx="14" fill="var(--card)" stroke="var(--border)"/>
+                  <rect x="760" y="210" width="390" height="160" rx="14" fill="var(--card)" stroke="var(--border)"/>
+                  <rect x="78" y="238" width="110" height="12" rx="3" fill="var(--muted-fg)" opacity="0.6"/>
+                  <rect x="78" y="278" width="160" height="26" rx="4" fill="var(--fg)" opacity="0.8"/>
+                  <rect x="433" y="238" width="110" height="12" rx="3" fill="var(--muted-fg)" opacity="0.6"/>
+                  <rect x="433" y="278" width="160" height="26" rx="4" fill="var(--accent)" opacity="0.9"/>
+                  <rect x="788" y="238" width="140" height="12" rx="3" fill="var(--muted-fg)" opacity="0.6"/>
+                  <rect x="788" y="278" width="220" height="26" rx="4" fill="var(--fg)" opacity="0.8"/>
+                  <rect x="50" y="392" width="1100" height="1" fill="var(--border)"/>
+                  <rect x="50" y="422" width="1100" height="64" rx="10" fill="var(--card)" stroke="var(--border)"/>
+                  <rect x="78" y="446" width="18" height="18" rx="5" fill="var(--accent)" opacity="0.2" stroke="var(--accent)"/>
+                  <rect x="118" y="446" width="340" height="14" rx="3" fill="var(--fg)" opacity="0.7"/>
+                  <rect x="980" y="442" width="90" height="20" rx="10" fill="var(--muted)"/>
+                  <rect x="50" y="498" width="1100" height="64" rx="10" fill="var(--card)" stroke="var(--border)"/>
+                  <rect x="78" y="522" width="18" height="18" rx="5" fill="var(--muted-fg)" opacity="0.15" stroke="var(--border)"/>
+                  <rect x="118" y="522" width="240" height="14" rx="3" fill="var(--fg)" opacity="0.5"/>
+                </svg>
               </div>
-            </MagicCard>
+            </div>
 
             <div className="project-hero-foot">
               <div className="project-stack mono">Next.js · TypeScript · Supabase · PostgreSQL</div>
               <div className="project-ctas">
-                <Link href="https://missiono.vercel.app" target="_blank" className="project-link">
+                <Link href="#" className="project-link">
                   Live product ↗
+                </Link>
+                <Link href="#" className="project-link secondary">
+                  Case study ↗
                 </Link>
               </div>
             </div>
+            
             <div className="what-shows">
               <div className="what-label">WHAT THIS SHOWS</div>
               <div className="what-grid">
-                <div>
+                <div className="what-item">
                   <div className="what-title">Product thinking</div>
                   <div className="what-desc">Designing workflows around missions, tasks, and spending.</div>
                 </div>
-                <div>
+                <div className="what-item">
                   <div className="what-title">Full-stack development</div>
                   <div className="what-desc">Frontend, backend, authentication, database, and application logic.</div>
                 </div>
-                <div>
+                <div className="what-item">
                   <div className="what-title">Realtime systems</div>
                   <div className="what-desc">Keeping application state synchronized as data changes.</div>
                 </div>
-                <div>
+                <div className="what-item">
                   <div className="what-title">Production thinking</div>
                   <div className="what-desc">Responsive interfaces, state management, validation, deployment, edge cases.</div>
                 </div>
@@ -227,10 +271,46 @@ export default function Home() {
             </div>
           </div>
 
-          {/* PROJECT 02 — FLOOPR (Hooklify removed) */}
+          {/* PROJECT 02 — HOOKLIFY */}
+          <div className="project reveal">
+            <div className="project-visual">
+              <div className="shot-frame">
+                <svg viewBox="0 0 640 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hooklify landing page with a toast notification widget">
+                  <rect width="640" height="420" fill="var(--muted)"/>
+                  <rect x="0" y="0" width="640" height="420" fill="var(--card)" opacity="0.4"/>
+                  <rect x="60" y="60" width="280" height="24" rx="2" fill="var(--fg)" opacity="0.75"/>
+                  <rect x="60" y="98" width="220" height="12" rx="2" fill="var(--muted-fg)" opacity="0.55"/>
+                  <rect x="60" y="140" width="130" height="40" rx="8" fill="var(--accent)" opacity="0.9"/>
+                  <rect x="380" y="60" width="200" height="220" rx="12" fill="var(--muted)" stroke="var(--border)"/>
+                  <rect x="360" y="300" width="260" height="64" rx="10" fill="var(--card)" stroke="var(--accent)" opacity="0.95"/>
+                  <circle cx="384" cy="332" r="10" fill="var(--accent)" opacity="0.25"/>
+                  <rect x="404" y="320" width="150" height="9" rx="2" fill="var(--fg)" opacity="0.7"/>
+                  <rect x="404" y="338" width="110" height="8" rx="2" fill="var(--muted-fg)" opacity="0.55"/>
+                </svg>
+              </div>
+            </div>
+            <div className="project-info">
+              <div className="project-category">02 — HOOKLIFY</div>
+              <h3 className="project-title">What makes someone<br />look twice?</h3>
+              <p className="project-desc">
+                Hooklify is an experiment around attention. It started with a toast notification and turned into a question about timing, context, and how much interruption is too much.
+              </p>
+              <div className="project-stack mono">Next.js · TypeScript · React</div>
+              <div className="project-ctas">
+                <Link href="#" className="project-link">
+                  Explore Hooklify
+                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+                    <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* PROJECT 03 — FLOOPR */}
           <div className="project reveal">
             <div className="project-info">
-              <div className="project-category">02 — FLOOPR</div>
+              <div className="project-category">03 — FLOOPR</div>
               <h3 className="project-title">
                 Feedback is easy.<br />
                 Knowing what to do with it isn't.
@@ -243,7 +323,7 @@ export default function Home() {
               </p>
               <div className="project-stack mono">Next.js · React · Supabase · AI</div>
               <div className="project-ctas">
-                <Link href="https://floopr.vercel.app" target="_blank" className="project-link">
+                <Link href="#" className="project-link">
                   Explore Floopr
                   <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                     <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -288,17 +368,17 @@ export default function Home() {
                   Small experiments. Half-finished ideas. Things built because I wanted to know if I could.
                 </p>
               </div>
-              <Link href="#" className="project-link">
+              {/* <Link href="#" className="project-link">
                 Browse the archive
                 <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                   <path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </section>
 
-        <section className="container-custom bridge reveal">
+        <section className="container bridge reveal">
           <h2 className="bridge-heading">Maybe you're building something too.</h2>
           <div className="bento">
             <div className="bento-card">
@@ -330,7 +410,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="container-custom process reveal">
+        <section className="container process reveal">
           <div className="section-label">HOW IT WORKS</div>
           <h2 className="section-heading">How it usually works.</h2>
           <div className="process-list" ref={processListRef}>
@@ -342,6 +422,7 @@ export default function Home() {
               { title: "Figure it out", desc: "We talk about what you're trying to build, who it's for, and what actually needs to exist." },
               { title: "Make the first version", desc: "Turn the idea into something tangible rather than planning forever." },
               { title: "Build the real thing", desc: "Frontend, backend, database, authentication, integrations — whatever the product actually needs." },
+              { title: "Polish", desc: "Refine UI details, smooth out interactions, handle edge cases, and make sure everything feels sharp." },
               { title: "Ship it", desc: "Deploy it, test it, fix the rough edges, and get it into your hands." }
             ].map((step, idx) => (
               <div key={idx} className={`process-step ${idx <= activeStepIndex && processProgress > 0.02 ? "active" : ""}`}>
@@ -355,7 +436,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="container-custom about reveal">
+        <section id="about" className="container about reveal">
           <div>
             <div className="section-label">A LITTLE ABOUT ME</div>
             <h2 className="section-heading">I like making ideas real.</h2>
@@ -400,7 +481,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="now" className="container-custom now reveal">
+        <section id="now" className="container now reveal">
           <div className="section-label">RIGHT NOW</div>
           <h2 className="section-heading">What's taking up my brain.</h2>
           <div className="now-grid">
@@ -423,7 +504,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="contact" className="container-custom contact reveal">
+        <section id="contact" className="container contact reveal">
           <div className="section-label">THAT'S ENOUGH ABOUT ME.</div>
           <h2 className="contact-heading">What are you building?</h2>
           <p className="contact-sub">Have an idea, a project, an opportunity, or something you think I'd enjoy?</p>
@@ -439,7 +520,7 @@ export default function Home() {
       </main>
 
       <footer>
-        <div className="container-custom footer-inner">
+        <div className="container footer-inner">
           <span>ROMANY — © 2026</span>
           <div className="footer-links">
             <Link href="#">GitHub</Link>
