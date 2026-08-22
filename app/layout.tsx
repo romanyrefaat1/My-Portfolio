@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Welcome, I'm Romany Refaat",
-  description: "Personal Portfolio",
+  title: "Romany Refaat — Full-Stack Developer",
+  description:
+    "Portfolio of Romany Refaat, a full-stack developer building thoughtful web products with React, Next.js, TypeScript, and Supabase.",
 };
 
 export default function RootLayout({

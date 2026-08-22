@@ -93,7 +93,7 @@ export default function Home() {
   return (
       <>
         <SiteNav isScrolled={isScrolled} theme={theme} onThemeToggle={toggleTheme} isMobileMenuOpen={isMobileMenuOpen} onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} onMobileMenuClose={() => setIsMobileMenuOpen(false)} />
-        <main id="top">
+        <main id="top" className="relative">
           <HeroSection />
           <MarqueeSection />
           <WorkSection theme={theme} magicFrameRef={magicFrameRef} onMagicMouseMove={handleMagicMouseMove} />

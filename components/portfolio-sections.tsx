@@ -4,11 +4,32 @@ import Image from "next/image";
 import Link from "next/link";
 import type { MouseEvent, RefObject } from "react";
 import { ArrowIcon } from "@/components/site-nav";
+import Dither from "@/components/Dither"
+import { useTheme } from "next-themes";
 
-type Theme = "dark" | "light";
+type Theme = "dark" | "light" | "system";
 
 export function HeroSection() {
-  return <section className="hero container"><div className="hero-inner"><div className="hero-content">
+    const {theme} = useTheme()
+    
+  return <section className="hero container">
+<div className="absolute top-0 left-0 w-screen h-full">
+ <Dither
+  waveColor={[0.25, 0.1, 0.85]}   // slightly deeper blue-purple, less neon-saturated
+  disableAnimation={false}
+  enableMouseInteraction
+  mouseRadius={0.6}                // tighter interaction radius, feels more precise than diffuse
+  colorNum={4}                     // good as-is — keeps the blocky/limited palette feel
+  pixelSize={6}                    // slightly larger tiles = more graphic/intentional, less noisy
+  waveAmplitude={0.25}             // pull back a touch so it doesn't fight the headline text
+  waveFrequency={2.2}              // fewer, calmer wave bands = less visual chaos
+  waveSpeed={0.04}                 // marginally slower, feels deliberate rather than jittery
+/>
+</div>
+<div className="hero-inner">
+    <div className="hero-content">
+    <div className="absolute top-0 left-0 w-screen h-screen">
+</div>
     <div className="status-pill"><span className="status-dot"></span>Open to opportunities</div>
     <h1>I build things.<br />Mostly for the web.</h1>
     <p className="hero-sub">Web apps, SaaS products, and digital experiences — from the first idea to something people can actually use.</p>
@@ -59,11 +80,11 @@ export function WorkSection({ theme, magicFrameRef, onMagicMouseMove }: WorkSect
   return <section id="work" className="container">
     <div className="work-intro reveal"><div className="section-label">A FEW THINGS I'VE MADE</div><h2 className="section-heading">Not just projects.</h2><p className="section-sub">We're not dumping a tech stack on you. Each one exists for a reason.</p></div>
     <div className="project-hero reveal"><div className="project-hero-head"><div className="project-category">MISSIONO — 01</div><h3 className="project-hero-title">Missions are easy to plan.<br />Keeping track of them isn't.</h3><p className="project-desc">Missiono brings missions, tasks, budgets, and spending together — in one place, instead of scattered across notes and spreadsheets.</p></div>
-      <div className="magic-frame" id="missionoFrame" ref={magicFrameRef} onMouseMove={onMagicMouseMove}><div className="magic-spotlight" id="missionoSpotlight"></div><div className="shot-frame shot-frame-lg"><Image src={theme === "light" ? "/projects/missiono/dashboard.png" : "/projects/missiono/dashboard-darkmode.png"} alt="Missiono dashboard showing missions, tasks, and budget overview" width={1200} height={700} priority className="project-image" /></div></div>
-      <div className="project-hero-foot"><div className="project-stack mono">Next.js · TypeScript · Supabase · PostgreSQL</div><div className="project-ctas"><Link href="#" className="project-link">Live product ↗</Link><Link href="#" className="project-link secondary">Case study ↗</Link></div></div>
+      <div className="magic-frame" id="missionoFrame" ref={magicFrameRef} onMouseMove={onMagicMouseMove}><div className="magic-spotlight" id="missionoSpotlight"></div><div className="shot-frame shot-frame-lg"><Image src={theme === "dark" ? "/projects/missiono/dashboard-darkmode.png" : "/projects/missiono/dashboard.png"} alt="Missiono dashboard showing missions, tasks, and budget overview" width={1200} height={700} priority className="project-image" /></div></div>
+      <div className="project-hero-foot"><div className="project-stack mono">Next.js · TypeScript · Supabase · PostgreSQL</div><div className="project-ctas"><Link href="#" className="project-link">Live product ↗</Link><Link href="/missiono" className="project-link secondary">Case study ↗</Link></div></div>
       <div className="what-shows"><div className="what-label">WHAT THIS SHOWS</div><div className="what-grid">{[["Product thinking", "Designing workflows around missions, tasks, and spending."], ["Full-stack development", "Frontend, backend, authentication, database, and application logic."], ["Realtime systems", "Keeping application state synchronized as data changes."], ["Production thinking", "Responsive interfaces, state management, validation, deployment, edge cases."]].map(([title, description]) => <div className="what-item" key={title}><div className="what-title">{title}</div><div className="what-desc">{description}</div></div>)}</div></div>
     </div>
-    <div className="project reveal"><div className="project-info"><div className="project-category">02 — FLOOPR</div><h3 className="project-title">Feedback is easy.<br />Knowing what to do with it isn't.</h3><p className="project-desc">Floopr explored what happens when feedback isn't just collected, but actually understood — embeddable components, sentiment analysis, and an AI-powered conversational layer.<br /><br />The project is paused. The idea isn't.</p><div className="project-stack mono">Next.js · React · Supabase · AI</div><div className="project-ctas"><Link href="#" className="project-link">Explore Floopr <ArrowIcon /></Link></div></div><div className="project-visual"><div className="shot-frame rounded-full"><Image src={theme === "light" ? "/projects/floopr/dashboard.png" : "/projects/floopr/dashboard-darkmode.png"} alt="Floopr feedback dashboard with sentiment analysis" width={640} height={420} className="project-image" /></div></div></div>
+    <div className="project reveal"><div className="project-info"><div className="project-category">02 — FLOOPR</div><h3 className="project-title">Feedback is easy.<br />Knowing what to do with it isn't.</h3><p className="project-desc">Floopr explored what happens when feedback isn't just collected, but actually understood — embeddable components, sentiment analysis, and an AI-powered conversational layer.<br /><br />The project is paused. The idea isn't.</p><div className="project-stack mono">Next.js · React · Supabase · AI</div><div className="project-ctas"><Link href="#" className="project-link">Explore Floopr <ArrowIcon /></Link></div></div><div className="project-visual"><div className="shot-frame rounded-"><Image src={theme === "dark" ? "/projects/floopr/dashboard-darkmode.png" : "/projects/floopr/dashboard.png"} alt="Floopr feedback dashboard with sentiment analysis" width={640} height={420} className="project-image" /></div></div></div>
     <div className="more-work reveal"><div className="more-work-inner"><div><div className="section-label">OTHER THINGS</div><h3 className="section-heading" style={{ fontSize: "clamp(26px,3vw,34px)" }}>Not everything needs to be a startup.</h3><p className="section-sub" style={{ fontSize: "16px" }}>Small experiments. Half-finished ideas. Things built because I wanted to know if I could.</p></div></div></div>
   </section>;
 }
