@@ -36,7 +36,7 @@ export function SiteNav({ isScrolled, theme, onThemeToggle, isMobileMenuOpen, on
           <Link href="#work">Work</Link>
           <Link href="#about">About</Link>
           <Link href="#contact" className="cta">Let's talk <ArrowIcon size={12} /></Link>
-          <ThemeButton theme={theme} onClick={onThemeToggle} />
+          {/* <ThemeButton theme={theme} onClick={onThemeToggle} /> */}
         </div>
         <div className="nav-mobile-toggle">
           <ThemeButton theme={theme} onClick={onThemeToggle} style={{ marginRight: "4px" }} />
@@ -55,7 +55,9 @@ export function SiteNav({ isScrolled, theme, onThemeToggle, isMobileMenuOpen, on
 }
 
 function ThemeButton({ theme, onClick, style }: { theme: Theme; onClick: () => void; style?: CSSProperties }) {
-  return <button className="theme-toggle" onClick={onClick} aria-label="Toggle dark mode" style={style}><ThemeIcon theme={theme} /></button>;
+  return <button className="theme-toggle" onClick={onClick} aria-label="Toggle dark mode" style={style}>
+    <ThemeIcon theme={theme} />
+  </button>;
 }
 
 export function ArrowIcon({ size = 14 }: { size?: number }) {

@@ -16,8 +16,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { useTheme } from "next-themes";
 
 export default function Home() {
-  // const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const {resolvedTheme: theme, setTheme} = useTheme()
+  const { resolvedTheme: theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [processProgress, setProcessProgress] = useState(0);
@@ -25,18 +24,12 @@ export default function Home() {
   const processListRef = useRef<HTMLDivElement>(null);
   const magicFrameRef = useRef<HTMLDivElement>(null);
 
-  // Theme initialization (matching system preference if available)
-  // useEffect(() => {
-  //   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  //   setTheme(prefersDark ? "dark" : "light");
-  // }, []);
-
   // Apply Theme
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  // General scroll and section reveal logic
+  // General scroll logic (kept process line logic and navbar background trigger)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
@@ -58,25 +51,9 @@ export default function Home() {
     window.addEventListener("resize", handleScroll);
     handleScroll();
 
-    // Intersection Observer for .reveal classes
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
-    );
-
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
-      observer.disconnect();
     };
   }, []);
 
@@ -91,19 +68,34 @@ export default function Home() {
   };
 
   return (
-      <>
-        <SiteNav isScrolled={isScrolled} theme={theme} onThemeToggle={toggleTheme} isMobileMenuOpen={isMobileMenuOpen} onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} onMobileMenuClose={() => setIsMobileMenuOpen(false)} />
-        <main id="top" className="relative">
-          <HeroSection />
-          <MarqueeSection />
-          <WorkSection theme={theme} magicFrameRef={magicFrameRef} onMagicMouseMove={handleMagicMouseMove} />
-          <ServicesSection />
-          <ProcessSection processListRef={processListRef} processProgress={processProgress} activeStepIndex={activeStepIndex} />
-          <AboutSection />
-          <NowSection />
-          <ContactSection />
-        </main>
-        <SiteFooter />
-      </>
-    );
+    <>
+      <SiteNav
+        isScrolled={isScrolled}
+        theme={theme}
+        onThemeToggle={toggleTheme}
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        onMobileMenuClose={() => setIsMobileMenuOpen(false)}
+      />
+      <main id="top" className="relative">
+        <HeroSection />
+        <MarqueeSection />
+        <WorkSection
+          theme={theme}
+          magicFrameRef={magicFrameRef}
+          onMagicMouseMove={handleMagicMouseMove}
+        />
+        <ServicesSection />
+        <ProcessSection
+          processListRef={processListRef}
+          processProgress={processProgress}
+          activeStepIndex={activeStepIndex}
+        />
+        <AboutSection />
+        <NowSection />
+        <ContactSection />
+      </main>
+      <SiteFooter />
+    </>
+  );
 }
