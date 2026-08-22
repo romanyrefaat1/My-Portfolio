@@ -246,6 +246,26 @@ button:focus-visible {
   position: relative;
 }
 
+.hero-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1;
+}
+
+/* Mobile responsive layout */
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 140px 0 80px;
@@ -408,17 +428,20 @@ button:focus-visible {
 }
 
 /* ---------- MARQUEE ---------- */
+
 .marquee-section {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   padding: 28px 0;
   overflow: hidden;
+  width: 100%;
 }
 
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  will-change: transform;
+  animation: marquee 25s linear infinite;
 }
 
 .marquee-section:hover .marquee-track {
@@ -437,17 +460,20 @@ button:focus-visible {
   flex-shrink: 0;
 }
 
-.marquee-group span {
+.marquee-group > span {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.06em;
   color: var(--muted-fg);
   padding: 0 20px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.marquee-group span.dot {
-  padding: 0;
+.marquee-group .dot {
+  padding: 0 0 0 20px;
   color: var(--border);
 }
 
@@ -455,8 +481,9 @@ button:focus-visible {
   from {
     transform: translateX(0);
   }
+
   to {
-    transform: translateX(-50%);
+    transform: translateX(-33.333333%);
   }
 }
 
