@@ -35,11 +35,11 @@ export function CaseStudyActions() {
     window.setTimeout(() => setCopied(false), 1800);
   }
 
-  function chatWith(provider: "claude" | "gemini" | "chatgpt") {
+  function chatWith(provider: "claude" | "chatgpt") {
     const prompt = `Read and discuss this case study page: ${window.location.href}`;
     const urls = {
       claude: `https://claude.ai/new?q=${encodeURIComponent(prompt)}`,
-      gemini: `https://gemini.google.com/app?q=${encodeURIComponent(prompt)}`,
+    //   gemini: `https://gemini.google.com/app?q=${encodeURIComponent(prompt)}`,
       chatgpt: `https://chatgpt.com/?q=${encodeURIComponent(prompt)}`,
     };
 
@@ -72,9 +72,9 @@ export function CaseStudyActions() {
             <button type="button" role="menuitem" onClick={() => chatWith("claude")}>
               Claude
             </button>
-            <button type="button" role="menuitem" onClick={() => chatWith("gemini")}>
+            {/* <button type="button" role="menuitem" onClick={() => chatWith("gemini")}>
               Gemini
-            </button>
+            </button> */}
             <button type="button" role="menuitem" onClick={() => chatWith("chatgpt")}>
               ChatGPT
             </button>
