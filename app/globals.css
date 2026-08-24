@@ -1372,6 +1372,72 @@ footer {
   margin-top: 40px;
 }
 
+.case-study-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.case-study-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted-fg);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
+}
+
+.case-study-action:hover,
+.case-study-action[aria-expanded="true"] {
+  border-color: var(--fg);
+  background: var(--muted);
+  color: var(--fg);
+}
+
+.case-study-chat {
+  position: relative;
+}
+
+.case-study-chat-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 10;
+  min-width: 140px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--card);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .22);
+}
+
+.case-study-chat-menu button {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+}
+
+.case-study-chat-menu button:hover {
+  background: var(--muted);
+}
+
 /* ---------- HERO IMAGE ---------- */
 
 .case-study-hero-media {

@@ -5,6 +5,7 @@ import { BorderBeam } from "@/components/ui/border-beam";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { ArrowIcon } from "@/components/site-nav";
 import { CaseStudyLabel } from "./case-study-label";
+import { CaseStudyActions } from "./case-study-actions";
 
 export function CaseStudyHero({
   projectNumber,
@@ -75,6 +76,8 @@ export function CaseStudyHero({
               {secondaryLabel}
             </Link>
           </div>
+
+          <CaseStudyActions />
         </div>
 
         {(video || image) && (
