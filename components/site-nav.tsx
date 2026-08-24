@@ -31,11 +31,11 @@ export function SiteNav({ isScrolled, theme, onThemeToggle, isMobileMenuOpen, on
   return (
     <>
       <nav className={`nav ${isScrolled ? "scrolled" : ""}`} id="nav">
-        <Link href="#top" className="nav-logo">ROMANY</Link>
+        <Link href="https://romani.vercel.app#top" className="nav-logo">ROMANY</Link>
         <div className="nav-links">
-          <Link href="#work">Work</Link>
-          <Link href="#about">About</Link>
-          <Link href="#contact" className="cta">Let's talk <ArrowIcon size={12} /></Link>
+          <Link href="https://romani.vercel.app#work">Work</Link>
+          <Link href="https://romani.vercel.app#about">About</Link>
+          <Link href="https://romani.vercel.app#contact" className="cta">Let's talk <ArrowIcon size={12} /></Link>
           {/* <ThemeButton theme={theme} onClick={onThemeToggle} /> */}
         </div>
         <div className="nav-mobile-toggle">
@@ -46,9 +46,9 @@ export function SiteNav({ isScrolled, theme, onThemeToggle, isMobileMenuOpen, on
         </div>
       </nav>
       <div className={`mobile-menu ${isMobileMenuOpen ? "open" : ""}`} id="mobileMenu">
-        <Link href="#work" className="mobile-link" onClick={onMobileMenuClose}>Work</Link>
-        <Link href="#about" className="mobile-link" onClick={onMobileMenuClose}>About</Link>
-        <Link href="#contact" className="mobile-link" onClick={onMobileMenuClose}>Contact</Link>
+        <Link href="https://romani.vercel.app#work" className="mobile-link" onClick={onMobileMenuClose}>Work</Link>
+        <Link href="https://romani.vercel.app#about" className="mobile-link" onClick={onMobileMenuClose}>About</Link>
+        <Link href="https://romani.vercel.app#contact" className="mobile-link" onClick={onMobileMenuClose}>Contact</Link>
       </div>
     </>
   );

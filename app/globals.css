@@ -33,7 +33,7 @@
   --accent-fg: #FFFFFF;
   --selection: #1D4ED8;
   --selection-fg: #FFFFFF;
-  
+
   --selection-fg: #1E3A8A;
   --max-w: 1280px;
   --pad: 48px;
@@ -1226,4 +1226,542 @@ footer {
 ::-moz-selection {
   background: var(--selection);
   color: var(--selection-fg);
+}
+
+@theme inline {
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  @keyframes shimmer-slide {
+  to {
+    transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes spin-around {
+  0% {
+    transform: translateZ(0) rotate(0);
+    }
+  15%, 35% {
+    transform: translateZ(0) rotate(90deg);
+    }
+  65%, 85% {
+    transform: translateZ(0) rotate(270deg);
+    }
+  100% {
+    transform: translateZ(0) rotate(360deg);
+    }
+  }
+}
+
+
+/* =========================================================
+   MISSIONO CASE STUDY
+   ========================================================= */
+
+.missiono-page {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+}
+
+/* ---------- GLOBAL CASE STUDY LAYOUT ---------- */
+
+.missiono-container {
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+.missiono-section {
+  padding: 140px 0;
+  border-top: 1px solid var(--border);
+}
+
+.missiono-section:first-of-type {
+  border-top: 0;
+}
+
+@media (max-width: 768px) {
+  .missiono-container {
+    width: min(100% - 32px, 1120px);
+  }
+
+  .missiono-section {
+    padding: 96px 0;
+  }
+}
+
+/* ---------- HERO ---------- */
+
+.missiono-hero {
+  padding: 150px 0 110px;
+}
+
+.missiono-hero-content {
+  max-width: 820px;
+}
+
+.missiono-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.missiono-hero h1 {
+  font-size: clamp(52px, 8vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  max-width: 900px;
+}
+
+.missiono-hero-sub {
+  margin-top: 32px;
+  max-width: 650px;
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--muted-fg);
+}
+
+.missiono-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 36px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--muted-fg);
+}
+
+.missiono-meta span::before {
+  content: "·";
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.missiono-hero-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+/* ---------- HERO IMAGE ---------- */
+
+.missiono-hero-media {
+  margin-top: 80px;
+}
+
+.missiono-image {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.missiono-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- SECTION INTRO ---------- */
+
+.missiono-section-intro {
+  max-width: 720px;
+  margin-bottom: 64px;
+}
+
+.missiono-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.missiono-section-title {
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  max-width: 720px;
+}
+
+.missiono-section-copy {
+  margin-top: 24px;
+  max-width: 620px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted-fg);
+}
+
+/* ---------- TECHNICAL OVERVIEW ---------- */
+
+.missiono-tech {
+  padding-top: 110px;
+}
+
+.missiono-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-top: 56px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.missiono-tech-card {
+  background: var(--card);
+  padding: 34px 30px;
+  min-height: 190px;
+  transition: background 0.25s var(--ease);
+}
+
+.missiono-tech-card:hover {
+  background: var(--muted);
+}
+
+.missiono-tech-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 28px;
+}
+
+.missiono-tech-card h3 {
+  font-size: 18px;
+  letter-spacing: -0.015em;
+  margin-bottom: 10px;
+}
+
+.missiono-tech-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted-fg);
+}
+
+/* ---------- FEATURE / STORY ---------- */
+
+.missiono-story {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: 80px;
+  align-items: start;
+}
+
+.missiono-story-copy {
+  position: sticky;
+  top: 120px;
+}
+
+.missiono-story-copy h2 {
+  font-size: clamp(34px, 4vw, 52px);
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+.missiono-story-copy p {
+  margin-top: 22px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted-fg);
+}
+
+.missiono-story-media {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ---------- SINGLE SCREEN ---------- */
+
+.missiono-screen {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.missiono-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- SCREEN + COPY ---------- */
+
+.missiono-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.85fr);
+  gap: 80px;
+  align-items: center;
+}
+
+.missiono-feature.reverse {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+}
+
+.missiono-feature.reverse .missiono-feature-image {
+  order: 2;
+}
+
+.missiono-feature-copy {
+  max-width: 470px;
+}
+
+.missiono-feature-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.missiono-feature-copy h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+}
+
+.missiono-feature-copy p {
+  margin-top: 22px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted-fg);
+}
+
+.missiono-feature-points {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.missiono-feature-point {
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--muted-fg);
+}
+
+.missiono-feature-point strong {
+  color: var(--fg);
+  font-weight: 500;
+}
+
+/* ---------- ARCHITECTURE ---------- */
+
+.missiono-architecture {
+  text-align: center;
+}
+
+.missiono-architecture .missiono-section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.missiono-architecture-diagram {
+  margin: 72px auto 0;
+  max-width: 760px;
+  padding: 40px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+/* ---------- ENGINEERING DETAILS ---------- */
+
+.missiono-engineering-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin-top: 64px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.missiono-engineering-card {
+  padding: 38px 34px;
+  background: var(--card);
+}
+
+.missiono-engineering-card h3 {
+  font-size: 19px;
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+
+.missiono-engineering-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted-fg);
+}
+
+.missiono-engineering-card code {
+  display: block;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--muted);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* ---------- TECHNICAL CALLOUT ---------- */
+
+.missiono-callout {
+  margin-top: 80px;
+  padding: 48px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+}
+
+.missiono-callout-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.missiono-callout h3 {
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  max-width: 720px;
+}
+
+.missiono-callout p {
+  margin-top: 20px;
+  max-width: 650px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted-fg);
+}
+
+/* ---------- SELECTED SCREENS ---------- */
+
+.missiono-screens-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 64px;
+}
+
+.missiono-screens-grid .missiono-screen:first-child {
+  grid-column: span 2;
+}
+
+.missiono-screen-caption {
+  padding: 16px 2px 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted-fg);
+}
+
+/* ---------- RESULT ---------- */
+
+.missiono-result {
+  text-align: center;
+  padding: 160px 0;
+}
+
+.missiono-result-content {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.missiono-result h2 {
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+
+.missiono-result p {
+  max-width: 580px;
+  margin: 28px auto 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--muted-fg);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .missiono-tech-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .missiono-story {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .missiono-story-copy {
+    position: static;
+  }
+
+  .missiono-feature,
+  .missiono-feature.reverse {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .missiono-feature.reverse .missiono-feature-image {
+    order: initial;
+  }
+
+  .missiono-engineering-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .missiono-hero {
+    padding: 120px 0 80px;
+  }
+
+  .missiono-hero h1 {
+    font-size: clamp(48px, 14vw, 70px);
+  }
+
+  .missiono-hero-sub {
+    font-size: 16px;
+  }
+
+  .missiono-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .missiono-screens-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .missiono-screens-grid .missiono-screen:first-child {
+    grid-column: auto;
+  }
+
+  .missiono-callout {
+    padding: 30px 24px;
+  }
+
+  .missiono-result {
+    padding: 110px 0;
+  }
 }
