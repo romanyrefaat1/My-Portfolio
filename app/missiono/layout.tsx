@@ -11,6 +11,8 @@ export const metadata: Metadata = {
     "expense management",
     "task management",
     "budget tracking",
+    "mission planning",
+    "project planning",
   ],
 
   openGraph: {
@@ -18,11 +20,11 @@ export const metadata: Metadata = {
     description:
       "Plan missions, manage tasks, track spending, and monitor progress — all in one place.",
     type: "website",
-    url: "https://yourdomain.com/missiono",
+    url: "https://missiono.vercel.app",
     siteName: "Romany",
     images: [
       {
-        url: "https://yourdomain.com/og/missiono.png",
+        url: "https://missiono.vercel.app/missiono.png",
         width: 1200,
         height: 630,
         alt: "Missiono — Mission and expense management",
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     title: "Missiono — Mission & Expense Management",
     description:
       "Plan missions, manage tasks, track spending, and monitor progress — all in one place.",
-    images: ["https://yourdomain.com/og/missiono.png"],
+    images: ["https://missiono.vercel.app/missiono.png"],
   },
 
   robots: {
