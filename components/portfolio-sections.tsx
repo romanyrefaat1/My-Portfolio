@@ -235,7 +235,7 @@ export function WorkSection({
             Next.js · React · Supabase · AI
           </div>
           <div className="project-ctas">
-            <Link href="#" className="project-link">
+            <Link href="/floopr" className="project-link">
               Explore Floopr <ArrowIcon />
             </Link>
           </div>
