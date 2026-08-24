@@ -90,21 +90,8 @@ export default function MissionoCaseStudy() {
             </div>
 
             {/* MAGIC FRAME HERO IMAGE */}
-              <div className="relative w-full mt-12 reveal">
-      <HeroVideoDialog
-        className="block dark:hidden"
-        animationStyle="from-center"
-        videoSrc="/projects/missiono/missiono-demo.mp4"
-        thumbnailSrc="/projects/missiono/her-section.pngs"
-        thumbnailAlt="Hero Video"
-      />
-      <HeroVideoDialog
-        className="hidden dark:block"
-        animationStyle="from-center"
-        videoSrc="/projects/missiono/missiono-demo.mp4"
-        thumbnailSrc="/projects/missiono/her-section.pngs"
-        thumbnailAlt="Hero Video"
-      />
+              <div className="flex justify-center align-center w-screen mt-12 reveal">
+      <video src={"/projects/missiono/missiono-demo.mp4"} className="w-full h-full mx-auto rounded-xl"/>
     </div>
            
           </div>
@@ -129,8 +116,7 @@ export default function MissionoCaseStudy() {
               </ul>
             </div>
             <div className="shot-frame mt-16 max-w-[900px] mx-auto aspect-[16/9] bg-muted flex flex-col items-center justify-center">
-              <p className="mono text-muted-fg text-sm">Image: Strong mission overview showing several missions and realistic data.</p> {/*[cite: 1] */}
-            </div>
+              <Image width={1080} height={720} alt={"All missions dashboard"} src={"/projects/missiono/dashboard-darkmode.png"} />            </div>
           </section>
 
           {/* ONE PLACE FOR THE WHOLE MISSION */}

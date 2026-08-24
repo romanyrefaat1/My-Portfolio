@@ -12,7 +12,7 @@
 }
 
 :root {
-  --bg: #FAFAF9;
+  /* --bg: #FAFAF9;
   --fg: #121212;
   --card: #FFFFFF;
   --muted: #F0F0F0;
@@ -20,7 +20,20 @@
   --border: #E5E5E5;
   --accent: #2563EB;
   --accent-fg: #FFFFFF;
-  --selection: #DBEAFE;
+  --selection: #DBEAFE; */
+
+  /* Dark mode colors */
+  --bg: #0D0D0D;
+  --fg: #F5F5F5;
+  --card: #141414;
+  --muted: #1F1F1F;
+  --muted-fg: #A0A0A0;
+  --border: #292929;
+  --accent: #3B82F6;
+  --accent-fg: #FFFFFF;
+  --selection: #1D4ED8;
+  --selection-fg: #FFFFFF;
+  
   --selection-fg: #1E3A8A;
   --max-w: 1280px;
   --pad: 48px;
