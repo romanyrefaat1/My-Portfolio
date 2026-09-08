@@ -64,7 +64,7 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background: #0D0D0D;
   color: var(--fg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
@@ -273,6 +273,7 @@ button:focus-visible {
 
 .hero-content {
   flex: 1;
+  padding: 20px;
 }
 
 /* Mobile responsive layout */
@@ -286,6 +287,10 @@ button:focus-visible {
 @media (max-width: 640px) {
   .hero {
     padding: 140px 0 80px;
+  }
+
+  .hero-content {
+    padding: 13px;
   }
 }
 

@@ -17,6 +17,26 @@ export const metadata: Metadata = {
   title: "Romany Refaat — Full-Stack Developer",
   description:
     "Portfolio of Romany Refaat, a full-stack developer building thoughtful web products with React, Next.js, TypeScript, and Supabase.",
+  openGraph: {
+    title: "Romany Refaat — Full-Stack Developer",
+    description:
+      "Portfolio of Romany Refaat, a full-stack developer building thoughtful web products with React, Next.js, TypeScript, and Supabase.",
+    images: [
+      {
+        url: "/portfolio-demo-files/Screenshot (74).png",
+        width: 1200,
+        height: 630,
+        alt: "Romany Refaat Portfolio Preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Romany Refaat — Full-Stack Developer",
+    description:
+      "Portfolio of Romany Refaat, a full-stack developer building thoughtful web products with React, Next.js, TypeScript, and Supabase.",
+    images: ["/portfolio-demo-files/Screenshot (74).png"],
+  },
 };
 
 export default function RootLayout({
