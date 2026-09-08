@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+,     "content/blogs/my-first-blog.md"  ],
   "exclude": ["node_modules"]
 }

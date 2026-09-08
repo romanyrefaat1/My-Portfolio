@@ -1,8 +1,18 @@
 import type { MetadataRoute } from "next";
+import { getAllPosts } from "@/lib/blog";
 
 const baseUrl = "https://romani.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const posts = getAllPosts();
+
+  const blogUrls: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blogs/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -22,5 +32,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/blogs`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...blogUrls,
   ];
 }

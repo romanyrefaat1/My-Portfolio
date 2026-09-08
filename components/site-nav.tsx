@@ -35,6 +35,7 @@ export function SiteNav({ isScrolled, theme, onThemeToggle, isMobileMenuOpen, on
         <div className="nav-links">
           <Link href="https://romani.vercel.app#work">Work</Link>
           <Link href="https://romani.vercel.app#about">About</Link>
+          <Link href="https://romani.vercel.app/blogs">Blog</Link>
           <Link href="https://romani.vercel.app#contact" className="cta">Let's talk <ArrowIcon size={12} /></Link>
           {/* <ThemeButton theme={theme} onClick={onThemeToggle} /> */}
         </div>
