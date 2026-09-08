@@ -482,7 +482,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="container contact reveal relative overflow-hidden !m-0 !w-screen h-full"
+      className="contact reveal relative overflow-hidden !m-0 !w-screen h-full"
     >
       <div className="absolute inset-0 -z-10 !w-screen h-full">
         <Aurora
