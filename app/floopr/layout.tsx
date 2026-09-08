@@ -22,7 +22,7 @@ export const metadata: Metadata = {
       "Collect feedback, understand what users are saying, and turn insights into better products with Floopr.",
     type: "website",
     url: "https://floopr.vercel.app/floopr",
-    siteName: "Romany",
+    siteName: "Romani",
     images: [
       {
         url: "https://floopr.vercel.app/floopr.png",

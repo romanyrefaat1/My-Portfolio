@@ -21,7 +21,7 @@ export const metadata: Metadata = {
       "Plan missions, manage tasks, track spending, and monitor progress — all in one place.",
     type: "website",
     url: "https://missiono.vercel.app",
-    siteName: "Romany",
+    siteName: "Romani",
     images: [
       {
         url: "https://missiono.vercel.app/missiono.png",

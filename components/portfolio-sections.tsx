@@ -482,7 +482,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="contact reveal relative overflow-hidden !m-0 !w-screen h-full"
+      className="contact reveal relative overflow-hidden !m-0 !w-screen h-screen"
     >
       <div className="absolute inset-0 -z-10 !w-screen h-full">
         <Aurora
@@ -506,7 +506,7 @@ export function ContactSection() {
         </p>
         <div className="contact-cta">
           <Link
-            href="mailto:refaatromany641@gmail.com"
+            href="mailto:refaatRomani641@gmail.com"
             className="btn-primary"
             style={{ display: "inline-flex" }}
           >
