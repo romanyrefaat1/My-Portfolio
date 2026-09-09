@@ -2382,8 +2382,6 @@ footer {
   width: min(1080px, calc(100% - 48px));
   margin: 0 auto;
 
-  display: grid;
-  grid-template-columns: 170px minmax(0, 720px);
   gap: 0;
 
   align-items: start;
@@ -2393,13 +2391,6 @@ footer {
 /* ---------------------------------------------------------
    TABLE OF CONTENTS
    --------------------------------------------------------- */
-
-.post-toc-rail {
-  position: sticky;
-  top: 120px;
-  min-width: 0;
-}
-
 .post-toc-inline {
   display: none;
 }
