@@ -131,45 +131,51 @@ export default async function BlogPostPage({
       </header>
 
       <main className="case-study-container post-layout">
-        <aside className="post-toc-rail">
-          <TableOfContents headings={post.headings} />
-        </aside>
+  {/* Desktop TOC */}
+  <aside className="post-toc-rail">
+    <TableOfContents headings={post.headings} />
+  </aside>
 
-        <article className="post-body-section">
-          <div className="post-body">
-            <MDXRemote
-              source={post.content}
-              components={useMDXComponents({})}
-              options={{
-                mdxOptions: {
-                  remarkPlugins: [remarkGfm],
-                },
-              }}
-            />
-          </div>
+  <article className="post-body-section">
+    {/* TOC at the start of the article */}
+    <div className="post-toc-inline">
+      <TableOfContents headings={post.headings} />
+    </div>
 
-          <footer className="post-footer">
-            <Link
-              href="/blogs"
-              className="project-link secondary post-back"
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
+    <div className="post-body">
+      <MDXRemote
+        source={post.content}
+        components={useMDXComponents({})}
+        options={{
+          mdxOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        }}
+      />
+    </div>
 
-              All writing
-            </Link>
-          </footer>
-        </article>
-      </main>
+    <footer className="post-footer">
+      <Link
+        href="/blogs"
+        className="project-link secondary post-back"
+      >
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+
+        All writing
+      </Link>
+    </footer>
+  </article>
+</main>
     </div>
   );
 }

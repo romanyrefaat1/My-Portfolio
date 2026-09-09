@@ -2313,7 +2313,6 @@ footer {
   }
 }
 
-
 /* =========================================================
    BLOG POST PAGE
    ========================================================= */
@@ -2384,17 +2383,10 @@ footer {
   margin: 0 auto;
 
   display: grid;
-
-  /*
-   * Much smaller TOC rail.
-   * The article stays visually close to the center.
-   */
   grid-template-columns: 170px minmax(0, 720px);
-
-  gap: 0px;
+  gap: 0;
 
   align-items: start;
-
   padding-top: 64px;
 }
 
@@ -2406,6 +2398,10 @@ footer {
   position: sticky;
   top: 120px;
   min-width: 0;
+}
+
+.post-toc-inline {
+  display: none;
 }
 
 .toc-label {
@@ -2511,12 +2507,7 @@ footer {
 }
 
 .post-body h2 {
-  /* margin: 64px 0 22px;/ */
-  /* padding-top: 32px; */
-
   font-size: 30px;
-
-  /* border-top: 1px solid var(--border); */
 }
 
 .post-body h2:first-child {
@@ -2811,10 +2802,41 @@ footer {
 
     grid-template-columns: 1fr;
     gap: 0;
+
+    padding-top: 40px;
   }
 
+  /* Hide side TOC */
   .post-toc-rail {
     display: none;
+  }
+
+  /* Show TOC above article */
+  .post-toc-inline {
+    display: block;
+
+    margin-bottom: 48px;
+    padding-bottom: 28px;
+
+    border-bottom: 1px solid var(--border);
+  }
+
+  .post-toc-inline .toc-label {
+    margin-bottom: 14px;
+  }
+
+  .post-toc-inline .toc-list {
+    gap: 7px;
+  }
+
+  .post-toc-inline .toc-item a {
+    font-size: 13px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .post-toc-inline .toc-level-3 a {
+    font-size: 12px;
   }
 
   .post-body {
@@ -2829,7 +2851,12 @@ footer {
 
   .post-layout {
     width: calc(100% - 32px);
-    padding-top: 40px;
+    padding-top: 32px;
+  }
+
+  .post-toc-inline {
+    margin-bottom: 40px;
+    padding-bottom: 24px;
   }
 
   .post-body {
