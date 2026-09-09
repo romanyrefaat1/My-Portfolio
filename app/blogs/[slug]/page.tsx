@@ -131,17 +131,11 @@ export default async function BlogPostPage({
       </header>
 
       <main className="case-study-container post-layout">
-  {/* Desktop TOC */}
-  <aside className="post-toc-rail">
+  <div className="post-toc">
     <TableOfContents headings={post.headings} />
-  </aside>
+  </div>
 
   <article className="post-body-section">
-    {/* TOC at the start of the article */}
-    <div className="post-toc-inline">
-      <TableOfContents headings={post.headings} />
-    </div>
-
     <div className="post-body">
       <MDXRemote
         source={post.content}
