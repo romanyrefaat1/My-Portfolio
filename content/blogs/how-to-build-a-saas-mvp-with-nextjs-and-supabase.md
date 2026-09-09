@@ -1,7 +1,7 @@
 ---
 
 title: "How to Build a SaaS MVP With Next.js and Supabase"
-date: "2026-09-09"
+date: "2026-09-19"
 description: "A step-by-step technical guide to building a SaaS MVP with Next.js and Supabase, covering architecture, authentication, RLS, payments, testing, and deployment."
 tags: [
 "nextjs",

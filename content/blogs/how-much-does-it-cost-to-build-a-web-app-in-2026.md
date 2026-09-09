@@ -1,7 +1,7 @@
 ---
 
 title: "How Much Does It Cost to Build a Web App in 2026?"
-date: "2026-09-09"
+date: "2026-09-14"
 description: "A practical guide to web app development costs in 2026, including MVP budgets, features, timelines, technology, and ways to avoid overspending."
 tags: [
 "web-development",

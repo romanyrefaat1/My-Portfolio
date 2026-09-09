@@ -1,7 +1,7 @@
 ---
 
 title: "How Much Does It Cost to Hire a Next.js Developer in 2026?"
-date: "2026-09-09"
+date: "2026-09-16"
 description: "Discover 2026 rates for hiring Next.js developers, comparing freelancers, agencies, and full-time engineers by experience and project scope."
 tags: [
 "nextjs",

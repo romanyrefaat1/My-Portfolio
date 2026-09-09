@@ -1,6 +1,6 @@
 ---
 title: "How Much of a SaaS Should You Build Before Launching?"
-date: "2026-09-09"
+date: "2026-09-17"
 description: "Learn how to define your SaaS MVP scope, avoid over-engineering, and decide which features to build before launching to early users."
 tags: ["saas", "mvp", "product-strategy", "launch"]
 ---

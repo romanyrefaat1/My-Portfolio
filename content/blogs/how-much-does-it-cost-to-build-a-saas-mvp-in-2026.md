@@ -1,7 +1,7 @@
 ---
 
 title: "How Much Does It Cost to Build a SaaS MVP in 2026?"
-date: "2026-09-09"
+date: "2026-09-12"
 description: "Breakdown of SaaS MVP development costs in 2026, with pricing benchmarks, feature complexity, budget examples, and ways to control scope."
 tags: ["saas", "mvp", "pricing", "startups"]
 ---
