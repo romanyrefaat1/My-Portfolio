@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import type { MouseEvent, RefObject } from "react";
+import { useRef, useState, type MouseEvent, type RefObject } from "react";
 import { ArrowIcon } from "@/components/site-nav";
 import Dither from "@/components/Dither";
 import DotField from "@/components/DotField";
@@ -396,13 +396,20 @@ export function ProcessSection({
   );
 }
 
+
 export function AboutSection() {
+  const [showCard, setShowCard] = useState(false);
+  const [locked, setLocked] = useState(false);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
   const facts = [
     ["BUILDING", "Web products"],
     ["FOCUS", "Product + engineering"],
     ["CURRENTLY", "Missiono"],
     ["INTERESTED IN", "Interfaces, products, and ideas worth building"],
   ];
+
   const philosophy = [
     ["BUILD", "Ideas are cheap. Making one real is the interesting part."],
     ["LEARN", "Most useful lessons arrive after something ships."],
@@ -412,21 +419,82 @@ export function AboutSection() {
     ],
   ];
 
+  function handleMouseMove(e: React.MouseEvent) {
+    if (locked) return;
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  }
+
   return (
     <section id="about" className="container about reveal">
       <div>
         <div className="section-label">A LITTLE ABOUT ME</div>
-        <h2 className="section-heading">I like making ideas real.</h2>
+
+        <div className="about-header-left">
+          <div
+            ref={containerRef}
+            className="about-portrait-wrap"
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setShowCard(true)}
+            onMouseLeave={() => {
+              if (!locked) setShowCard(false);
+            }}
+            onClick={() => setLocked((l) => !l)}
+          >
+            <Image
+              src="/me/portrait.jpg"
+              alt="Portrait of Romani"
+              width={140}
+              height={140}
+              className="about-portrait"
+              priority
+            />
+
+            {showCard && (
+              <div
+                className="about-hover-card"
+                style={{ left: pos.x, top: pos.y }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="about-hover-card-title">Romani</div>
+                <p className="about-hover-card-body">
+                  {/* Replace with your own bio details */}
+                  Full-stack developer based in [your city]. Currently
+                  building Missiono. [Add a few authentic lines about
+                  yourself — background, what drives you, hobbies, whatever
+                  feels true to who you are.]
+                </p>
+                {locked && (
+                  <button
+                    className="about-hover-card-close"
+                    onClick={() => {
+                      setLocked(false);
+                      setShowCard(false);
+                    }}
+                  >
+                    ✕
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
+
+          <h2 className="section-heading">I like making ideas real.</h2>
+        </div>
+
         <p className="about-body">
-          I like working on the whole thing — figuring out what should
-          exist, designing how it should feel, and building what happens
-          underneath.
+          I'm Romani, a full-stack web developer who likes working across the
+          whole product — figuring out what should exist, designing how it
+          should feel, and building what happens underneath.
         </p>
+
         <p className="about-body">
           That usually means designing interfaces, writing the application,
           figuring out the data underneath it, breaking things, fixing them,
           and eventually shipping.
         </p>
+
         <div className="philosophy">
           {philosophy.map(([label, text]) => (
             <div className="philosophy-item" key={label}>
@@ -436,6 +504,7 @@ export function AboutSection() {
           ))}
         </div>
       </div>
+
       <div className="fact-grid">
         {facts.map(([label, value]) => (
           <div className="fact-card" key={label}>
@@ -450,7 +519,7 @@ export function AboutSection() {
 
 export function NowSection() {
   const items = [
-    ["BUILDING", "Missiono"],
+    ["BUILDING", "Automatio"],
     ["LEARNING", "How to build better systems behind simple interfaces."],
     [
       "EXPLORING",
