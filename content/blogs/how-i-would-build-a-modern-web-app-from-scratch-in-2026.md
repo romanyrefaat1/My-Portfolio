@@ -2,55 +2,45 @@
 
 title: "How I Would Build a Modern Web App From Scratch in 2026"
 date: "2026-09-09"
-description: "My practical process for building a modern web app in 2026, from product scope and architecture to development, testing, deployment, and launch."
+description: "A practical architecture roadmap for building modern web applications in 2026 using Next.js, Supabase, TypeScript, and a scope-first approach."
 tags: [
-"web-development",
+"architecture",
 "nextjs",
-"typescript",
-"saas",
-"startups",
-"full-stack"
+"web-development",
+"typescript"
 ]
 ---
 
-Building a modern web application isn't mainly a coding problem.
+Building a modern web application in 2026 isn't mainly about choosing the newest framework.
 
-The difficult part is deciding **what to build, how much to build, and which technical decisions actually matter**.
+It's about choosing an architecture that lets you move quickly without creating unnecessary complexity.
 
-I've found that a web app can have a great-looking interface and solid code and still fail because the core workflow is confusing, the scope is too large, or the product takes too long to reach real users.
+When I build a web application, I want the stack to support the product, keep the core workflows understandable, and leave enough room to evolve when real users reveal what actually needs to change.
 
-When I build a web application, I generally think about the process like this:
+My process usually looks like this:
 
-**Understand the problem → define the MVP → map the workflow → choose the stack → build the foundation → build the core feature → test → launch → improve.**
+**Understand the product → define the MVP → choose the stack → design the architecture → build the data layer → secure access → build the core workflow → test → deploy → learn → improve.**
 
-This approach works for SaaS products, internal tools, dashboards, client portals, marketplaces, and other custom web applications.
+The exact technologies can change.
 
-It also keeps one important principle at the center:
+The process matters more.
 
-> **The architecture should support the product, not become the product.**
+## Start With the Product, Not the Code
 
-## Before Writing Code, Define the Product
-
-The first thing I want to know is not which framework we're using.
-
-I want to know who the application is for and what they are trying to accomplish.
+Before writing database migrations or choosing UI packages, I want to understand the user and the workflow.
 
 I'd ask:
 
-* Who is the user?
+* Who is this application for?
 * What problem are they trying to solve?
 * What do they do today?
-* What is the most important action in the application?
+* What is the most important action?
 * What result should the user get?
-* What would make the first version successful?
+* What does a successful first version look like?
 
-A consumer SaaS, an internal operations tool, and a customer portal can all be "web apps," but they can have completely different technical requirements.
+A dashboard with ten screens can still be a badly designed product if the main workflow is confusing.
 
-That difference affects everything that follows.
-
-### Start with the user journey
-
-Instead of beginning with a list of pages, I prefer to map the main workflow.
+That's why I prefer to map the workflow first.
 
 For example:
 
@@ -70,7 +60,7 @@ Use the core feature
 Get the result
 ```
 
-That workflow tells you far more about the application than a list like:
+That tells me more about the application than a page list like:
 
 ```text
 Home
@@ -87,9 +77,9 @@ The workflow is the product.
 
 ---
 
-## Define the MVP Before Defining the Architecture
+## Define the MVP
 
-A common mistake is designing the architecture around the entire future roadmap.
+One of the easiest ways to make a web application harder than necessary is to design the first architecture around the entire future roadmap.
 
 Imagine the long-term product includes:
 
@@ -103,7 +93,7 @@ Imagine the long-term product includes:
 * mobile apps
 * advanced permissions
 
-You don't necessarily need all of that in version one.
+I wouldn't automatically build all of that in version one.
 
 The MVP might be:
 
@@ -117,23 +107,21 @@ Create task
 Track progress
 ```
 
-That's much easier to build, test, launch, and learn from.
+That's enough to create a complete workflow that a real user can try.
 
-I wrote more about this in [how much of a SaaS you should build before launching](https://romani.vercel.app/blogs/how-much-of-my-saas-should-i-build-before-launching).
+The goal isn't to build the fewest possible features.
 
-The important distinction is:
+It's to build the **smallest complete workflow**.
 
-> **Build the smallest complete workflow, not the fewest possible features.**
-
-A feature is justified when the user needs it to get the promised result.
+For more on deciding what belongs in an MVP, see [how much of a SaaS you should build before launching](https://romani.vercel.app/blogs/how-much-of-my-saas-should-i-build-before-launching).
 
 ---
 
 ## Choose the Stack Based on the Product
 
-Once I understand the requirements, I can make technology decisions.
+Once I understand the workflow, I can make technical decisions.
 
-For many web applications, a stack like this is a practical starting point:
+For many full-stack applications, I like a relatively simple stack:
 
 | Layer            | Technology       |
 | ---------------- | ---------------- |
@@ -144,69 +132,87 @@ For many web applications, a stack like this is a practical starting point:
 | Authentication   | Supabase Auth    |
 | Storage          | Supabase Storage |
 | Styling          | Tailwind CSS     |
+| UI components    | shadcn/ui        |
 | Deployment       | Vercel           |
+| Payments         | Stripe           |
 
 This isn't a universal stack.
 
-A real-time collaboration product, a data-heavy analytics application, or a system processing large files might need additional infrastructure.
+A data-heavy analytics product, a real-time collaboration system, a browser automation platform, or an application with specialized infrastructure needs may require additional services.
 
-The principle is simple:
+My general rule is:
 
 > **Choose the simplest architecture that solves the current problem properly.**
 
-Don't introduce infrastructure because you expect to need it someday.
+I don't want to introduce infrastructure because I think I might need it six months from now.
 
 ---
 
-## Why I Like Next.js for Full-Stack Web Apps
+## My Recommended Stack in 2026
 
-For many products, Next.js lets me keep the application and server-side functionality relatively close together.
+For the kinds of SaaS and web applications I usually build, Next.js and TypeScript provide the application layer, while Supabase gives me a practical foundation around PostgreSQL, authentication, and storage.
 
-A simplified architecture can look like:
+A simplified setup can look like:
 
 ```text
 Browser
    ↓
 Next.js
    ↓
-Server Actions / API Routes
+Server-side application logic
    ↓
-PostgreSQL
+Supabase
+   ├── PostgreSQL
+   ├── Auth
+   └── Storage
 ```
 
-With supporting services:
+For payments and transactional email, I can add services such as Stripe and Resend when the product actually requires them.
+
+I like this approach because it lets me spend more time on the product instead of implementing infrastructure that established services already provide.
+
+For a deeper implementation walkthrough, see [how to build a SaaS MVP with Next.js and Supabase](https://romani.vercel.app/blogs/how-to-build-a-saas-mvp-with-nextjs-and-supabase).
+
+---
+
+## Design the Architecture
+
+Once the stack is chosen, I want the application boundaries to be obvious.
+
+A typical flow might be:
 
 ```text
-                    ┌──────────────┐
-                    │    Browser   │
-                    └──────┬───────┘
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │    Next.js   │
-                    └──────┬───────┘
-                           │
-              ┌────────────┼────────────┐
-              ▼            ▼            ▼
-         PostgreSQL     Storage      External APIs
-              │
-              ▼
-       Background jobs
+User
+  ↓
+UI
+  ↓
+Server-side application logic
+  ↓
+Validation + authorization
+  ↓
+Database / external services
 ```
 
-The benefit isn't that Next.js magically makes complex applications simple.
+For Next.js applications, I generally keep server-side work on the server when practical and use Client Components when browser-side interactivity or client state is actually required.
 
-It gives you a productive foundation for building them.
+That usually means:
 
-For a deeper look at this approach, see [how to build a SaaS MVP with Next.js and Supabase](https://romani.vercel.app/blogs/how-to-build-a-saas-mvp-with-nextjs-and-supabase).
+* Server Components for server-rendered UI, data access, and layouts where appropriate
+* Client Components for interactive interfaces that need browser state or event handling
+* Server Actions where they provide a clean boundary for mutations
+* Route Handlers or other HTTP endpoints when an explicit API boundary makes more sense
+
+I don't try to force every operation through one mechanism.
+
+The goal is to keep the architecture understandable.
 
 ---
 
 ## Design the Database Around Real Requirements
 
-I prefer to identify the main entities before building application features.
+I prefer to model the important entities before building large parts of the application.
 
-For a simple project-management application, that could be:
+For a simple project-management application:
 
 ```text
 users
@@ -222,7 +228,7 @@ User
       └── Tasks
 ```
 
-As the product grows, you might need:
+As the product grows, I may introduce:
 
 ```text
 organizations
@@ -233,11 +239,7 @@ notifications
 activity_logs
 ```
 
-But I'd rather add those because the product needs them than create a huge schema for hypothetical future requirements.
-
-### Keep the data model understandable
-
-For an MVP, simple is usually valuable.
+But I don't want a huge schema full of hypothetical tables.
 
 For example:
 
@@ -252,13 +254,31 @@ created_at
 updated_at
 ```
 
-A straightforward schema is easier to query, test, explain, and change.
+A straightforward schema is easier to query, test, secure, and change.
 
-You can make the system more sophisticated when the real application gives you a reason to.
+I can make it more sophisticated when the application gives me a reason to.
+
+### Index the Queries That Matter
+
+As data grows, database performance becomes more dependent on how the application actually queries the data.
+
+So I pay attention to:
+
+* foreign keys
+* frequently filtered columns
+* sorting and pagination patterns
+* unique constraints
+* indexes for common lookup paths
+
+I don't add indexes blindly.
+
+I add them based on the queries the application actually needs.
 
 ---
 
-## Authentication Is Not Authorization
+## Build Authentication and Authorization
+
+Authentication and authorization are different problems.
 
 Authentication answers:
 
@@ -268,9 +288,20 @@ Authorization answers:
 
 > **What is this user allowed to access?**
 
-Those are different.
+For a Next.js application using Supabase, I'd use Supabase's current SSR approach with the `@supabase/ssr` package rather than the older Auth Helpers package.
 
-A SaaS might have:
+A typical application might support:
+
+* sign up
+* sign in
+* sign out
+* password reset
+* email verification
+* protected routes
+
+Then authorization determines which data and actions that user can actually access.
+
+For example:
 
 ```text
 Admin
@@ -283,29 +314,71 @@ Member
  └── Edit assigned tasks
 ```
 
-These rules should not exist only in the UI.
+Those rules shouldn't exist only in the interface.
 
-Hiding a button doesn't secure the underlying data.
+Hiding a button is not a security boundary.
 
-The server—and where appropriate the database—needs to enforce access rules.
-
-This is one reason I pay attention to authorization early rather than treating it as a final polish task.
+The application and, where appropriate, the database should enforce the actual access rules.
 
 ---
 
-## Build the Core Function Before Secondary Features
+## Use Row Level Security When the Data Model Requires It
 
-Once the foundation works, I want the main workflow working end to end.
+One of the reasons I like Supabase for many SaaS applications is that PostgreSQL gives me a strong foundation for data access rules.
+
+With Row Level Security, I can enforce rules such as:
+
+```text
+User A
+   ↓
+Can access User A's records
+
+User A
+   X
+Cannot access User B's records
+```
+
+That is especially useful for applications where users share the same database but should only be able to access the records they are authorized to see.
+
+The exact policies depend on the product.
+
+The important principle is:
+
+> **Don't assume the UI is enough to protect data.**
+
+---
+
+## Build the Core Workflow First
+
+Once the foundation works, I want the main product workflow working end to end.
 
 Not the settings page.
 
 Not the analytics dashboard.
 
-Not a complicated admin panel.
+Not a complex admin panel.
 
-The thing the user came to the application to accomplish.
+The thing the user actually came to accomplish.
 
-A useful loop is:
+For example:
+
+```text
+Sign up
+   ↓
+Create project
+   ↓
+Configure project
+   ↓
+Run core feature
+   ↓
+View result
+   ↓
+Save result
+```
+
+Then I test the workflow repeatedly.
+
+A useful development loop is:
 
 ```text
 Build
@@ -314,28 +387,28 @@ Test
   ↓
 Use it yourself
   ↓
+Find friction
+  ↓
 Fix
   ↓
 Repeat
 ```
 
-Using your own application is particularly useful here.
-
-When you're the person moving through the workflow, confusing steps become much easier to notice.
+That approach usually reveals product problems much earlier than building every screen first.
 
 ---
 
 ## Keep Business Logic Out of the UI
 
-A component shouldn't gradually become the place where you keep:
+I don't want a React component gradually becoming responsible for:
 
 * database queries
-* permissions
+* authorization
 * validation
 * business rules
-* API calls
-* UI state
+* API requests
 * error handling
+* UI state
 
 A cleaner separation is often closer to:
 
@@ -349,32 +422,32 @@ Data access
 Database
 ```
 
-The exact implementation can change from project to project.
+The exact implementation depends on the application.
 
-The goal is maintainability.
+The principle is simply to keep responsibilities understandable.
 
-When the same business rule exists in five components, changing that rule later becomes unnecessarily painful.
+When the same business rule appears in several UI components, changing it later becomes unnecessarily difficult.
 
 ---
 
-## Treat Loading, Errors, and Empty States as Real Product Features
+## Treat Loading, Errors, and Empty States as Product Features
 
-A successful request is only one possible outcome.
+A product isn't complete just because the success case works.
 
-Users will also encounter:
+Users will encounter:
 
-* slow requests
-* empty data
+* loading states
+* empty states
 * invalid input
-* permission errors
-* failed payments
-* unavailable external services
+* unauthorized access
 * missing records
+* failed requests
 * expired sessions
+* third-party failures
 
-A blank dashboard is not a good empty state.
+A blank dashboard isn't a useful empty state.
 
-Instead:
+Something like:
 
 > You haven't created a project yet.
 
@@ -382,19 +455,21 @@ with:
 
 > Create your first project
 
-That small difference makes the product much easier to understand.
+helps the user understand what to do next.
 
-The same applies to errors.
+The same principle applies to errors.
 
-"Something went wrong" is rarely the most useful thing you can tell a user.
+"Something went wrong" isn't always enough information.
+
+When possible, the application should explain what happened and what the user can do next.
 
 ---
 
 ## Build Responsive Workflows, Not Just Responsive Pages
 
-I don't wait until the end to see whether a web app works on mobile.
+I don't wait until the end to discover that the application only works comfortably on desktop.
 
-Important workflows should be checked at:
+I check important workflows across:
 
 ```text
 Desktop
@@ -402,11 +477,11 @@ Tablet
 Mobile
 ```
 
-Some interfaces can simply shrink.
+Some layouts can shrink.
 
-Others need a different layout entirely.
+Others need different interaction patterns.
 
-Tables, navigation, forms, dialogs, and dashboards often require different decisions at smaller widths.
+Tables, navigation, forms, dialogs, and dashboards can require different decisions at smaller widths.
 
 The goal isn't to make every viewport identical.
 
@@ -416,67 +491,89 @@ The goal is to keep the important workflow usable.
 
 ## Add Integrations Only When They Create Value
 
-Modern applications might eventually use:
+A modern application may eventually use:
 
 * Stripe
 * Resend
-* OpenAI or another AI provider
+* AI providers
 * Google APIs
 * GitHub
 * Slack
-* analytics tools
 * CRMs
+* analytics platforms
 
-But every integration adds another dependency.
+But every external service creates another dependency.
 
-A good rule is:
+A simple integration can be easy to add.
 
-> **An integration should solve a real product problem, not just make the architecture look more complete.**
+A more complex one may require:
 
-For an MVP, one important integration can be much more valuable than ten hypothetical ones.
+```text
+Authentication
+   ↓
+API requests
+   ↓
+Validation
+   ↓
+Webhooks
+   ↓
+Retries
+   ↓
+Error handling
+   ↓
+Application state
+```
+
+So I don't add integrations because they make the architecture look more complete.
+
+I add them because the product actually needs them.
 
 ---
 
-## Use Background Processing When a Task Needs It
+## Use Background Processing When the Workload Needs It
 
-Some operations don't belong inside a normal request.
+Some tasks don't belong inside a normal user request.
 
 For example:
-
-```text
-User
-  ↓
-Create processing job
-  ↓
-Background worker
-  ↓
-Process task
-  ↓
-Save result
-  ↓
-Notify user
-```
-
-This can make sense for:
 
 * AI processing
 * browser automation
 * large imports
 * report generation
 * file processing
-* email batches
+* batch email
 
-I've seen this become particularly relevant in products that move beyond simple CRUD.
+can benefit from background processing.
 
-But I still wouldn't add a worker just because "scaling" sounds impressive.
+A simplified architecture might be:
 
-Introduce the complexity when the workload actually needs it.
+```text
+User
+  ↓
+Create job
+  ↓
+Queue / database
+  ↓
+Background worker
+  ↓
+Process
+  ↓
+Save result
+  ↓
+Notify user
+```
+
+I wouldn't add a worker just because I expect the product to become huge.
+
+I'd add one when the workload or reliability requirements justify the extra architecture.
 
 ---
 
-## Payments Need More Than a Checkout Page
+## Keep Payments Simple in the First Version
 
-For a SaaS, the simplified billing architecture often looks like:
+If a SaaS needs payments, I want the billing flow to be understandable.
+
+A simplified architecture might look like:
 
 ```text
 User
@@ -490,11 +587,11 @@ Webhook
 Backend
   ↓
 Database
+  ↓
+Feature access
 ```
 
-The webhook is important because your application needs a reliable source for subscription events.
-
-For an MVP, I'd keep the pricing model simple.
+For an MVP, a simple pricing model can be easier to implement and validate.
 
 For example:
 
@@ -504,7 +601,9 @@ Free
 Pro
 ```
 
-is much easier to launch and validate than five plans with dozens of individual limits.
+is usually easier to reason about than a system with many plans, complicated entitlements, discounts, trials, and enterprise exceptions.
+
+The billing model should fit the business stage.
 
 ---
 
@@ -512,14 +611,16 @@ is much easier to launch and validate than five plans with dozens of individual 
 
 Testing shouldn't focus only on the happy path.
 
-I'd pay particular attention to questions like:
+I'd ask:
 
 ```text
 What if the user isn't authenticated?
 
-What if the resource doesn't exist?
+What if the record doesn't exist?
 
 What if the user doesn't own it?
+
+What if validation fails?
 
 What if the database request fails?
 
@@ -527,18 +628,20 @@ What if the payment provider fails?
 
 What if an external API times out?
 
-What if the user submits invalid data?
+What if a background job fails?
 ```
 
-Those are the conditions that reveal whether the application is actually production-ready.
+Those cases often reveal whether an application is actually ready for real users.
+
+For important products, I'd also test the security boundaries directly rather than assuming they work because the UI behaves correctly.
 
 ---
 
-## Deploy Earlier Than You Think
+## Deploy Early
 
-A working local environment can hide production problems.
+A local environment can hide problems that appear immediately in production.
 
-A simple setup might be:
+A simple deployment flow might be:
 
 ```text
 GitHub
@@ -550,74 +653,97 @@ Next.js
 Supabase
 ```
 
-Deploying early helps expose things like:
+Before launch, I'd verify things like:
 
-* environment variable mistakes
-* production authentication issues
-* incorrect URLs
+* environment variables
+* authentication
 * database permissions
-* webhook configuration
-* build errors
+* RLS policies
+* payment webhooks
+* file uploads
+* production URLs
+* build behavior
+* responsive workflows
 
-I would rather discover those issues during development than during a launch announcement.
-
----
-
-## Use Real Projects to Guide Technical Decisions
-
-Building my own products has reinforced how much scope changes the architecture.
-
-For example, [Floopr](https://romani.vercel.app/floopr) required thinking about collecting user feedback as a product feature rather than simply building another CRUD dashboard. That kind of product naturally raises different questions around feedback flows, AI-assisted processing, and how the output becomes useful to the person receiving it.
-
-A different product, [Missiono](https://missiono.vercel.app), is a useful example of how a more focused application can be built around a straightforward workflow and data model.
-
-These projects are also why I try not to separate "product decisions" from "technical decisions."
-
-They affect each other constantly.
-
-You can also see more of the work and projects I've built on [my portfolio](https://romani.vercel.app/#work).
+Deploying earlier gives you more opportunities to discover those problems before the actual launch.
 
 ---
 
-## What I Wouldn't Do
+## What I Would Not Build Yet
 
-I wouldn't:
+For an early-stage product, I generally wouldn't start with:
 
-* build the complete six-month roadmap before launch
-* introduce microservices because they sound scalable
-* build authentication from scratch when a reliable service works
-* create infrastructure for users you don't have yet
-* spend months polishing secondary features
-* add integrations without a clear use case
+* microservices
+* Kubernetes
+* multiple databases
+* custom authentication
+* a huge admin platform
+* dozens of integrations
+* advanced analytics infrastructure
+* complex event-driven architecture
 
-The most sophisticated architecture isn't necessarily the best architecture.
+None of those technologies are inherently bad.
 
-The best architecture is the one that solves the current problem cleanly and leaves room to evolve.
+The point is that infrastructure should follow the workload.
+
+If a product is still validating its core workflow, I'd rather have a clean application that is easy to understand and change.
+
+As the workload grows, the architecture can evolve with it.
 
 ---
 
-## A Practical Build Order
+## What Building My Own Products Taught Me
 
-For a typical SaaS or business application, I'd usually work through something close to:
+Building products has made me much more careful about the difference between a feature and the system behind it.
+
+[Floopr](https://floopr.vercel.app), for example, started around a focused feedback workflow.
+
+At first glance, the product can sound simple:
+
+```text
+Embed widget
+   ↓
+Collect feedback
+```
+
+But the application also needs to think about how feedback is stored, processed, analyzed, and presented back to the people making product decisions.
+
+[Missiono](https://missiono.vercel.app) is a different type of application, centered around missions, tasks, and related budget tracking.
+
+That taught me something similar:
+
+**the visible interface doesn't tell you the complete engineering complexity.**
+
+Two applications can look similarly simple while having very different requirements behind the scenes.
+
+That's one reason I try to design architecture around actual workflows rather than screen counts.
+
+You can see more of the products and development work on [my portfolio](https://romani.vercel.app/#work).
+
+---
+
+## How I'd Approach a New Project
+
+If I were starting a new web application today, my process would look roughly like this:
 
 ```text
 Problem
    ↓
-Requirements
+Target user
+   ↓
+Desired outcome
    ↓
 Core workflow
    ↓
 MVP scope
    ↓
-Architecture
+Technology choices
    ↓
 Database
    ↓
-Authentication
+Authentication + authorization
    ↓
-Core feature
-   ↓
-Validation + authorization
+Core functionality
    ↓
 Testing
    ↓
@@ -628,30 +754,51 @@ Real users
 Iteration
 ```
 
-That order keeps the work tied to the actual product.
+That order keeps technical decisions connected to the actual product.
+
+It also makes it easier to recognize when something belongs in version one and when it should wait.
 
 ---
 
-## How Long Does It Take to Build a Modern Web App?
+## Frequently Asked Questions
 
-There isn't one universal timeline.
+### Why choose a monolithic architecture for an MVP?
 
-A focused application can potentially be built in weeks.
+For many early-stage applications, a monolithic architecture can be easier to understand, deploy, and change because the application has fewer independently managed services.
 
-A SaaS involving multiple roles, billing, AI, integrations, real-time functionality, or background processing can take substantially longer.
+That doesn't mean monoliths are always better.
 
-The most useful way to estimate time is to define:
+As requirements and workloads change, separating parts of the system can make sense.
 
-* the core workflows
-* user roles
-* integrations
-* business rules
-* authentication requirements
-* payment requirements
-* AI requirements
-* testing requirements
+I'd start with the simpler architecture unless the product already has a reason to require something more distributed.
 
-That's why I wrote a separate breakdown of [how long it takes to build a SaaS product](https://romani.vercel.app/blogs/how-long-does-it-really-take-to-build-a-saas-product).
+### Is Supabase suitable for production applications?
+
+Supabase is built around PostgreSQL and provides services including authentication and storage in addition to the database.
+
+It can be a practical production foundation for many web applications.
+
+Whether it is the right choice for a particular enterprise workload depends on requirements such as scale, security, compliance, data architecture, and operational needs.
+
+I'd evaluate those requirements before treating any database platform as a universal answer.
+
+### Should every Next.js application use Server Actions?
+
+No.
+
+Server Actions can be useful for server-side mutations, but they aren't a replacement for every type of API.
+
+For example, webhooks, independently consumed APIs, and some external integrations can still benefit from explicit HTTP endpoints.
+
+I prefer choosing the mechanism that gives the application the clearest boundary.
+
+### Should I use microservices for my first version?
+
+Usually, I wouldn't unless the product already has a requirement that justifies them.
+
+A simpler application is often easier to develop, deploy, debug, and change while the product is still being validated.
+
+The architecture can become more distributed when the workload or organizational requirements make that useful.
 
 ---
 
@@ -659,22 +806,38 @@ That's why I wrote a separate breakdown of [how long it takes to build a SaaS pr
 
 Building a modern web application in 2026 isn't about using every modern technology.
 
-It's about making good decisions about **what to build, what not to build, what to outsource to existing services, and when to introduce additional complexity**.
+It's about choosing tools and architecture that fit the product you actually have today.
 
-My preferred process is simple:
+My preferred approach is:
 
-**Understand the problem. Define the smallest useful product. Build the core workflow. Launch. Learn. Improve.**
+**Define the problem.**
 
-The code matters.
+**Build the smallest complete workflow.**
+
+**Choose a simple stack.**
+
+**Secure the data properly.**
+
+**Keep business logic understandable.**
+
+**Deploy early.**
+
+**Learn from real users.**
+
+**Add complexity when the product gives you a reason to.**
+
+The framework matters.
+
+The database matters.
 
 The architecture matters.
 
-But knowing what **not** to build yet can save more time than almost any framework decision.
+But knowing **what not to build yet** can save more time than almost any technology decision.
 
 ---
 
 ## Need Someone to Build Your Web App?
 
-I build full-stack web applications and SaaS products with **Next.js, TypeScript, PostgreSQL, and Supabase**.
+I build full-stack web applications and SaaS products using **Next.js, TypeScript, PostgreSQL, and Supabase**.
 
-If you already have an idea, design, or product specification, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
+Have an idea, design, or specification? [Let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
