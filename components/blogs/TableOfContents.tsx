@@ -3,11 +3,17 @@
 import { useEffect, useState } from "react";
 import type { Heading } from "@/lib/blog";
 
-export default function TableOfContents({ headings }: { headings: Heading[] }) {
-  const [activeId, setActiveId] = useState<string>("");
+export default function TableOfContents({
+  headings,
+}: {
+  headings: Heading[];
+}) {
+  const [activeId, setActiveId] = useState("");
+
+  const visibleHeadings = headings.filter((heading) => heading.level === 2);
 
   useEffect(() => {
-    if (headings.length === 0) return;
+    if (!visibleHeadings.length) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -17,40 +23,60 @@ export default function TableOfContents({ headings }: { headings: Heading[] }) {
           }
         });
       },
-      { rootMargin: "-100px 0px -70% 0px" }
+      {
+        rootMargin: "-100px 0px -70% 0px",
+      }
     );
 
-    headings.forEach((h) => {
-      const el = document.getElementById(h.id);
-      if (el) observer.observe(el);
+    visibleHeadings.forEach((heading) => {
+      const element = document.getElementById(heading.id);
+
+      if (element) {
+        observer.observe(element);
+      }
     });
 
     return () => observer.disconnect();
-  }, [headings]);
+  }, [visibleHeadings]);
 
-  if (headings.length === 0) return null;
+  if (!visibleHeadings.length) return null;
 
-  const handleClick = (e: React.MouseEvent, id: string) => {
-    e.preventDefault();
-    const el = document.getElementById(id);
-    if (el) {
-      window.scrollTo({ top: el.offsetTop - 96, behavior: "smooth" });
-    }
+  const handleClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    id: string
+  ) => {
+    event.preventDefault();
+
+    const element = document.getElementById(id);
+
+    if (!element) return;
+
+    window.scrollTo({
+      top: element.offsetTop - 96,
+      behavior: "smooth",
+    });
   };
 
   return (
-    <nav className="toc" aria-label="Table of contents">
+    <nav
+      className="toc mb-8 border-b pb-8"
+      aria-label="Table of contents"
+    >
       <p className="toc-label">On this page</p>
+
       <ul className="toc-list">
-        {headings.map((h) => (
+        {visibleHeadings.map((heading) => (
           <li
-            key={h.id}
-            className={`toc-item toc-level-${h.level} ${
-              activeId === h.id ? "toc-active" : ""
+            key={heading.id}
+            className={`toc-item ${
+              activeId === heading.id ? "toc-active" : ""
             }`}
           >
-            <a href={`#${h.id}`} onClick={(e) => handleClick(e, h.id)}>
-              {h.text}
+            <a
+              href={`#${heading.id}`}
+              onClick={(event) => handleClick(event, heading.id)}
+            >
+              {heading.text}
             </a>
           </li>
         ))}
