@@ -2,50 +2,53 @@
 
 title: "How to Build a SaaS MVP With Next.js and Supabase"
 date: "2026-09-09"
-description: "A practical guide to building a SaaS MVP with Next.js and Supabase, covering architecture, authentication, databases, APIs, and deployment."
+description: "A practical guide to building a SaaS MVP with Next.js and Supabase, from architecture and authentication to RLS, payments, testing, and deployment."
 tags: [
-  "saas",
-  "nextjs",
-  "supabase",
-  "typescript",
-  "mvp",
-  "startups"
+"saas",
+"nextjs",
+"supabase",
+"typescript",
+"mvp",
+"startups"
 ]
-
 ---
 
-A good SaaS MVP doesn't need a huge engineering team or a complicated architecture.
+A SaaS MVP doesn't need a huge engineering team or a complicated architecture.
 
-With **Next.js, TypeScript, Supabase, and PostgreSQL**, you can build a production-ready foundation for many SaaS products without managing a large backend infrastructure from day one.
+For many products, **Next.js, TypeScript, Supabase, and PostgreSQL** provide a strong foundation without requiring you to build every backend service yourself.
 
-The technology isn't usually the hardest part.
+The difficult part usually isn't creating a Next.js project.
 
-The harder part is deciding **what to build, how to structure it, and what not to build yet**.
+It's deciding:
 
-This guide walks through how I would approach building a SaaS MVP with Next.js and Supabase in 2026, from the initial architecture to authentication, database design, server-side logic, payments, deployment, and the decisions that matter once real users start using the product.
+* what the MVP actually needs
+* how the data should be structured
+* where business logic should live
+* how users should access data
+* which functionality belongs on the server
+* what should wait until later
+
+This is the approach I'd use to build a SaaS MVP with Next.js and Supabase in 2026.
 
 ## Why Next.js and Supabase Work Well for SaaS
 
-A SaaS application typically needs the same set of building blocks:
+A SaaS application commonly needs:
 
-* A web application
-* User authentication
-* A database
-* Server-side logic
-* File storage
-* Authorization
-* Payments
-* APIs and integrations
-* Background processing
-* Deployment and monitoring
+* a web application
+* authentication
+* a database
+* authorization
+* server-side logic
+* file storage
+* payments
+* integrations
+* background processing
 
-You can build every one of these pieces yourself, but you don't necessarily need to.
+You can build each part separately.
 
-That's where **Next.js and Supabase** become useful.
+But for an MVP, that often creates unnecessary work.
 
-Next.js can handle the application layer, routing, server-side logic, and frontend. Supabase provides PostgreSQL, authentication, storage, and other backend functionality.
-
-A simple architecture can look like this:
+A simpler architecture can look like:
 
 ```text
 User
@@ -56,51 +59,53 @@ Server Actions / API Routes
   ↓
 Supabase
   ├── PostgreSQL
-  ├── Authentication
+  ├── Auth
   └── Storage
 ```
 
-This is enough to build a surprising number of SaaS products.
+That gives you a useful foundation while keeping the number of moving parts relatively low.
 
-Instead of spending your first months building infrastructure, you can spend that time building the actual product.
+The goal isn't to make the architecture permanently simple.
+
+It's to make the **first version simple enough to ship**.
 
 ---
 
 ## What Should a SaaS MVP Actually Contain?
 
-Before writing code, define the MVP.
+Before creating tables or components, define the core workflow.
 
-A common mistake is starting with the entire product roadmap:
+Imagine we're building a SaaS that generates reports.
 
-> Dashboard, teams, analytics, notifications, integrations, AI, billing, mobile app, admin panel...
+The MVP might be:
 
-Then development takes months before anyone uses the product.
+```text
+Create account
+   ↓
+Create report
+   ↓
+Enter data
+   ↓
+Generate report
+   ↓
+Review result
+   ↓
+Save report
+```
 
-A better approach is to identify the **single workflow that creates the product's value**.
+Everything else should be evaluated against that workflow.
 
-For example, imagine you're building a SaaS that helps companies generate reports.
+Team workspaces, advanced analytics, integrations, templates, and complex administration can come later.
 
-Your MVP might only need:
-
-1. User creates an account
-2. User creates a report
-3. User enters the required data
-4. The application generates the report
-5. User can view and save it
-
-That's the product.
-
-You can add collaboration, templates, advanced analytics, integrations, and other features later.
-
-The architecture should support future growth, but the first version should solve **one problem well**.
+I explain the scope side of this in [how much of your SaaS you should build before launching](https://romani.vercel.app/blogs/how-much-of-my-saas-should-i-build-before-launching).
 
 ---
 
-## Step 1: Set Up the Next.js Application
+## Step 1: Create the Next.js Application
 
-I'd start with a modern Next.js application using TypeScript.
+I'd start with a Next.js application using TypeScript.
 
-A typical structure might look something like:
+A practical structure might look like:
 
 ```text
 app/
@@ -110,35 +115,36 @@ app/
   dashboard/
   settings/
   api/
+
 components/
+
 lib/
-  supabase/
   actions/
+  supabase/
   utils/
+
 types/
 ```
 
-The exact structure isn't important by itself.
+The exact directories can differ.
 
-What matters is keeping responsibilities separated.
+The important part is separating responsibilities.
 
-Your UI components shouldn't contain your entire business logic.
+I don't want:
 
-Your database queries shouldn't be scattered throughout dozens of components.
+* every database query scattered across components
+* authentication logic duplicated everywhere
+* business rules hidden inside button handlers
 
-And authentication shouldn't be implemented differently on every page.
-
-A little structure early makes the application much easier to change later.
+The structure should make it easy to understand where each part of the system belongs.
 
 ---
 
 ## Step 2: Connect Supabase
 
-Supabase gives you a PostgreSQL database along with authentication and storage.
+Supabase gives the application access to PostgreSQL, Auth, and Storage.
 
-The application can communicate with Supabase from the server and, where appropriate, from the client.
-
-A common setup is to create reusable Supabase clients:
+A common setup is to keep your Supabase clients in one place:
 
 ```text
 lib/
@@ -147,19 +153,17 @@ lib/
     server.ts
 ```
 
-The server client can be used when working with authenticated requests and server-side operations.
+Then use the appropriate client based on where the operation happens.
 
-Keeping this logic centralized prevents authentication and database access from becoming duplicated throughout the application.
+Centralizing this makes authentication and database access easier to maintain.
 
 ---
 
-## Step 3: Design the Database Before Building Features
+## Step 3: Design the Database First
 
-Your database is one of the most important parts of a SaaS.
+Before building every feature, identify the main entities.
 
-Start with the entities your application actually needs.
-
-For example, a simple project management SaaS might have:
+For a project-management SaaS, you might start with:
 
 ```text
 users
@@ -167,15 +171,15 @@ projects
 tasks
 ```
 
-Then relationships:
+Then:
 
 ```text
-user
-  └── projects
-        └── tasks
+User
+  └── Projects
+       └── Tasks
 ```
 
-You might eventually need:
+As requirements become more complex, you may introduce:
 
 ```text
 organizations
@@ -186,15 +190,11 @@ notifications
 activity_logs
 ```
 
-But don't create every table just because you think you'll need it someday.
+But don't create tables just because they might become useful one day.
 
-Build around real requirements.
+### Keep the schema boring
 
-### Keep the schema understandable
-
-For an MVP, a boring database is usually a good database.
-
-Prefer clear relationships and predictable columns over clever abstractions.
+For an MVP, understandable data structures are valuable.
 
 For example:
 
@@ -209,72 +209,58 @@ created_at
 updated_at
 ```
 
-is much easier to reason about than an overly generic system trying to represent every possible object in the application.
-
-You can make the architecture more sophisticated when there's an actual need.
+A straightforward schema is easier to query, secure, test, and change.
 
 ---
 
-# Step 4: Set Up Authentication
+## Step 4: Set Up Authentication and Authorization
 
-Authentication is one of the first things users interact with.
+Supabase Auth can handle common authentication flows such as:
 
-With Supabase Auth, you can support common authentication flows without building the entire system yourself.
+* sign up
+* sign in
+* sign out
+* password reset
+* email verification
 
-A typical MVP might include:
+But authentication alone is not enough.
 
-* Sign up
-* Sign in
-* Sign out
-* Password reset
-* Email verification
-* Protected routes
+You also need authorization.
 
-You then need to make sure authenticated users can only access the data they're supposed to access.
+The application needs to know:
 
-That brings us to one of the most important parts of Supabase.
+> **What is this user allowed to access?**
 
-## Row Level Security
+That becomes especially important in SaaS products with shared projects or teams.
 
-**Row Level Security (RLS)** allows you to enforce database-level rules about which rows users can access.
+---
 
-Imagine a `projects` table containing projects belonging to different users.
+## Step 5: Use Row Level Security
 
-You don't want this:
+One of the most important Supabase concepts for SaaS applications is **Row Level Security (RLS)**.
 
-```text
-User A → can read User A's projects
-User A → can read User B's projects
-```
+Imagine the `projects` table contains projects belonging to different users.
 
 You want:
 
 ```text
-User A → can read User A's projects
-User A → cannot read User B's projects
+User A → can access User A's projects
+User A → cannot access User B's projects
 ```
 
-RLS helps enforce that boundary at the database level.
+RLS lets you enforce those kinds of data-access rules at the database layer.
 
-That's especially valuable in a SaaS because authorization bugs can become serious security problems.
+That's useful because a permission check shouldn't exist only in your UI.
 
-Don't treat authentication as simply:
+A hidden button doesn't stop someone from sending a direct request.
 
-> "The user is logged in."
-
-You also need to answer:
-
-> **"What is this user allowed to access?"**
+The actual data access rule needs to be enforced where the data lives.
 
 ---
 
-# Step 5: Build the Core User Workflow
+## Step 6: Build the Core Workflow
 
-Once authentication and the database are working, build the actual product.
-
-Don't start with every settings screen.
-
-Build the workflow that makes the SaaS useful.
+Once the database and authentication work, build the feature that creates the product's value.
 
 For example:
 
@@ -292,55 +278,46 @@ View result
 Save result
 ```
 
-Every screen should support that flow.
+This is the part I'd prioritize over secondary features.
 
-This is where many SaaS MVPs go wrong.
-
-A beautiful dashboard doesn't matter much if the core workflow is confusing.
-
-The user should understand:
-
-**What do I do next?**
-
-and
-
-**What value am I getting?**
+A beautiful settings page isn't very useful if the product's main workflow doesn't work.
 
 ---
 
-## Server Actions vs API Routes
+## Step 7: Use Server Actions and API Routes Intentionally
 
-Next.js gives you several ways to handle server-side operations.
-
-For straightforward application mutations, **Server Actions** can be a clean option.
-
-For example:
+For straightforward application mutations, Server Actions can provide a useful boundary:
 
 ```text
 Form
   ↓
 Server Action
   ↓
-Validate input
+Validate
   ↓
-Check authorization
+Authorize
   ↓
-Write to database
+Database
   ↓
-Return result
+Result
 ```
 
-For external APIs, webhooks, or endpoints that need to be consumed independently, API routes can still make sense.
+API routes still make sense for:
 
-The important thing isn't choosing one approach for everything.
+* webhooks
+* independently consumed endpoints
+* some external API integrations
+* cases where an HTTP endpoint is the clearer boundary
 
-Use the simplest mechanism that fits the job.
+The goal isn't to force everything through one mechanism.
+
+Use the simplest approach that fits the job.
 
 ---
 
-# Step 6: Validate Data on the Server
+## Step 8: Validate Data on the Server
 
-Never assume the browser sent valid data.
+Never trust client-side validation alone.
 
 A user could submit:
 
@@ -350,23 +327,9 @@ price = "hello"
 quantity = -500
 ```
 
-Your server should validate the input before touching the database.
+The server should validate data before using it.
 
-A common pattern is:
-
-```text
-Client input
-   ↓
-Server validation
-   ↓
-Authorization
-   ↓
-Database operation
-```
-
-Libraries such as Zod can make this easier in TypeScript applications.
-
-For example, conceptually:
+A common TypeScript pattern is to define a schema:
 
 ```ts
 const schema = z.object({
@@ -375,42 +338,41 @@ const schema = z.object({
 });
 ```
 
-The exact validation depends on the product, but the principle is universal:
+The exact schema changes by product.
 
-**Treat all client input as untrusted.**
+The principle doesn't:
+
+> **Treat client input as untrusted.**
 
 ---
 
-# Step 7: Add File Storage Only When You Need It
+## Step 9: Add Storage Only When the Product Needs It
 
-Many SaaS products eventually need file uploads.
+Many SaaS applications eventually need file uploads.
 
-Examples include:
+Examples:
 
-* Profile pictures
-* Documents
-* Images
+* images
 * PDFs
 * CSV files
-* User-generated content
+* documents
+* profile pictures
 
-Supabase Storage can handle this without requiring you to build your own file infrastructure.
+Supabase Storage can handle the actual files while the database stores metadata.
 
-A typical flow looks like:
+A common pattern is:
 
 ```text
 User
   ↓
-Upload file
+Upload
   ↓
 Storage bucket
   ↓
-Database stores metadata
+Database metadata
 ```
 
-Notice that the database doesn't necessarily need to contain the file itself.
-
-Usually, you store metadata such as:
+The database might store:
 
 ```text
 id
@@ -421,17 +383,13 @@ content_type
 created_at
 ```
 
-Then the actual file lives in storage.
-
-This keeps the data model cleaner.
+rather than storing the whole file directly in a normal table.
 
 ---
 
-# Step 8: Add Payments
+## Step 10: Add Payments
 
-Once the core product works, you may want to charge users.
-
-A SaaS payment architecture often looks like:
+A SaaS payment flow often looks like:
 
 ```text
 User
@@ -442,176 +400,152 @@ Payment provider
   ↓
 Webhook
   ↓
-Your backend
+Backend
   ↓
 Database
 ```
 
-The important part is the webhook.
+The webhook matters because your application needs reliable subscription events.
 
-You shouldn't rely solely on what happened in the browser.
-
-Your backend should receive payment events and update the user's subscription state accordingly.
-
-For example:
+Your database might track:
 
 ```text
-subscription_status
 plan
+subscription_status
 customer_id
 subscription_id
 ```
 
-can live in your database.
-
-Then your application can determine what features a user should have access to.
+Then the application can decide which features the user should access.
 
 For an MVP, keep billing simple.
 
-One free plan and one paid plan can be enough to validate whether customers are willing to pay.
+A free plan and a paid plan can be enough to validate the business model.
+
+For more on the budgeting and scoping side, see [how much it costs to build a SaaS MVP](https://romani.vercel.app/blogs/how-much-does-it-cost-to-build-a-saas-mvp-in-2026).
 
 ---
 
-# Step 9: Handle Background Jobs When Necessary
+## Step 11: Add Background Processing When Necessary
 
-Some operations shouldn't happen while the user waits for an HTTP request.
+Not every task should happen during a user request.
 
 For example:
 
-* Processing a large file
-* Sending thousands of emails
-* Generating a large report
-* Running browser automation
-* Processing AI jobs
-* Importing large datasets
+* browser automation
+* AI processing
+* large file processing
+* large imports
+* report generation
 
-Instead, you can use:
+can benefit from:
 
 ```text
 User
   ↓
 Create job
   ↓
-Database / Queue
+Queue / database
   ↓
 Background worker
   ↓
-Process job
+Process
   ↓
 Save result
 ```
 
-This is especially important for AI and automation-heavy SaaS applications.
+This is particularly relevant to AI-heavy or automation-heavy SaaS products.
 
-You don't have to introduce a worker on day one.
+But don't introduce a worker because you think every startup needs one.
 
-But once an operation becomes slow or resource-intensive, separating it from the request cycle makes the system much more reliable.
+Introduce it because the product has a workload that justifies it.
 
 ---
 
-# Step 10: Add AI Without Overengineering It
+## Step 12: Add AI Without Overengineering It
 
-AI has become a common part of SaaS products, but it can also make an MVP much more complicated than necessary.
-
-There is a big difference between:
+AI can be simple:
 
 ```text
-User → prompt → AI → response
+User
+ ↓
+Model API
+ ↓
+Response
 ```
 
-and:
+Or it can become an entire system:
+
+```text
+User
+ ↓
+Agent
+ ↓
+Planning
+ ↓
+Tools
+ ↓
+External services
+ ↓
+Background jobs
+ ↓
+State
+ ↓
+Result
+```
+
+If AI is central to the product, you may eventually need:
+
+* tool calling
+* structured outputs
+* streaming
+* retries
+* usage limits
+* monitoring
+* cost controls
+
+For the MVP, start with the smallest AI workflow that proves the product's value.
+
+---
+
+## Step 13: Add Multi-Tenancy Only When the Product Needs It
+
+Some SaaS products are designed around individual users.
+
+Others are built around organizations.
+
+A common organization-based structure is:
 
 ```text
 User
   ↓
-Agent
+Membership
   ↓
-Planning
-  ↓
-Tools
-  ↓
-Multiple model calls
-  ↓
-External APIs
-  ↓
-Background jobs
-  ↓
-State
-  ↓
-Final result
-```
-
-The second system can require significantly more engineering.
-
-For an AI SaaS MVP, start with the smallest AI workflow that proves the value of the product.
-
-You can introduce tool calling, agents, retrieval, structured outputs, evaluation systems, and more advanced infrastructure after you know users actually want the feature.
-
----
-
-# Step 11: Build for Multi-Tenancy Carefully
-
-If your SaaS will eventually support companies or teams, you may need a multi-tenant architecture.
-
-A common structure is:
-
-```text
-organizations
-memberships
-projects
-tasks
-```
-
-Instead of tying everything directly to a user, resources can belong to an organization.
-
-For example:
-
-```text
 Organization
-   ↓
+  ↓
 Projects
-   ↓
+  ↓
 Tasks
 ```
 
-and:
+This can be useful for team products.
 
-```text
-User
-   ↓
-Membership
-   ↓
-Organization
-```
+But it also adds:
 
-This allows multiple users to work inside the same workspace.
+* membership rules
+* role permissions
+* organization-level data isolation
+* more testing
 
-But don't implement a complex organization system just because it's theoretically useful.
-
-If your MVP is designed for individual users, start there.
-
-Architecture should follow actual product requirements.
+If your first users don't need teams, there is no reason to build a huge organization system just because you might need one later.
 
 ---
 
-# Step 12: Make Errors and Loading States Part of the Product
+## Step 14: Handle Loading, Empty, and Error States
 
-A SaaS isn't finished when the happy path works.
+A SaaS isn't complete when the happy path works.
 
-Users will:
-
-* Lose internet connection
-* Enter invalid data
-* Upload unsupported files
-* Click buttons twice
-* Encounter slow APIs
-* Get rejected by permissions
-* Trigger failed payments
-* Experience unexpected errors
-
-Your application needs to handle these situations clearly.
-
-Think about:
+Think through:
 
 ```text
 Loading
@@ -622,65 +556,64 @@ Unauthorized
 Not found
 ```
 
-For example, don't leave a dashboard completely blank while data loads.
+Users will lose internet access.
 
-Tell the user what's happening.
+They will submit invalid data.
 
-Don't display a generic:
+Requests will fail.
 
-> Something went wrong.
+External APIs will time out.
 
-when you can provide a useful explanation.
+Payments will fail.
 
-Good error handling makes an application feel substantially more trustworthy.
+Those states are part of the product.
+
+A useful empty state could say:
+
+> You haven't created a project yet.
+
+with:
+
+> Create your first project
+
+instead of simply displaying nothing.
 
 ---
 
-# Step 13: Deploy the MVP
+## Step 15: Deploy the MVP
 
-Once the application works locally, deploy it.
-
-For a Next.js SaaS, the deployment architecture can remain relatively simple:
+A simple deployment architecture can be:
 
 ```text
 GitHub
    ↓
 Vercel
    ↓
-Next.js application
+Next.js
    ↓
 Supabase
 ```
 
-You can connect your production environment to your Supabase project and configure environment variables for things such as:
+Before launch, test:
 
-```text
-NEXT_PUBLIC_SUPABASE_URL
-NEXT_PUBLIC_SUPABASE_ANON_KEY
-```
+* authentication
+* database permissions
+* RLS
+* core workflows
+* payment webhooks
+* file uploads
+* mobile layouts
+* production environment variables
 
-and server-only secrets where necessary.
+Local success doesn't guarantee production success.
 
-Make sure production secrets aren't committed to your repository.
-
-Before launching, test:
-
-* Authentication
-* Database permissions
-* Core workflows
-* Payment webhooks
-* File uploads
-* Error states
-* Mobile layouts
-* Production environment variables
-
-Your local environment working doesn't guarantee your production environment works.
+Deploying early helps discover that difference.
 
 ---
 
-# A Practical Next.js + Supabase SaaS Architecture
+## A Practical Next.js + Supabase Architecture
 
-For a relatively standard MVP, I'd aim for something close to this:
+For a standard SaaS MVP, I'd aim for something close to:
 
 ```text
                          ┌───────────────┐
@@ -690,7 +623,6 @@ For a relatively standard MVP, I'd aim for something close to this:
                                  ▼
                          ┌───────────────┐
                          │    Next.js    │
-                         │   Frontend    │
                          └───────┬───────┘
                                  │
                     ┌────────────┴────────────┐
@@ -710,165 +642,114 @@ For a relatively standard MVP, I'd aim for something close to this:
                          └───────────────┘
 ```
 
-Then introduce external services only where they're actually needed:
-
-```text
-                  ┌──────────────┐
-                  │ Next.js App  │
-                  └──────┬───────┘
-                         │
-             ┌───────────┼────────────┐
-             ▼           ▼            ▼
-         Supabase      Payments       AI
-             │           │            │
-         PostgreSQL    Webhooks     Model API
-             │
-             ▼
-      Background Worker
-```
-
-This keeps the initial architecture understandable while leaving room to grow.
+Then add external services only where the product actually requires them.
 
 ---
 
-# What I Would Not Build in the First Version
+## A Practical Architecture Lesson From My Own Projects
 
-One of the most important parts of building an MVP is knowing what **not** to build.
+The reason I prefer this incremental approach is that real products quickly reveal which parts of the architecture actually deserve more complexity.
 
-I would usually avoid starting with:
+[Floopr](https://floopr.vercel.app) is a good example of how a product can move from a relatively simple feedback workflow toward AI-assisted processing and more advanced product functionality.
 
-* Microservices
-* Kubernetes
-* Multiple databases
-* Complex event-driven systems
-* A custom authentication system
-* An elaborate internal admin platform
-* Dozens of integrations
-* Native mobile applications
-* Highly advanced analytics
-* Features without validated demand
+[Missiono](https://missiono.vercel.app) demonstrates a different kind of application problem, where the main focus is keeping the application's workflow and data model coherent.
 
-None of these are inherently bad.
+Those experiences reinforce the same principle:
 
-They're just usually premature for an early-stage SaaS.
+> **Don't design the final architecture before you understand the actual product.**
 
-A product with 50 users doesn't have the same engineering requirements as a product with 5 million users.
+Build the foundation you need.
+
+Then evolve it when the product gives you evidence that you need more.
+
+You can see more of these projects on [my portfolio](https://romani.vercel.app/#work).
+
+---
+
+## Common Mistakes When Building a SaaS With Next.js and Supabase
+
+### Treating the stack as the product
+
+Next.js and Supabase can give you a strong foundation.
+
+They don't validate the idea.
+
+### Putting business logic everywhere
+
+Scattering the same business rules across components makes the system harder to maintain.
+
+### Ignoring authorization
+
+Authentication answers who the user is.
+
+Authorization answers what they can access.
+
+You need both.
+
+### Building for hypothetical scale
+
+A product with 20 users does not need the same infrastructure as a company processing millions of requests.
 
 Build for the stage you're actually at.
 
----
+### Adding every possible feature
 
-# Common Mistakes When Building a SaaS With Next.js and Supabase
-
-## Treating the stack as the product
-
-Choosing Next.js and Supabase doesn't make the SaaS successful.
-
-The stack is just the infrastructure.
-
-The value comes from solving a problem people care about.
+Your roadmap is not your MVP.
 
 ---
 
-## Putting everything in the frontend
+## How Long Does It Take to Build a Next.js + Supabase SaaS MVP?
 
-A common early architecture is:
+For a relatively focused application, a rough planning model could be:
 
-```text
-Component
-  ↓
-Database query
-  ↓
-Business logic
-  ↓
-UI update
-```
+| Stage                       | Possible time |
+| --------------------------- | ------------: |
+| Planning and architecture   |      2–5 days |
+| Authentication and database |      3–7 days |
+| Core workflow               |     1–3 weeks |
+| Payments and integrations   |      3–7 days |
+| Testing and polish          |      3–7 days |
+| Deployment                  |      1–3 days |
 
-This may work initially, but as the application grows, it becomes harder to reason about.
+A focused SaaS could therefore launch in a few weeks.
 
-Keep important business logic on the server and create clear boundaries between presentation, application logic, and data access.
+A more complex product can take several months.
 
----
+The biggest factor is still scope.
 
-## Ignoring database security
-
-Authentication alone isn't enough.
-
-You need authorization.
-
-Supabase RLS is powerful, but it needs to be designed and tested properly.
-
-Never assume that because a page is hidden in the UI, the underlying data is secure.
+For the broader timeline discussion, see [how long it takes to build a SaaS product](https://romani.vercel.app/blogs/how-long-does-it-really-take-to-build-a-saas-product).
 
 ---
 
-## Building for scale before finding product-market fit
+## What I Would Not Build in the First Version
 
-It's tempting to spend weeks designing the architecture for millions of users.
+I would usually avoid starting with:
 
-Meanwhile, you may have zero customers.
+* microservices
+* Kubernetes
+* multiple databases
+* custom authentication
+* a huge admin platform
+* dozens of integrations
+* advanced analytics
+* native mobile applications
+* complex event-driven infrastructure
 
-A better approach is:
+None of these are inherently bad.
 
-**Build simply → launch → measure → learn → improve.**
+They are just often premature.
 
-Scale the parts that actually become bottlenecks.
+The first version should solve the problem.
 
----
-
-# How Long Does It Take to Build a Next.js + Supabase SaaS MVP?
-
-The timeline depends almost entirely on scope.
-
-A focused MVP might look roughly like:
-
-| **Stage**                 | **Approximate Time** |
-| ------------------------- | -------------------: |
-| Planning & architecture   |             2–5 days |
-| Authentication & database |             3–7 days |
-| Core product workflow     |            1–3 weeks |
-| Payments & integrations   |             3–7 days |
-| Testing & polish          |             3–7 days |
-| Deployment & launch       |             1–3 days |
-
-A relatively focused SaaS could therefore reach a first launch in **a few weeks**, while a complex product can take several months.
-
-The difference usually isn't Next.js versus another framework.
-
-It's **scope**.
+The architecture can evolve afterward.
 
 ---
 
-# The Stack I'd Start With
+## Final Thoughts
 
-For many SaaS MVPs, a practical stack could be:
+Building a SaaS MVP with **Next.js and Supabase** doesn't require building every backend component yourself.
 
-| Layer            | Technology                         |
-| ---------------- | ---------------------------------- |
-| Framework        | Next.js                            |
-| Language         | TypeScript                         |
-| Database         | PostgreSQL                         |
-| Backend platform | Supabase                           |
-| Authentication   | Supabase Auth                      |
-| Storage          | Supabase Storage                   |
-| Styling          | Tailwind CSS                       |
-| Payments         | Stripe or another payment provider |
-| AI               | Model API when required            |
-| Deployment       | Vercel                             |
-
-This isn't the "perfect" stack for every SaaS.
-
-It's simply a strong starting point for products that fit the architecture.
-
-The best technology choice is the one that lets you solve the product's actual problems without introducing unnecessary complexity.
-
----
-
-# Final Thoughts
-
-Building a SaaS MVP with **Next.js and Supabase** doesn't require building every piece of infrastructure yourself.
-
-You can start with a relatively simple architecture:
+For many products, you can start with:
 
 ```text
 Next.js
@@ -881,22 +762,26 @@ Supabase
    └── Storage
 ```
 
-Then expand it when the product demands it.
+Then add payments, AI, workers, integrations, and more advanced infrastructure only when the product actually needs them.
 
-The most important part of the process isn't choosing the framework.
+The most important part is still the MVP itself.
 
-It's defining the smallest useful product, designing the core workflow, keeping the architecture understandable, securing the data properly, and launching early enough to learn from real users.
+Define the core workflow.
 
-Your first version doesn't need to be the final version.
+Design the data model around real requirements.
 
-It needs to be **good enough to prove that the problem is worth solving**.
+Secure access properly.
 
-Once users start using the product, you can make much better decisions about what to build next.
+Build the useful thing first.
+
+Launch.
+
+Then let real users tell you what needs to come next.
 
 ---
 
-## Need Someone to Build Your SaaS MVP?
+## Need Help Building Your SaaS MVP?
 
-I build full-stack web applications and SaaS products using **Next.js, TypeScript, PostgreSQL, and Supabase**.
+I build full-stack SaaS products and web applications using **Next.js, TypeScript, PostgreSQL, and Supabase**.
 
-If you have an idea and need help turning it into a working MVP, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
+If you have an idea and want help turning it into a working MVP, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).

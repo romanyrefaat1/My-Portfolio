@@ -2,170 +2,108 @@
 
 title: "How Long Does It Really Take to Build a SaaS Product?"
 date: "2026-09-09"
-description: "Wondering how long it takes to build a SaaS? Here's what actually affects the timeline, from MVP scope and design to development, testing, and launch."
+description: "A practical guide to SaaS development timelines, including MVP scope, AI, payments, integrations, testing, and what usually causes delays."
 tags: [
-  "saas",
-  "startups",
-  "mvp",
-  "web-development",
-  "nextjs",
-  "development-timeline"
+"saas",
+"startups",
+"mvp",
+"web-development",
+"nextjs",
+"development-timeline"
 ]
 ---
 
-One of the first questions founders ask when they have a SaaS idea is:
+One of the first questions founders ask after coming up with a SaaS idea is:
 
 **How long will it actually take to build?**
 
-You'll often hear answers like "a few weeks" or "three months," but neither number means much without knowing what you're building.
+The honest answer is that the timeline depends far more on **scope and complexity** than on the framework.
 
-A simple SaaS with authentication, a dashboard, and one core feature is a very different project from a platform with AI, payments, teams, real-time updates, multiple integrations, and background processing.
+A focused SaaS MVP with authentication, a dashboard, and one core workflow can be relatively quick to build.
 
-So if you're wondering **how long it really takes to build a SaaS product**, the answer depends much more on the scope than on the technology.
+A SaaS involving AI, payments, teams, real-time updates, multiple integrations, and background processing is a very different project.
 
-A focused MVP can sometimes be launched in a matter of weeks.
+When I estimate a product, I don't start with:
 
-A complex SaaS can take several months.
+> "This sounds like a six-week project."
 
-The important part is understanding **what causes the timeline to move from weeks to months**.
+I start with:
 
----
+> **"What exactly has to work by launch?"**
 
-## So, How Long Does It Take to Build a SaaS?
+That distinction makes estimates much more useful.
 
-As a rough planning guide:
+## How Long Does It Take to Build a SaaS?
 
-| **SaaS Type**                | **Approximate Development Time** |
-| ---------------------------- | -------------------------------: |
-| Very simple MVP              |                        2–4 weeks |
-| Standard SaaS MVP            |                        4–8 weeks |
-| Feature-heavy SaaS           |                      8–16+ weeks |
-| Complex AI / automation SaaS |                      3–6+ months |
+As a practical planning model:
 
-These are development estimates, not guarantees.
+| SaaS type                  | Possible development timeline |
+| -------------------------- | ----------------------------: |
+| Very focused MVP           |                     2–4 weeks |
+| Standard SaaS MVP          |                     4–8 weeks |
+| Feature-heavy SaaS         |                   8–16+ weeks |
+| Complex AI/automation SaaS |                   3–6+ months |
 
-The actual timeline depends on the product, team, design process, integrations, revisions, testing, and how clearly the requirements are defined.
+These are planning ranges, not promises.
 
-A developer can't accurately tell you:
+The same number of pages can represent completely different engineering effort.
 
-> "Your SaaS will take 6 weeks."
+For example, a dashboard could be a few database queries and charts.
 
-just from hearing the idea.
+Or it could be a real-time analytics system with multiple permissions, filters, background processing, and complex calculations.
 
-They need to know what **version one** actually includes.
-
----
-
-# Why Does Building a SaaS Take So Long?
-
-A SaaS product is rarely just a few screens.
-
-Even a relatively small application can involve:
-
-```text id="g1d4pt"
-Authentication
-Database
-User interface
-Business logic
-Permissions
-Forms
-Error handling
-Deployment
-```
-
-Once you add more functionality:
-
-```text id="j9yz4w"
-Payments
-Teams
-AI
-File uploads
-Integrations
-Notifications
-Analytics
-Background jobs
-Real-time updates
-```
-
-the number of moving parts increases quickly.
-
-And the development time doesn't come only from writing code.
-
-You also need to:
-
-* Decide how the system should work
-* Design the user experience
-* Model the database
-* Handle edge cases
-* Test workflows
-* Fix bugs
-* Deploy the application
-* Respond to changes
-
-That's why "how many pages?" isn't a particularly useful way to estimate a SaaS project.
+The page count doesn't tell you the whole story.
 
 ---
 
-# What Makes a SaaS Faster or Slower to Build?
+## What Actually Determines a SaaS Development Timeline?
 
-There are a few variables that have a huge impact on the timeline.
+There are several variables that can move a project from weeks to months.
 
-## 1. How Clear Is the Scope?
+### Scope clarity
 
-This is probably one of the biggest factors.
+Clear requirements make development easier to estimate.
 
-Compare these two requirements.
+Compare:
 
-### Requirement A
+> Users can create projects and tasks.
 
-> Users can create projects and add tasks.
+with:
 
-Pretty clear.
+> Users can collaborate on projects.
 
-### Requirement B
+The second statement immediately raises more questions:
 
-> Users can manage projects and collaborate with their team.
-
-That sounds simple, but now there are questions:
-
-* Can multiple users access the same project?
+* Who can access the project?
 * Who can edit it?
-* Are there different roles?
-* Can users invite teammates?
+* Can users invite others?
+* Are there roles?
+* Are there comments?
 * Are there notifications?
-* Can people comment?
-* Can users assign tasks?
-* What happens when someone leaves the team?
+* What happens when someone leaves?
 
-The more unanswered questions there are, the harder it is to estimate the project.
-
-Clear requirements create faster development.
+Unanswered questions become engineering work.
 
 ---
 
-# 2. How Big Is the MVP?
+## How Much of the SaaS Is Actually in the MVP?
 
-This is where founders can make the biggest difference.
+This is usually one of the biggest factors.
 
-Imagine the final product needs:
+Imagine the final product includes:
 
-* Authentication
-* Teams
-* Projects
-* Tasks
-* Comments
-* Notifications
-* Billing
-* Analytics
+* teams
+* projects
+* billing
+* analytics
 * AI
-* Integrations
-* Mobile apps
+* notifications
+* integrations
+* mobile applications
 
-That could easily become a several-month project.
+The MVP may only need:
 
-But perhaps your MVP only needs:
-
-```text id="31lgf5"
+```text
 Sign up
    ↓
 Create project
@@ -175,34 +113,38 @@ Create task
 Complete task
 ```
 
-Now you're building something much smaller.
+That's a dramatically smaller project.
 
-The fastest SaaS to build is often the one with the **smallest useful scope**.
+I've written a deeper guide on [how much of a SaaS you should build before launching](https://romani.vercel.app/blogs/how-much-of-my-saas-should-i-build-before-launching).
+
+A smaller MVP doesn't mean a lower-quality product.
+
+It means a smaller set of things has to work extremely well.
 
 ---
 
-# 3. How Much Custom Design Is Required?
+## Does Design Affect the Timeline?
 
-Design can either accelerate development or slow it down.
+Absolutely.
 
-A consistent design system with reusable components makes implementation much faster.
+A reusable design system can speed development.
 
 For example:
 
-```text id="fbb8d1"
+```text
 Button
 Input
 Modal
-Card
 Table
 Dropdown
+Card
 ```
 
-can be reused throughout the application.
+can be reused throughout a product.
 
-But if every page needs completely custom interactions and layouts, every screen becomes its own engineering problem.
+On the other hand, if every page requires a new interaction pattern, every screen becomes another design and implementation problem.
 
-For an MVP, I'd usually optimize for:
+For an MVP, I'd usually aim for:
 
 **consistent + clear + polished**
 
@@ -210,134 +152,138 @@ rather than:
 
 **completely custom + endlessly refined**
 
-You need a product that feels trustworthy.
+The product needs to feel trustworthy.
 
-You don't need six months of design iteration before anyone can use it.
+It doesn't need every possible animation before launch.
 
 ---
 
-# 4. How Many User Roles Are There?
+## How Do User Roles Affect Development Time?
 
-A SaaS for individual users can be relatively straightforward.
+One-user applications are usually simpler than multi-role SaaS products.
 
-Add:
+Imagine:
 
-* Admin
-* Manager
-* Member
-* Viewer
-* Customer
-
-and the number of rules increases.
-
-For example:
-
-```text id="v6l0v7"
+```text
 Admin
-→ everything
-
 Manager
-→ manage projects
-→ manage members
-
 Member
-→ edit assigned work
-
 Viewer
-→ read-only
 ```
 
-Now every important action needs to consider which user is performing it.
+Each role can introduce different:
 
-Permissions also need to be enforced on the backend, not just hidden in the interface.
+* permissions
+* actions
+* screens
+* notifications
+* data visibility
+* edge cases
 
-That requires additional development and testing.
+The complexity is multiplicative because those rules have to be implemented and tested throughout the application.
+
+That's why "we just need team accounts" can be a much larger requirement than it initially sounds.
 
 ---
 
-# 5. Does the SaaS Need Payments?
+## How Much Time Do Payments Add?
 
-Payments add more than a checkout page.
+A payment button is easy.
 
-A subscription-based application may need to handle:
+A subscription system is not.
 
-* Checkout
-* Subscriptions
-* Trials
-* Upgrades
-* Downgrades
-* Cancellations
-* Failed payments
-* Webhooks
-* Subscription state
+You may need:
 
-A simple product can still keep this manageable.
+* checkout
+* subscriptions
+* upgrades
+* downgrades
+* cancellations
+* failed payments
+* webhook handling
+* subscription state
+* feature limits
+
+A simple pricing model helps.
 
 For example:
 
-```text id="2gq8p1"
-Free
-  ↓
-Pro
+```text
+Free → Pro
 ```
 
-is significantly easier to reason about than:
+is much easier to reason about than five plans with different limits, discounts, trials, and enterprise rules.
 
-```text id="p2v8sk"
-Free
-Starter
-Pro
-Business
-Enterprise
-+
-different limits
-+
-different permissions
-```
-
-For an MVP, simple pricing can save development time.
+Payments should be included in the timeline from the beginning if they are part of the launch.
 
 ---
 
-# 6. Does It Need AI?
+## How Much Does AI Add?
 
-AI can dramatically change a project's timeline.
+AI can range from a very small feature to an entire architecture.
 
-There is a huge difference between:
+Compare:
 
-> "Users can generate text with AI."
+```text
+User
+ ↓
+Prompt
+ ↓
+Model
+ ↓
+Response
+```
 
-and:
+with:
 
-> "An AI agent can plan tasks, call external tools, execute multi-step workflows, maintain context, and recover when something goes wrong."
-
-The second system may involve:
-
-```text id="82ckak"
-Model APIs
-Tool calling
-Structured outputs
-State
+```text
+User
+ ↓
+Agent
+ ↓
+Planning
+ ↓
+Tools
+ ↓
+Multiple model calls
+ ↓
+External APIs
+ ↓
 Background jobs
-Retries
-Rate limits
-Monitoring
-Cost controls
+ ↓
+State
+ ↓
+Result
 ```
 
-AI isn't necessarily difficult because the API call itself is complicated.
+The second system can require substantially more work.
 
-It's difficult because **everything surrounding the API needs to behave reliably**.
+You may need:
+
+* model APIs
+* tool calling
+* structured outputs
+* prompt design
+* retries
+* rate limiting
+* background processing
+* monitoring
+* usage limits
+* cost controls
+
+So when somebody says:
+
+> "It's just an AI SaaS."
+
+that's not enough information to estimate the project.
 
 ---
 
-# 7. Does It Need Real-Time Functionality?
+## What About Real-Time Functionality?
 
-Real-time functionality can also add complexity.
+A normal CRUD application might work like:
 
-A normal application might work like:
-
-```text id="0b9t2d"
+```text
 User
  ↓
 Request
@@ -349,9 +295,9 @@ Database
 Response
 ```
 
-A collaborative application might require:
+A collaborative application might look more like:
 
-```text id="yce9w9"
+```text
 User A
    ↓
 Server
@@ -363,101 +309,101 @@ Realtime event
 User B
 ```
 
-Now you're dealing with synchronization, connection state, race conditions, and other edge cases.
+Now you're dealing with synchronization, connection state, concurrent updates, and additional failure cases.
 
-Live collaboration is useful when the product needs it.
+Real-time functionality isn't bad.
 
-It's just not something I'd add because it sounds impressive.
+It just deserves to be treated as a real engineering requirement.
 
 ---
 
-# 8. How Many Integrations Are Required?
+## How Much Time Do Integrations Add?
 
-Every integration adds another system you have to understand and maintain.
+Every external service creates another system your application depends on.
 
-For example:
+Examples include:
 
 * Stripe
 * Google
-* Slack
 * GitHub
-* HubSpot
-* OpenAI
-* Resend
+* Slack
+* AI providers
+* email services
+* CRMs
 
-One or two integrations can be straightforward.
+A well-documented API can be straightforward.
 
-Ten integrations can become a major part of the project.
+A poorly documented or unusual API can take considerably longer.
 
-And the problem isn't only the initial implementation.
+And implementation isn't the whole story.
 
-Each external API has its own:
+You also need to think about:
 
-* Authentication
-* Limits
-* Errors
-* Webhooks
-* Data formats
-* Changes
+* authentication
+* rate limits
+* failed requests
+* webhooks
+* retries
+* API changes
 
-That's why integrations should be part of the initial estimate.
+That's why integrations should appear explicitly in the project scope.
 
 ---
 
-# What Does a 4-Week SaaS MVP Look Like?
+## A Realistic 4-Week SaaS MVP
 
-A focused four-week project could potentially look like this:
+A focused project might look like:
 
 ### Week 1 — Foundation
 
-* Project setup
-* Database
-* Authentication
-* Core layouts
-* Initial architecture
+* project setup
+* database
+* authentication
+* application structure
+* initial UI
 
-### Week 2 — Core functionality
+### Week 2 — Core workflow
 
-* Main workflow
-* Database operations
-* Forms
-* Validation
-* Basic UI states
+* primary feature
+* database operations
+* forms
+* validation
+* core states
 
 ### Week 3 — Product completion
 
-* Payments
-* Important integrations
-* Permissions
-* Error handling
-* Mobile improvements
+* permissions
+* payments if required
+* important integrations
+* edge cases
+* responsive improvements
 
 ### Week 4 — Testing and launch
 
-* Bug fixing
-* Edge cases
-* Production setup
-* Final polish
-* Deployment
+* bug fixing
+* production setup
+* final polish
+* deployment
+* launch preparation
 
-This is realistic only when the product is **well scoped**.
+This only works when the scope is actually focused.
 
-Trying to squeeze an entire platform into four weeks usually means cutting corners somewhere.
+You cannot put a full platform into a four-week MVP just by coding faster.
 
 ---
 
-# What Does a 3-Month SaaS Build Look Like?
+## What About a Three-Month SaaS?
 
-A larger application might need something closer to:
+A larger product could look more like:
 
-```text id="gx1vo9"
+```text
 Month 1
 Foundation
 +
 Core product
 
 Month 2
-Advanced features
+Advanced workflows
 +
 Integrations
 +
@@ -473,82 +419,65 @@ Polish
 Launch
 ```
 
-A three-month timeline doesn't necessarily mean the developer is working slowly.
+That doesn't mean the developer is slow.
 
-The product may simply contain more engineering.
+The product may simply contain significantly more engineering.
 
-That's an important distinction when evaluating estimates.
+This is why comparing estimates without comparing scope is almost useless.
 
 ---
 
-# Why "Two Months" Can Mean Completely Different Things
+## Why Two Developers Can Give Completely Different Estimates
 
-Imagine two developers give you these estimates:
+Suppose three developers estimate the same idea:
 
-**Developer A: 5 weeks**
+```text
+Developer A → 5 weeks
+Developer B → 8 weeks
+Developer C → 12 weeks
+```
 
-**Developer B: 10 weeks**
+They may all be estimating honestly.
 
-It doesn't automatically mean Developer B is inefficient.
+Developer A may assume:
 
-Maybe Developer A is estimating:
-
-```text id="09n7pk"
+```text
 Authentication
 Dashboard
 Core feature
 Deployment
 ```
 
-while Developer B is estimating:
+Developer C may assume:
 
-```text id="x1d0mc"
+```text
 Authentication
 Dashboard
 Core feature
 Teams
 Permissions
-Payments
+Billing
 AI
 Integrations
 Testing
-Deployment
+Monitoring
 ```
 
-The numbers are only meaningful when the **scope is identical**.
+The numbers are only comparable once the scope is comparable.
 
-When comparing estimates, always ask:
+When reviewing an estimate, ask:
 
-> **"What exactly is included in this timeline?"**
+> **What exactly is included?**
 
 ---
 
-# Does Choosing Next.js Make Development Faster?
+## How Next.js and Supabase Can Help
 
-The framework can help, but it doesn't eliminate complexity.
+For many SaaS projects, a modern stack can remove a lot of infrastructure work.
 
-For many SaaS applications, a stack such as:
+For example:
 
-* Next.js
-* TypeScript
-* PostgreSQL
-* Supabase
-* Tailwind CSS
-
-provides a strong foundation.
-
-You can use existing tools for:
-
-* Authentication
-* Databases
-* Storage
-* Deployment
-
-instead of building everything from scratch.
-
-A simplified architecture might look like:
-
-```text id="y6bbd1"
+```text
 Next.js
    ↓
 Server Actions / API
@@ -559,101 +488,55 @@ Supabase
    └── Storage
 ```
 
-That's one reason a modern SaaS can often be launched much faster than if every piece of infrastructure had to be built internally.
+This can let a developer focus on the actual product rather than implementing every backend service from scratch.
 
-But technology doesn't replace product decisions.
+That's one reason I often use technologies like Next.js, TypeScript, PostgreSQL, and Supabase for full-stack applications.
 
-A badly scoped SaaS will still take a long time regardless of the stack.
+But the stack doesn't eliminate scope.
 
----
+A complicated SaaS remains complicated.
 
-# What Usually Delays a SaaS Project?
-
-Interestingly, delays aren't always caused by coding.
-
-Some common causes are:
-
-## Changing the requirements
-
-The project starts as:
-
-> "Build a simple dashboard."
-
-Then becomes:
-
-> "Actually, we also need teams, AI, billing, analytics and a mobile app."
-
-Every major scope change affects the timeline.
+For the implementation side, see [how to build a SaaS MVP with Next.js and Supabase](https://romani.vercel.app/blogs/how-to-build-a-saas-mvp-with-nextjs-and-supabase).
 
 ---
 
-## Waiting for design decisions
+## What Usually Delays a SaaS Project?
 
-If the developer can't proceed because the design isn't ready, development stops.
+Some of the biggest delays don't come from writing code.
 
----
+### Changing requirements
 
-## Unclear business rules
+A "simple dashboard" becomes a dashboard plus teams, AI, billing, analytics, and a mobile app.
 
-Something like:
+### Waiting for decisions
 
-> "Users should have different permissions."
+Development stops because nobody has decided how a workflow should work.
 
-isn't enough.
+### Unclear business rules
 
-You need to define which permissions exist and what each one can do.
+The UI exists, but the developer doesn't know who is allowed to do what.
 
----
+### Third-party problems
 
-## Third-party API problems
+An external service behaves differently than expected or has limitations that weren't considered.
 
-External services can have unexpected behavior, limitations, or poor documentation.
+### Late polishing
 
----
+A product that was almost ready gets major workflow changes right before launch.
 
-## Last-minute polishing
-
-Small UI changes are normal.
-
-But changing major workflows near the end of development can push a launch date significantly.
+The common thread is uncertainty.
 
 ---
 
-# How to Make Your SaaS Faster to Build
+## How I Estimate SaaS Development
 
-You don't necessarily need a faster developer.
+When I'm looking at a project, I'd rather break it into milestones than assign one giant number.
 
-You need fewer things slowing development down.
+For example:
 
-### Define the MVP clearly
-
-Decide what version one actually needs.
-
-### Make product decisions early
-
-Don't leave important business rules undefined.
-
-### Use existing infrastructure
-
-Use managed services when they make sense.
-
-### Keep the number of integrations low
-
-Only build integrations that matter to the first version.
-
-### Avoid unnecessary custom functionality
-
-If an existing solution is good enough, use it.
-
-### Work in milestones
-
-Don't wait until the entire product is finished before reviewing it.
-
-A milestone-based process might look like:
-
-```text id="e3z6s8"
+```text
 Milestone 1
-Foundation
+Architecture + database + authentication
 
 Milestone 2
 Core workflow
@@ -662,157 +545,83 @@ Milestone 3
 Payments + integrations
 
 Milestone 4
-Testing + launch
+Testing + polish
+
+Milestone 5
+Production launch
 ```
 
-That makes it easier to catch problems early.
+This gives everyone a clearer idea of what "progress" actually means.
+
+It also makes scope changes easier to identify.
 
 ---
 
-# Should You Build Everything Before Launch?
+## A Practical Example From Building Products
 
-Usually, no.
+Building products myself has made one thing very obvious:
 
-This is one of the biggest mistakes I see in SaaS development.
+**the feature list is often a worse predictor of difficulty than the workflow behind it.**
 
-Founders often think:
+For example, a product can have only a handful of visible screens and still require substantial work because of background processing, permissions, AI, or complex state.
 
-> "Once we have everything, we'll launch."
+That's something I consider when working on products such as [Floopr](https://romani.vercel.app/floopr) and [Missiono](https://missiono.vercel.app): the visible interface is only one part of the system.
 
-Then six months later, they're still building.
+A developer has to think about what happens behind each action too.
 
-A better approach is:
-
-```text id="o3d1js"
-Build small
-   ↓
-Launch
-   ↓
-Get users
-   ↓
-Learn
-   ↓
-Build what's actually needed
-```
-
-Your users will often tell you what your roadmap should look like.
+You can see more of my product work on [my portfolio](https://romani.vercel.app/#work).
 
 ---
 
-# What's a Realistic Timeline for Your SaaS?
+## How to Make a SaaS Faster to Build
 
-A useful way to estimate your project is to ask:
+You don't always need a faster developer.
 
-**How many core workflows are there?**
+You often need a smaller problem.
 
-**How many user roles exist?**
+The highest-impact decisions are usually:
 
-**Does it need payments?**
+**Define the MVP clearly.**
 
-**Does it use AI?**
+**Keep the number of workflows small.**
 
-**Does it need real-time features?**
+**Limit unnecessary integrations.**
 
-**How many external integrations are required?**
+**Avoid premature infrastructure.**
 
-**How custom does the interface need to be?**
+**Make important product decisions early.**
 
-**Does it require background processing?**
+**Launch before the roadmap becomes the entire company.**
 
-Once you answer those questions, the timeline becomes much easier to estimate.
-
----
-
-# A Simple SaaS Timeline Calculator
-
-As a rough mental model:
-
-```text id="y1e3r9"
-Simple MVP
-2–4 weeks
-
-+
-Payments
-+ several days
-
-+
-Teams / permissions
-+ 1–2 weeks
-
-+
-Multiple integrations
-+ several days to weeks
-
-+
-AI
-+ several days to several weeks
-
-+
-Real-time functionality
-+ additional engineering
-
-+
-Complex background processing
-+ additional engineering
-```
-
-This isn't an actual formula.
-
-It's a reminder that **features stack on top of each other**.
-
-The more systems the product depends on, the more time you'll need for integration and testing.
+I've found that reducing scope often saves more time than trying to optimize implementation after the project has already become too large.
 
 ---
 
-# The Fastest Way to Build a SaaS
-
-The fastest path usually isn't:
-
-**"Find the developer who writes code the fastest."**
-
-It's:
-
-**"Build the smallest product that provides real value."**
-
-A small, well-defined SaaS can move very quickly.
-
-A poorly defined SaaS with 50 features can take forever.
-
-That's why I'd rather spend time at the beginning answering:
-
-> **What exactly are we building?**
-
-than spend weeks later fixing assumptions that should have been resolved before development started.
-
----
-
-# Final Thoughts
+## Final Thoughts
 
 So, **how long does it really take to build a SaaS product?**
 
-A focused MVP can potentially be launched in **2–4 weeks**.
+A very focused MVP can potentially be launched in a few weeks.
 
-A more standard SaaS MVP often fits into roughly **4–8 weeks**.
+A standard SaaS MVP can take roughly one to two months.
 
-A feature-heavy product can take **8–16+ weeks**, while complex SaaS products involving AI, automation, real-time systems, or many integrations can take several months.
+A feature-heavy product can take several months, especially when AI, automation, real-time functionality, payments, or many integrations are involved.
 
-The timeline isn't determined by the number of pages.
+The important part is not the number itself.
 
-It's determined by:
+It's understanding **what that number includes**.
 
-**scope + complexity + decisions + integrations + testing**
+The best way to make a SaaS faster isn't to rush the development.
 
-And that's why the best way to make a SaaS faster isn't to rush the development.
+It's to make the product **smaller, clearer, and easier to validate**.
 
-It's to make the product **smaller and clearer**.
-
-Build the smallest version that solves the problem.
+Build the smallest complete workflow.
 
 Launch it.
 
-See what users actually need.
+Learn from actual users.
 
-Then spend your next development budget on things you've learned are worth building.
+Then use that information to decide what gets built next.
 
 ---
 
@@ -820,6 +629,4 @@ Then spend your next development budget on things you've learned are worth build
 
 I build full-stack web applications and SaaS products using **Next.js, TypeScript, PostgreSQL, and Supabase**.
 
-I can help turn a product idea into a focused MVP, from architecture and development through deployment.
-
-[Let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
+If you have a SaaS idea and need help turning it into a focused, working MVP, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).

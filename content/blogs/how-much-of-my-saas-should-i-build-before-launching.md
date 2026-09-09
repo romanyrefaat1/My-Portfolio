@@ -2,51 +2,44 @@
 
 title: "How Much of My SaaS Should I Build Before Launching?"
 date: "2026-09-09"
-description: "Not sure how much of your SaaS to build before launch? Here's how to choose your MVP scope, what to leave out, and when you're ready."
+description: "How much should you build before launching a SaaS? A practical framework for defining your MVP, cutting scope, and shipping the right first version."
 tags: [
-  "saas",
-  "mvp",
-  "startups",
-  "product-development",
-  "web-development",
-  "product-strategy"
+"saas",
+"mvp",
+"startups",
+"product-development",
+"web-development",
+"product-strategy"
 ]
-
 ---
 
-One of the hardest decisions when building a SaaS isn't choosing the tech stack.
+One of the hardest parts of building a SaaS isn't choosing the technology.
 
-It's deciding **when to stop building and actually launch**.
+It's deciding **when to stop building and launch**.
 
-You have an idea of what the product could become. Then another feature comes to mind. Then another.
+You start with an idea.
 
-Before long, your original MVP has turned into:
+Then you add authentication.
 
-* Authentication
-* Dashboard
-* Team accounts
-* Analytics
-* Notifications
-* AI
-* Integrations
-* Billing
-* Admin tools
-* Mobile app
-* Advanced settings
+Then a dashboard.
 
-And you're still telling yourself:
+Then teams.
 
-> "We're almost ready to launch."
+Then analytics.
 
-This is how a two-month MVP turns into a six-month project.
+Then AI.
+
+Then integrations.
+
+Then a mobile app.
+
+Eventually, the "MVP" has turned into a six-month development project and you're still saying:
+
+> "We're almost ready."
 
 So, **how much of your SaaS should you actually build before launching?**
 
-Usually, less than you think.
-
-The first version should be large enough to solve a real problem, but small enough that you're still able to change direction when you learn something new.
-
----
+Usually, enough to deliver the core value reliably—and not much more.
 
 ## What Does "Ready to Launch" Actually Mean?
 
@@ -54,57 +47,57 @@ A SaaS doesn't need to be complete before launch.
 
 It needs to be **useful**.
 
-That's an important distinction.
+A first-time user should be able to:
 
-Your first version should allow a real user to:
-
-```text id="x8y2da"
+```text
 Sign up
    ↓
 Reach the product
    ↓
 Complete the main task
    ↓
-Get the promised result
+Receive the promised result
 ```
 
-If that works reliably, you may already have enough to launch.
+That is a much better definition of "ready" than:
 
-You don't need every feature on your roadmap.
+> "We finished the roadmap."
 
-You need the **core promise of the product** to work.
+You don't need the final product.
+
+You need a **complete core workflow**.
 
 ---
 
-# What Should Be in Your SaaS MVP?
+## What Should Be in a SaaS MVP?
 
-A good MVP usually contains three things:
+A useful MVP usually has:
 
 **A specific user**
 
 **A specific problem**
 
-**A specific solution**
+**A specific outcome**
 
-For example, imagine you're building a SaaS that helps freelancers manage client projects.
+Imagine a SaaS that helps freelancers manage client projects.
 
-Your long-term product might contain:
+The long-term vision might include:
 
 * CRM
-* Project management
-* Time tracking
-* Invoicing
-* Contracts
-* Payments
-* Analytics
+* project management
+* time tracking
+* invoicing
+* contracts
+* payments
+* analytics
 * AI
-* Automations
-* Team management
-* Integrations
+* automations
+* team management
+* integrations
 
-Your MVP might simply be:
+The MVP could simply be:
 
-```text id="4o1mzv"
+```text
 Create client
    ↓
 Create project
@@ -114,109 +107,107 @@ Add tasks
 Track progress
 ```
 
-That's enough to answer a very important question:
+That gives you something much more valuable than a large feature list:
 
-**Do freelancers actually find this useful?**
-
-You can build everything else after you have evidence that the core product deserves it.
+**a real workflow that users can actually try.**
 
 ---
 
-# What Should You Leave Out?
+## What Should You Leave Out?
 
-This is where MVP planning becomes difficult.
+This is where MVP planning gets difficult.
 
 Founders are usually much better at adding features than removing them.
 
-A useful rule is:
+A useful test is:
 
-> **If the product can deliver its main value without a feature, seriously consider leaving it out of version one.**
+> **Can the user get the core value without this feature?**
 
-That doesn't mean the feature is bad.
+If yes, the feature probably deserves another question:
 
-It means it may not be necessary **yet**.
+> **Do we have evidence that it needs to be built now?**
 
-For example:
+For example, you probably don't need:
 
-### You probably don't need an iOS app
+### A mobile app
 
-if your users can accomplish everything they need from the web.
+if the web version already lets users complete the core workflow.
 
-### You probably don't need advanced analytics
+### Advanced analytics
 
-if you haven't even launched.
+if you haven't launched yet.
 
-### You probably don't need five pricing tiers
+### Five pricing tiers
 
 if you haven't learned how customers buy.
 
-### You probably don't need ten integrations
+### Ten integrations
 
-if your first users only need one.
+if the first users only need one.
 
-### You probably don't need AI
+### AI
 
-unless AI is actually part of the product's core value.
+if AI isn't part of the core value proposition.
 
-The goal isn't to make the product smaller for the sake of being small.
+The goal isn't to make the product small for the sake of being small.
 
-The goal is to remove things that aren't necessary for learning.
+The goal is to remove things that are **not necessary for learning**.
 
 ---
 
-# What Is the Core Feature?
+## What Is the Core Feature?
 
-Every SaaS should have something that makes the product worth using.
+Every SaaS needs something that makes the product worth using.
 
-Call it the:
+Call it:
 
-* Core feature
-* Main workflow
-* Primary job
-* Core value
+* the core feature
+* the main workflow
+* the primary job
+* the core value
 
-The terminology doesn't matter.
+The label doesn't matter.
 
-What matters is that you can finish this sentence:
+The question does.
+
+Complete this sentence:
 
 > **"Users come to this product to ______."**
 
 For example:
 
-> Users come to this product to automatically generate reports.
+> Users come here to automatically generate reports.
 
 or:
 
-> Users come to this product to manage their client projects.
+> Users come here to manage client projects.
 
 or:
 
-> Users come to this product to automate repetitive browser tasks.
+> Users come here to automate repetitive browser tasks.
 
-Once you know that, your MVP becomes much easier to define.
-
-Everything around that core workflow should support it.
+Once that sentence is clear, MVP scope becomes much easier.
 
 ---
 
-# A Simple Way to Find Your MVP
+## Work Backward From the Result
 
-Start with the final outcome.
+One of my favorite ways to define an MVP is to start with the outcome.
 
-Let's say your SaaS helps businesses automatically create social media content.
+Suppose the product helps a business generate social media content.
 
 The desired outcome is:
 
-> A business gets ready-to-publish content.
+> Ready-to-publish content.
 
-Now work backwards.
+Work backward.
 
-What must happen for the user to get that result?
+What has to happen?
 
-```text id="r2c7we"
+```text
 Create account
    ↓
-Enter business details
+Enter business information
    ↓
 Choose content type
    ↓
@@ -227,60 +218,57 @@ Review result
 Copy / export
 ```
 
-That's the workflow.
+That's the core workflow.
 
-Now look at everything else you wanted to build:
+Now look at everything else:
 
-* Content calendar
-* Team collaboration
-* Analytics
-* Brand voice settings
-* Social integrations
-* Scheduling
-* Approval workflows
+* content calendar
+* team collaboration
+* analytics
+* social integrations
+* scheduling
+* approval workflows
 * AI personas
 
-Some might eventually be valuable.
+Those can become future roadmap items.
 
-But they aren't necessarily required for the first useful version.
+They don't automatically belong in the MVP.
 
 ---
 
-# Try the "Could We Launch Without It?" Test
+## The "Could We Launch Without It?" Test
 
 For every feature, ask:
 
-> **"Could the first real user get the core value without this?"**
+> **Could the first real user get the core value without this?**
 
-If the answer is **no**, the feature probably belongs in the MVP.
+If the answer is no, it probably belongs in the MVP.
 
-If the answer is **yes**, ask another question:
+If the answer is yes, ask:
 
-> **"Do we have evidence that this feature matters enough to build now?"**
+> **Do we have evidence that this needs to exist now?**
 
-If you don't, put it on the backlog.
-
-This turns feature prioritization from:
+That turns prioritization from:
 
 > "This would be cool."
 
 into:
 
-> "This is necessary."
+> **"This is necessary."**
 
 That's a much healthier way to build.
 
 ---
 
-# Should Your MVP Include Payments?
+## Should an MVP Include Payments?
 
-It depends.
+Sometimes absolutely.
 
-If the purpose of your MVP is to test whether people are willing to **pay**, then payments may absolutely belong in version one.
+If you're trying to learn whether people will **pay**, then payments may be part of the core workflow.
 
 For example:
 
-```text id="8u2w8k"
+```text
 Landing page
    ↓
 Sign up
@@ -292,13 +280,13 @@ Upgrade
 Pay
 ```
 
-You don't necessarily need:
+But that doesn't mean you need:
 
-* Annual billing
-* Five plans
-* Complex discounts
-* Referral programs
-* Enterprise billing
+* five pricing tiers
+* complex discounts
+* enterprise billing
+* referral programs
+* complicated annual plans
 
 A simple:
 
@@ -306,159 +294,136 @@ A simple:
 
 can be enough to test the business model.
 
-If people won't pay for the simple version, adding more features doesn't automatically solve the problem.
+---
+
+## Should an MVP Include Authentication?
+
+Usually, if users need accounts or saved data.
+
+For many products, version one can start with:
+
+* sign up
+* sign in
+* sign out
+* password reset
+* protected application pages
+
+You don't necessarily need every authentication method immediately.
+
+Start with the simplest authentication flow that fits the users.
 
 ---
 
-# Should Your MVP Include Authentication?
-
-Usually, yes, when users need accounts or saved data.
-
-But authentication doesn't have to become a huge project.
-
-For many products, a first version can start with:
-
-* Sign up
-* Login
-* Logout
-* Password reset
-* Protected application pages
-
-You probably don't need every possible authentication method immediately.
-
-Start with the simplest option that fits your users.
-
----
-
-# Should Your MVP Include an Admin Dashboard?
+## Does an MVP Need an Admin Dashboard?
 
 Maybe.
 
-But ask what the admin dashboard is actually for.
+Ask what you actually need it for.
 
-You may need a small internal interface to:
+You might need a small internal tool to:
 
-* View users
-* Manage accounts
-* Inspect data
-* Resolve issues
+* view users
+* inspect data
+* manage accounts
+* resolve problems
 
 That's reasonable.
 
-You probably don't need to build a giant internal platform with:
+You probably don't need a giant internal platform with advanced analytics and dozens of management screens just because it might be useful someday.
 
-* Advanced analytics
-* Custom reporting
-* Complex permissions
-* Dozens of management screens
-
-unless the business actually needs them.
-
-Internal tools should be scoped like customer-facing features.
+Internal tooling should be scoped too.
 
 ---
 
-# What About Edge Cases?
+## Launching Early Doesn't Mean Launching Something Broken
 
-This is where "launch quickly" can be misunderstood.
+This matters.
 
-Launching an MVP doesn't mean:
+"Launch early" should not mean:
 
-> Ship something broken.
+> Ship unreliable software.
 
-You still need to handle important cases properly.
+Even a small MVP should handle important cases:
 
-For example:
-
-```text id="4kq1mm"
+```text
 Invalid input
 Missing data
 Unauthorized access
-Failed request
-Payment failure
+Failed requests
+Payment failures
 Network problems
 Empty states
 ```
 
-A small product can still be reliable.
+The product can be small and still be reliable.
 
-In fact, **reliability matters more when the feature set is small**, because users have fewer things to evaluate.
-
-You don't need 50 features.
-
-The five you have should work.
+In fact, when you have only a few core features, those features matter more.
 
 ---
 
-# How Polished Should an MVP Be?
+## How Polished Should an MVP Be?
 
 More polished than a prototype.
 
 Less polished than the final product.
 
-That's the sweet spot.
+A useful MVP should have:
 
-Your MVP should have:
+* consistent UI
+* clear navigation
+* responsive layouts
+* loading states
+* error states
+* empty states
+* understandable copy
+* reliable interactions
 
-* Consistent UI
-* Clear navigation
-* Responsive layouts
-* Loading states
-* Error states
-* Empty states
-* Sensible copy
-* Reliable interactions
+It usually doesn't need:
 
-What it doesn't need:
+* dozens of animations
+* endless micro-interactions
+* a huge design system
+* months of visual experimentation
 
-* Dozens of animations
-* A giant design system
-* Endless visual experimentation
-* Perfect micro-interactions
+There is a difference between:
 
-There's a difference between:
-
-**"This product feels unfinished."**
+**"This product is unfinished."**
 
 and:
 
-**"This product is focused."**
+**"This product is intentionally focused."**
 
 Aim for the second.
 
 ---
 
-# What If Competitors Already Have More Features?
+## What If Competitors Have More Features?
 
-This is one of the biggest reasons founders overbuild.
+Don't automatically copy them.
 
-You look at a competitor and see:
+You might look at a competitor and think:
 
-> "They have 37 features."
-
-Then you decide you need 38.
+> "They have 37 features. We need 38."
 
 You probably don't.
 
-Customers don't necessarily choose a product because it has the longest feature list.
-
-They choose it because it solves their problem well.
-
 Your advantage might be:
 
-* Simplicity
-* Speed
-* Better UX
-* Better pricing
-* A specific niche
-* Better automation
-* A better core workflow
+* simplicity
+* speed
+* niche focus
+* better UX
+* better automation
+* better onboarding
+* better pricing
 
-Trying to match an established competitor feature-for-feature is usually a bad MVP strategy.
+The goal isn't to beat an established product at the size of its feature list.
+
+The goal is to solve a problem well enough that someone chooses your product.
 
 ---
 
-# What If Users Ask for Features Before Launch?
+## What If Users Ask for Features Before Launch?
 
 Listen to them.
 
@@ -474,39 +439,55 @@ It isn't automatically a requirement.
 
 Look for patterns.
 
-If ten potential customers independently ask for the same thing, that's much stronger evidence than one person casually mentioning it.
+If one person requests something, keep it in mind.
 
-Your job isn't to implement every suggestion.
+If many users independently ask for the same thing, the signal becomes much stronger.
 
-It's to understand **what problem the suggestion represents**.
+You want to understand **the problem behind the request**, not simply copy the feature.
 
 ---
 
-# What Should You Build After Launch?
+## A Lesson From Building My Own Products
 
-This is where the real product development starts.
+This way of thinking is especially important when building your own products because the scope can expand endlessly.
 
-Suppose you launch and discover that users love your core workflow but repeatedly ask for:
+[Floopr](https://floopr.vercel.app), for example, can naturally lead to ideas around feedback collection, analysis, AI functionality, product decisions, and more.
+
+That's exactly where MVP discipline matters.
+
+The product doesn't need every possible way to work with feedback on day one.
+
+It needs the smallest workflow that proves the core value.
+
+[Missiono](https://missiono.vercel.app) is another example of why a focused product workflow can be valuable: the application can concentrate on a specific job rather than trying to become everything users might eventually need.
+
+These are the kinds of tradeoffs I make when building products myself.
+
+---
+
+## What Should You Build After Launch?
+
+This is where product development gets interesting.
+
+Suppose users repeatedly ask for:
 
 **Team collaboration**
 
-That feature now has evidence behind it.
+That request now has evidence behind it.
 
 Build it.
 
-Maybe they also keep asking for:
+Suppose they repeatedly ask for:
 
 **CSV export**
 
-Build it.
+That may deserve to move up the roadmap too.
 
-Meanwhile, your analytics page has been opened twice.
-
-Don't spend another three weeks polishing it just because it's already on the roadmap.
+Meanwhile, if an analytics page has barely been touched, there may be little reason to spend another few weeks polishing it.
 
 A useful post-launch loop is:
 
-```text id="8e2n4x"
+```text
 Launch
    ↓
 Observe
@@ -522,45 +503,43 @@ Build
 Repeat
 ```
 
-That's how the MVP becomes the full product.
+That's how an MVP becomes a real product.
 
 ---
 
-# When Is an MVP Too Small?
+## When Is an MVP Too Small?
 
-There is a point where reducing scope goes too far.
+There's a point where cutting scope goes too far.
 
-If the product can't actually solve the user's problem, it's not a useful MVP.
+If the product can't actually solve the user's problem, then it's not a useful MVP.
 
-For example, imagine you're building an invoicing platform.
+Suppose you're building invoicing software.
 
 If users can:
 
 > Create invoices
 
-but can't:
+but cannot:
 
 > Send invoices
 
-then you may have removed too much.
+you may have removed an essential part of the workflow.
 
-The question isn't:
+The right question isn't:
 
-> "What's the fewest number of features we can build?"
+> "What's the minimum number of features?"
 
 It's:
 
-> **"What's the smallest complete workflow we can build?"**
-
-That's a much better definition of an MVP.
+> **"What's the smallest complete workflow?"**
 
 ---
 
-# The "Complete Workflow" Test
+## The Complete Workflow Test
 
-Your MVP should ideally take the user from:
+Try to draw the product like this:
 
-```text id="d5c17v"
+```text
 Problem
    ↓
 Action
@@ -570,9 +549,9 @@ Product
 Result
 ```
 
-For example:
+For a browser automation product:
 
-```text id="0a5yzt"
+```text
 Need to automate a repetitive task
    ↓
 Create workflow
@@ -582,21 +561,19 @@ Run workflow
 Automation completes
 ```
 
-If the user can complete that loop, you have something real.
+If the user can go through that loop, you have something real.
 
-You can expand the product later.
+Everything else can be evaluated afterward.
 
 ---
 
-# How Much Does Scope Affect Development Time?
+## How Scope Affects Development Time
 
-A lot.
-
-Consider these two projects.
+Consider:
 
 ### Version A
 
-```text id="f6m89z"
+```text
 Authentication
 Dashboard
 One core feature
@@ -604,11 +581,9 @@ Basic settings
 Deployment
 ```
 
-This could potentially be a focused MVP.
-
 ### Version B
 
-```text id="1o3dtu"
+```text
 Authentication
 Dashboard
 Core feature
@@ -623,141 +598,58 @@ Admin
 Mobile app
 ```
 
-Now you've created a much larger system.
+Version B isn't "the same MVP, just better."
 
-The difference isn't necessarily the developer.
+It's a different project.
 
-It's the scope.
+That's why cutting unnecessary scope can have a larger impact on development time than negotiating a slightly lower developer rate.
 
-That's why reducing unnecessary features can have a bigger impact on your development budget than negotiating a slightly lower hourly rate.
-
----
-
-# How Long Should You Build Before Launching?
-
-There isn't a magic number.
-
-But I would be cautious when your "MVP" keeps getting pushed further away.
-
-A focused MVP might take:
-
-| **MVP Scope**           | **Possible Timeline** |
-| ----------------------- | --------------------: |
-| Very focused            |             2–4 weeks |
-| Standard                |             4–8 weeks |
-| Feature-heavy           |           8–16+ weeks |
-| Complex AI / automation |           3–6+ months |
-
-These are planning ranges, not guarantees.
-
-The important thing is that the timeline should correspond to the scope.
-
-If a supposedly simple MVP keeps taking three months, it's worth asking whether the product is still an MVP.
+For more on this, see [how long it takes to build a SaaS product](https://romani.vercel.app/blogs/how-long-does-it-really-take-to-build-a-saas-product).
 
 ---
 
-# What If You Have a Large Budget?
+## How Much Should You Build Before Launching?
 
-A large budget doesn't mean you should build more features.
+There isn't one magic number of weeks.
 
-In fact, having more money can make overbuilding easier.
+As a rough planning framework:
 
-You can afford:
+| MVP scope               | Possible timeline |
+| ----------------------- | ----------------: |
+| Very focused            |         2–4 weeks |
+| Standard                |         4–8 weeks |
+| Feature-heavy           |       8–16+ weeks |
+| Complex AI / automation |       3–6+ months |
 
-* More developers
-* More design
-* More features
-* More infrastructure
+The exact number depends on the workflow.
 
-But none of those tell you whether customers want the product.
+The important warning sign is when the MVP keeps moving further away because more and more "necessary" features are being added.
 
-The question remains:
+At that point, stop and re-evaluate the scope.
+
+---
+
+## What If You Have a Large Budget?
+
+A large budget doesn't mean you should build a larger MVP.
+
+It just means you can afford to spend more.
+
+But spending more doesn't tell you whether users want the product.
+
+The better question is:
 
 > **What do we need to learn first?**
 
-Spend enough to build a strong version of that.
+Spend enough to answer that.
 
-Then use what you learn to decide where to spend the rest.
-
----
-
-# What If You Already Know the Full Vision?
-
-That's great.
-
-Write it down.
-
-Keep the roadmap.
-
-Just don't confuse the roadmap with version one.
-
-A useful distinction is:
-
-```text id="g1yl5u"
-Vision
-Everything the product could become
-
-↓
-
-MVP
-Everything needed to prove the core idea
-
-↓
-
-Version 2
-Things users clearly need
-
-↓
-
-Version 3
-Expansion and optimization
-```
-
-You don't have to abandon the big vision.
-
-You just don't have to build all of it at once.
+Then use the evidence to decide what deserves the next round of development.
 
 ---
 
-# When Should You Finally Stop Calling It an MVP?
+## How I'd Decide What to Build
 
-Eventually, the product grows beyond its initial validation stage.
-
-You might have:
-
-* Paying customers
-* Repeat usage
-* Clear product-market signals
-* Known customer segments
-* A stable pricing model
-* A predictable core workflow
-
-Now you're no longer primarily trying to answer:
-
-> "Does anyone want this?"
-
-You're answering:
-
-> **"How do we make this product significantly better?"**
-
-That's when it makes sense to invest more heavily in:
-
-* Scalability
-* Advanced permissions
-* Better analytics
-* More integrations
-* Automation
-* Improved infrastructure
-* More sophisticated UX
-* Mobile apps
-
-You're building on evidence rather than assumptions.
-
----
-
-# How I'd Decide What to Build Before Launch
-
-If I were starting a new SaaS, I'd make the decision in this order:
+If I were starting a new SaaS, I'd work through these steps:
 
 ### 1. Define the user
 
@@ -769,49 +661,33 @@ What are they struggling with?
 
 ### 3. Define the outcome
 
-What should become easier or better for them?
+What should become easier?
 
 ### 4. Define the core workflow
 
-What's the shortest path from problem to result?
+What's the shortest route from problem to result?
 
-### 5. Remove everything unnecessary
+### 5. Remove unnecessary features
 
 What can wait?
 
 ### 6. Build the workflow properly
 
-Make the small thing reliable.
+Make it reliable.
 
 ### 7. Launch
 
 Get it into real users' hands.
 
-### 8. Let usage shape the roadmap
+### 8. Let evidence shape the roadmap
 
-Build based on evidence.
+Build based on what you learn.
 
-That's the process I'd rather follow than spending months guessing what the final product should contain.
-
----
-
-# Your MVP Isn't Supposed to Impress Everyone
-
-This might be the most important mindset shift.
-
-Your MVP doesn't need to have something for everyone.
-
-It needs to solve **one important problem for one specific group of people**.
-
-A small product that ten people desperately want is more promising than a giant product that nobody cares about.
-
-You can add breadth later.
-
-First, find the thing people actually care about.
+That's the approach I'd rather use than spending months guessing what the final product should contain.
 
 ---
 
-# Final Thoughts
+## Final Thoughts
 
 So, **how much of your SaaS should you build before launching?**
 
@@ -821,11 +697,11 @@ Then stop.
 
 You don't need every feature.
 
-You don't need the perfect dashboard.
+You don't need the final analytics system.
 
 You don't need every integration.
 
-You don't need the final version of the architecture.
+You don't need the full roadmap.
 
 You need a **small, reliable product that can teach you something**.
 
@@ -839,12 +715,12 @@ Launch it.
 
 Watch what happens.
 
-Then let real users tell you what the full product should become.
+Then let real users tell you what the product should become.
 
 ---
 
 ## Need Help Turning Your SaaS Idea Into an MVP?
 
-I build full-stack web applications and SaaS products using **Next.js, TypeScript, PostgreSQL, and Supabase**.
+I build full-stack SaaS products and web applications using **Next.js, TypeScript, PostgreSQL, and Supabase**.
 
-If you have a product idea and want to turn it into a focused, launchable MVP, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
+If you have an idea and want to turn it into a focused, launchable MVP, [let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).

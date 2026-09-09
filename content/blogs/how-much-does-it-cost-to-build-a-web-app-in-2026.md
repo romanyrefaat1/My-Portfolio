@@ -2,780 +2,615 @@
 
 title: "How Much Does It Cost to Build a Web App in 2026?"
 date: "2026-09-09"
-description: "A practical 2026 guide to web app development costs, including MVP budgets, major cost drivers, timelines, and how to avoid overspending."
+description: "A practical guide to web app development costs in 2026, including MVP budgets, features, timelines, technology, and ways to avoid overspending."
 tags: [
-  "web-development",
-  "web-app",
-  "development-cost",
-  "startups",
-  "mvp",
-  "nextjs"
+"web-development",
+"web-app",
+"development-cost",
+"startups",
+"mvp",
+"nextjs"
 ]
-
 ---
 
 If you're planning to build a web application, one of the first questions you'll probably ask is:
 
 **How much does it cost to build a web app in 2026?**
 
-There's no single price.
+There isn't one universal price.
 
-A simple internal tool can cost a fraction of a multi-user platform with payments, integrations, real-time functionality, and complex business logic.
+A small internal application can be dramatically cheaper than a multi-user platform with payments, complex permissions, integrations, AI, or real-time functionality.
 
-Current 2026 estimates for custom web applications vary widely. Some published benchmarks put focused applications in the low thousands of dollars, while more complex platforms can reach tens of thousands or much more. The biggest reason for the difference isn't the number of pages — it's **scope and complexity**.
+When I estimate web application work, I don't start with the number of pages.
 
-So instead of giving you one misleading number, this guide explains what actually determines the **cost of web app development**, what different budgets can realistically get you, how long development can take, and where founders commonly spend money they didn't need to spend.
+I start with the **workflows, business rules, integrations, and technical requirements** behind those pages.
 
----
+That is what actually determines the development effort.
 
 ## How Much Does It Cost to Build a Web App?
 
-As a rough 2026 planning guide, custom web applications can fall into ranges like these:
+For rough planning, custom web applications can fall into ranges such as:
 
-| **Type of Web App**                     | **Typical Development Cost** |
-| --------------------------------------- | ---------------------------: |
-| Simple / focused application            |              $3,000 – $8,000 |
-| Standard business application           |             $8,000 – $20,000 |
-| Complex custom platform                 |           $20,000 – $35,000+ |
-| Highly complex / enterprise application |          $35,000 – $100,000+ |
+| Web app type                  | Rough development budget |
+| ----------------------------- | -----------------------: |
+| Simple / focused application  |            $3,000–$8,000 |
+| Standard business application |           $8,000–$20,000 |
+| Complex custom platform       |         $20,000–$35,000+ |
+| Highly complex application    |        $35,000–$100,000+ |
 
-These are **directional ranges, not fixed market prices or quotes**. Published 2026 estimates differ considerably depending on geography, developer or agency rates, requirements, integrations, security needs, and what is included in the project.
+These are planning ranges, not fixed market prices.
 
-For example, one current 2026 benchmark places a focused custom application around $3,000–$8,000, while another estimates freelancer-built applications across broader tiers at substantially higher prices.
+The final cost depends on:
 
-That difference is exactly why you shouldn't evaluate a quote without first defining what the application actually needs to do.
+* scope
+* user roles
+* design complexity
+* database requirements
+* authentication
+* integrations
+* payments
+* AI
+* real-time features
+* background processing
+* testing
+* developer rates
+
+A useful quote is therefore based on **what the application must do**, not simply the fact that it's called a "web app."
 
 ---
 
-## What Counts as a Web App?
+## What Counts as a Web Application?
 
-A web app is more than a collection of static pages.
+A normal website might mainly contain:
 
-A traditional website might mainly contain:
+```text
+Home
+About
+Services
+Contact
+```
 
-* Home
-* About
-* Services
-* Contact
-
-A web application lets users **do something**.
+A web application lets the user actually perform tasks.
 
 For example:
 
-* Create an account
-* Upload files
-* Manage projects
-* Send messages
-* Create invoices
-* Track expenses
-* Run workflows
-* Generate reports
-* Manage subscriptions
-* Collaborate with a team
+* create an account
+* manage projects
+* upload files
+* track expenses
+* create invoices
+* run workflows
+* send messages
+* generate reports
+* manage subscriptions
 
-A SaaS product is a type of web application, but web apps also include internal business tools, client portals, marketplaces, dashboards, booking systems, and many other products.
+A SaaS product is one type of web application.
 
-That's why saying "I need a web app" isn't enough to estimate the cost.
+Other examples include:
 
-Two web apps can look similar from the outside and require completely different amounts of engineering.
+* internal business tools
+* client portals
+* dashboards
+* marketplaces
+* booking platforms
+* project-management systems
+* admin applications
+
+That's why:
+
+> "I need a web app."
+
+isn't enough information to estimate development cost.
 
 ---
 
 ## Web App Cost by Complexity
 
-The easiest way to estimate your budget is to think about the application in terms of complexity.
-
 ### Simple web app
 
-A simple application might include:
+A focused application may include:
 
-* Authentication
-* A dashboard
-* Basic CRUD functionality
-* User settings
-* A small database
-* One primary user type
+* authentication
+* one dashboard
+* basic CRUD
+* user settings
+* a small database
+* one user type
 
-A focused application like this can potentially be built in a few weeks, depending on the requirements and developer. Current 2026 estimates for focused custom applications commonly fall in the low-thousands to low-five-figures range.
+The engineering is relatively focused because there are fewer workflows and fewer rules.
 
 ### Standard web app
 
-A standard business application might add:
+A more developed business application might include:
 
-* Multiple user roles
-* Payments
-* File uploads
-* Notifications
-* Search and filtering
-* Analytics
-* Several integrations
-* More complex business rules
+* multiple user roles
+* payments
+* file uploads
+* notifications
+* search and filtering
+* analytics
+* several integrations
+* more complex business rules
 
-This is where development costs start increasing quickly.
+At this stage, the cost starts increasing quickly because features interact with one another.
 
 ### Complex web app
 
-A complex platform might require:
+A complex platform can require:
 
-* Real-time functionality
+* real-time functionality
 * AI
-* Complex workflows
-* Multiple integrations
-* Advanced permissions
-* Background processing
-* Large amounts of data
-* Multi-tenant architecture
-* High security requirements
+* background processing
+* advanced permissions
+* multiple integrations
+* large data volumes
+* multi-tenant architecture
+* higher security requirements
 
-At this point, the application isn't just a collection of screens.
+At that point, you're not simply building screens.
 
 You're building a system.
 
 ---
 
-# What Actually Determines Web App Development Cost?
+## What Actually Determines Web App Development Cost?
 
-The biggest cost drivers are usually much more important than the framework you choose.
+### 1. Feature complexity
 
-## 1. Feature Scope
+A "search feature" can mean very different things.
 
-The number of features matters, but the **complexity of each feature** matters even more.
+A simple search box is one thing.
 
-For example:
+Search with:
 
-A basic search box is relatively simple.
+* filters
+* ranking
+* permissions
+* pagination
+* saved searches
+* analytics
 
-A search system with:
+is another.
 
-* Filters
-* Ranking
-* Permissions
-* Pagination
-* Saved searches
-* Analytics
+The same applies to dashboards, user management, billing, and almost every other part of the product.
 
-is a very different project.
+### 2. User roles
 
-The same applies to almost everything else.
-
-A "dashboard" could mean five database queries and three charts, or it could mean a real-time analytics system with custom reporting.
-
-When someone says:
-
-> "It's just a dashboard."
-
-that doesn't tell a developer much.
-
----
-
-## 2. Number of User Roles
-
-User roles can have a surprisingly large impact on development time.
-
-Consider an application with:
+A single-user application has a much simpler permissions model than:
 
 ```text
 Admin
+Manager
 Member
 Customer
-Manager
+Viewer
 ```
 
-Each role can require different:
+Each additional role creates more rules to implement and test.
 
-* Permissions
-* Screens
-* Actions
-* Notifications
-* Data visibility
-* Edge cases
+### 3. Integrations
 
-An application with one user type is much simpler than one with several roles.
+Every external service introduces another system.
 
-Some 2026 development-cost research specifically identifies the number of distinct user roles as a major cost multiplier because every role expands the permissions and testing matrix.
-
----
-
-## 3. Third-Party Integrations
-
-Integrations are another major source of cost.
-
-You might need:
+You may need:
 
 * Stripe
 * Google
 * GitHub
 * Slack
-* An email provider
-* An AI provider
-* A CRM
-* Accounting software
-* A shipping API
+* email providers
+* AI providers
+* CRM systems
+* accounting tools
 
-A well-documented API can be relatively straightforward.
+A simple API can be quick to integrate.
 
-A poorly documented or legacy system can take much longer.
+A complicated integration can become a major part of the project.
 
-That's why integrations should be listed explicitly when getting a development quote instead of simply being hidden under "backend work."
+### 4. UI/UX complexity
 
----
+There's a major difference between:
 
-## 4. Custom UI and UX
-
-Design also affects the budget.
-
-There is a major difference between:
-
-**A clean application using a consistent component system**
+**a clean application built from reusable components**
 
 and:
 
-**A completely custom interface with bespoke interactions and extensive UX work.**
+**a heavily customized product where every screen has unique interactions.**
 
-For many MVPs, you don't need dozens of custom animations or a completely unique design system.
+For most MVPs, I'd prioritize:
 
-You need:
+**clear + consistent + responsive**
 
-* Clear navigation
-* Responsive layouts
-* Consistent components
-* Good typography
-* Clear forms
-* Good empty states
-* Good loading states
-* Good error handling
+before:
 
-The interface should be polished enough that users trust the product, but it doesn't need to consume the entire development budget.
+**highly bespoke + endlessly polished**
 
 ---
 
-## 5. Authentication and Permissions
+## Authentication and Authorization Also Affect Cost
 
-Authentication might appear simple:
+Authentication is the identity system.
+
+Authorization is the permission system.
+
+A production application might need:
+
+* sign up
+* sign in
+* password reset
+* email verification
+* protected routes
+* organizations
+* teams
+* roles
+* permissions
+
+These requirements can significantly expand the project.
+
+And the important part is that permissions must be enforced beyond the interface.
+
+A hidden button is not a security boundary.
+
+---
+
+## How Much Does an MVP Cost?
+
+A focused web application MVP might fall roughly into:
+
+| MVP type                    |     Rough budget |
+| --------------------------- | ---------------: |
+| Very simple MVP             |    $3,000–$8,000 |
+| Standard MVP                |   $8,000–$15,000 |
+| Feature-heavy MVP           | $15,000–$30,000+ |
+| Complex AI / automation MVP | $20,000–$50,000+ |
+
+Again, these are planning ranges rather than guarantees.
+
+A good developer should quote against a defined scope.
+
+For a SaaS specifically, I go deeper into this in [how much it costs to build a SaaS MVP](https://romani.vercel.app/blogs/how-much-does-it-cost-to-build-a-saas-mvp-in-2026).
+
+---
+
+## What Does a $5,000 Web App Actually Mean?
+
+Instead of asking:
+
+> "What can I get for $5,000?"
+
+I'd ask:
+
+> **"What is the highest-value product I can build for $5,000?"**
+
+That might mean:
+
+* one core workflow
+* one user type
+* authentication
+* a simple dashboard
+* a small database
+* one important integration
+
+It probably doesn't mean:
+
+* teams
+* AI
+* advanced analytics
+* ten integrations
+* mobile apps
+* multiple billing models
+
+Trying to fit all of that into a small budget usually means the product becomes rushed or incomplete.
+
+---
+
+## Does Next.js Make Web App Development Cheaper?
+
+The framework doesn't determine the final price by itself.
+
+But a practical stack can reduce infrastructure work.
+
+For many applications, I might start with:
+
+| Layer          | Technology       |
+| -------------- | ---------------- |
+| Framework      | Next.js          |
+| Language       | TypeScript       |
+| Database       | PostgreSQL       |
+| Backend        | Supabase         |
+| Authentication | Supabase Auth    |
+| Storage        | Supabase Storage |
+| Styling        | Tailwind CSS     |
+| Deployment     | Vercel           |
+
+A relatively simple architecture can look like:
 
 ```text
-Email
-Password
-Login
+Next.js
+   ↓
+Server Actions / API
+   ↓
+Supabase
+   ├── PostgreSQL
+   ├── Auth
+   └── Storage
 ```
 
-But production applications can require much more:
+The advantage is not that this makes every application cheap.
 
-* OAuth
-* Password reset
-* Email verification
-* Sessions
-* Protected routes
-* Organizations
-* Teams
-* Roles
-* Permissions
-* Account management
-
-And authentication isn't the same thing as authorization.
-
-Authentication answers:
-
-> Who is this user?
-
-Authorization answers:
-
-> What is this user allowed to do?
-
-That distinction becomes especially important in multi-user applications.
+It is that you can avoid building infrastructure that established services already handle well.
 
 ---
 
-# How Much Does an MVP Cost?
+## What About AI?
 
-An MVP doesn't need every feature in your long-term roadmap.
+AI is one of the easiest things to underestimate.
 
-Imagine you're building a customer management platform.
-
-The full vision might include:
-
-* CRM
-* Invoicing
-* Team collaboration
-* AI assistance
-* Automations
-* Analytics
-* Mobile apps
-* Integrations
-* Advanced reporting
-
-Your MVP might only need:
+Compare:
 
 ```text
-Sign up
-   ↓
-Create customer
-   ↓
-Create note
-   ↓
-View customer
-   ↓
-Search customers
+User → Prompt → Model → Response
 ```
 
-That's enough to test whether the core product is useful.
+with:
 
-The fewer unvalidated features you build, the smaller the initial budget can be.
+```text
+User
+ ↓
+Agent
+ ↓
+Planning
+ ↓
+Tools
+ ↓
+External APIs
+ ↓
+Background processing
+ ↓
+State
+ ↓
+Result
+```
 
-This is why **scope is often the biggest lever you control**.
+The second can require substantially more engineering.
 
----
+When estimating an AI-enabled web app, I'd consider:
 
-# How Much Does It Cost to Build an MVP?
+* model integration
+* prompt design
+* tool calling
+* structured outputs
+* streaming
+* retries
+* rate limits
+* monitoring
+* usage limits
+* background jobs
 
-A focused web app MVP can potentially land somewhere around:
+"There's AI in it" isn't a useful estimate.
 
-| **MVP Type**                |   **Rough Budget** |
-| --------------------------- | -----------------: |
-| Very simple MVP             |    $3,000 – $8,000 |
-| Standard MVP                |   $8,000 – $15,000 |
-| Feature-heavy MVP           | $15,000 – $30,000+ |
-| Complex AI / automation MVP | $20,000 – $50,000+ |
-
-These should be treated as planning ranges rather than universal market prices. Current 2026 sources show substantial variation, with some estimates placing focused applications around $3,000–$8,000 and other methodologies producing significantly higher freelancer and agency figures for comparable categories.
-
-A good developer should quote against a defined scope rather than simply giving you a number based on "web app."
-
----
-
-# How Long Does It Take to Build a Web App?
-
-Development time varies just as much as price.
-
-A rough planning model might look like this:
-
-| **Project Complexity** | **Approximate Timeline** |
-| ---------------------- | -----------------------: |
-| Simple                 |                2–4 weeks |
-| Standard               |                4–8 weeks |
-| Complex                |               2–4 months |
-| Highly complex         |              4–8+ months |
-
-Current 2026 custom-application estimates show similar broad ranges, with focused applications often measured in weeks and complex platforms extending into several months.
-
-But don't confuse calendar time with development hours.
-
-A project can take eight weeks because:
-
-* The scope is large
-* Feedback is slow
-* Design changes repeatedly
-* Multiple integrations are involved
-* The product requires extensive testing
-
-That's why a good project should be broken into milestones.
+The actual AI workflow is.
 
 ---
 
-# What Technology Should You Use?
+## What About Real-Time Functionality?
 
-There isn't one stack that's correct for every application.
+A standard application can often use normal request/response patterns.
 
-For many modern web apps, however, a stack like this provides a strong foundation:
-
-| **Layer**        | **Example Technology** |
-| ---------------- | ---------------------- |
-| Framework        | Next.js                |
-| Language         | TypeScript             |
-| Database         | PostgreSQL             |
-| Authentication   | Supabase Auth          |
-| Storage          | Supabase Storage       |
-| Backend platform | Supabase               |
-| Styling          | Tailwind CSS           |
-| Payments         | Stripe                 |
-| Deployment       | Vercel                 |
-
-The specific choices can change depending on the application.
-
-The important part is avoiding unnecessary infrastructure.
-
-You don't need to build ten backend services because you think you might eventually have millions of users.
-
-Start with an architecture that solves the current problem cleanly.
-
----
-
-# Does Next.js Make Web App Development Cheaper?
-
-It can make development more efficient, but the framework itself isn't what determines the final price.
-
-What matters is how much engineering the application requires.
+A collaborative product may need live updates between users.
 
 For example:
 
 ```text
-Next.js
-+
-Authentication
-+
-Database
-+
-Simple dashboard
-+
-CRUD
-```
-
-is relatively focused.
-
-But:
-
-```text
-Next.js
-+
-Authentication
-+
-Multi-tenancy
-+
-Payments
-+
-AI
-+
-Real-time collaboration
-+
-Five integrations
-+
-Background workers
-```
-
-is a much larger application.
-
-The framework doesn't eliminate that complexity.
-
-It simply gives you tools to build it.
-
----
-
-# What About AI?
-
-AI can increase both development complexity and ongoing operating costs.
-
-There's a big difference between:
-
-> "Add an AI chat box."
-
-and:
-
-> "Build an autonomous agent that can use tools, execute multi-step workflows, maintain state, and recover from failures."
-
-An AI-heavy web application may require:
-
-* Model APIs
-* Prompt design
-* Structured outputs
-* Tool calling
-* Streaming
-* Usage limits
-* Background jobs
-* Monitoring
-* Error handling
-* Cost controls
-
-So when someone says:
-
-> "It's just a web app with AI."
-
-that's usually not enough information to estimate the project.
-
-AI functionality should be scoped like any other core feature.
-
----
-
-# What About Real-Time Features?
-
-Real-time functionality can also increase the complexity of a web application.
-
-Examples include:
-
-* Live chat
-* Collaborative editing
-* Live notifications
-* Shared dashboards
-* Real-time status updates
-
-A simple CRUD application might work entirely through normal requests.
-
-A collaborative application may need:
-
-```text
 User A
-   ↓
+ ↓
 Server
-   ↓
+ ↓
 Database
-   ↓
+ ↓
 Realtime event
-   ↓
+ ↓
 User B
 ```
 
-That introduces additional state-management and reliability concerns.
+That introduces additional synchronization and reliability concerns.
 
-It's another reason why two applications with the same number of pages can have very different development costs.
-
----
-
-# Freelancer vs Agency
-
-Who builds the application has a major effect on price.
-
-## Freelancer
-
-A freelancer can make sense when:
-
-* The project is focused
-* You want direct communication
-* You have a limited budget
-* You don't need multiple specialists
-
-You're usually working directly with the person writing the code, which can keep communication simple.
-
-## Agency
-
-An agency may be a better fit when you need:
-
-* Multiple developers
-* Dedicated design
-* Project management
-* Larger development capacity
-* Ongoing support
-
-Agencies generally have more overhead, so comparing an agency quote directly with a freelancer quote isn't always meaningful.
-
-You're paying for different delivery models.
+Again, two applications with the same number of pages can have very different development costs.
 
 ---
 
-# Why Two Developers Give You Completely Different Quotes
+## Freelancer vs Agency
 
-Imagine you send the same product idea to three developers.
+### Freelancer
 
-You receive:
+A freelancer can be a strong fit when:
+
+* the project is focused
+* you want direct communication
+* the team can stay small
+* the budget is controlled
+
+### Agency
+
+An agency can make more sense when you need:
+
+* several developers
+* dedicated design
+* project management
+* QA
+* larger delivery capacity
+
+The right choice depends on the project.
+
+For a focused MVP, I would usually avoid adding people or process that the product doesn't actually require.
+
+---
+
+## Why Developers Give Different Quotes
+
+Imagine receiving:
 
 ```text
-Developer A → $4,000
-Developer B → $12,000
-Developer C → $30,000
+$4,000
+$12,000
+$30,000
 ```
 
-That doesn't automatically mean one of them is dishonest.
+for the same application idea.
 
-They may be imagining completely different projects.
+Those prices don't automatically mean one developer is wrong.
 
-Developer A may assume:
+They may be assuming different scopes.
 
-* One user role
-* Minimal design
-* No advanced permissions
-* Three integrations
-* Basic testing
+One might be thinking:
 
-Developer C may assume:
+```text
+Auth
+Dashboard
+Core feature
+Deployment
+```
 
-* Multiple roles
-* Custom UX
-* Production-grade authorization
-* Extensive testing
-* Background jobs
-* Monitoring
-* Ongoing support
+Another might be thinking:
 
-This is why the **scope of the quote matters more than the number at the bottom**.
+```text
+Auth
+Dashboard
+Core feature
+Teams
+Permissions
+Payments
+AI
+Testing
+Monitoring
+```
+
+That's why I would always ask:
+
+> **What exactly is included in this estimate?**
 
 ---
 
-# How to Compare Web Development Quotes
+## How to Compare Web Development Quotes
 
-Don't only compare:
+Don't compare only the final number.
 
-> **Total price**
+Compare:
 
-Compare what you actually receive.
+### Scope
 
-A good quote should make it reasonably clear:
+What features and workflows are included?
 
-### What's included
+### Exclusions
 
-Features, pages, integrations, testing, deployment, and support.
-
-### What's not included
-
-Future features and anything outside the agreed scope.
+What is explicitly not included?
 
 ### Timeline
 
-Expected milestones and delivery dates.
+What are the milestones?
 
 ### Technology
 
-What stack and services are being used.
+What stack and services are being used?
 
 ### Ownership
 
-Who owns the source code and project assets.
+Who owns the code and project assets?
 
-### Post-launch support
+### Support
 
-What happens after the application goes live.
+What happens after launch?
 
-Two quotes become much easier to compare when they're describing the same thing.
-
----
-
-# Where Founders Waste Money
-
-## Building too much before launch
-
-A founder can spend months building features that haven't been validated.
-
-Build the core workflow first.
+Two prices mean very little when they represent two different projects.
 
 ---
 
-## Choosing technology because it's trendy
+## A Real Example From Building Products
 
-The newest technology isn't automatically the right technology.
+One of the reasons I think about development cost in terms of workflows is that I've built products where the interface is only a small part of the actual problem.
 
-Use tools because they solve a real problem.
+[Floopr](https://floopr.vercel.app), for example, involves more than simply displaying a feedback widget. A feedback product has to consider how feedback gets collected, processed, interpreted, and ultimately turned into useful product information.
 
----
+[Missiono](https://missiono.vercel.app) is a different kind of application, where the value comes from keeping a focused workflow and data model understandable.
 
-## Treating design as decoration
+The lesson is the same:
 
-Good UX matters.
+**the visible feature isn't always the full engineering requirement.**
 
-But a polished interface can't compensate for a product that doesn't solve a real problem.
-
----
-
-## Underestimating edge cases
-
-The happy path is usually the easiest part.
-
-Real users will:
-
-* Submit invalid data
-* Lose connections
-* Upload bad files
-* Repeat actions
-* Have permission problems
-* Trigger failed payments
-
-Testing these cases takes time.
-
-Plan for it.
+More examples of my work are available on [my portfolio](https://romani.vercel.app/#work).
 
 ---
 
-# What Does a $5,000 Web App Actually Mean?
+## Where Web App Budgets Usually Get Wasted
 
-It's tempting to ask:
+### Building before validating
 
-> "What can I get for $5,000?"
+The project grows around assumptions nobody has tested.
 
-But that's the wrong question.
+### Overengineering
 
-A better question is:
+The architecture is designed for a scale that doesn't exist yet.
 
-> **"What is the highest-value product we can build within $5,000?"**
+### Too much design iteration
 
-Maybe the answer is:
+The interface keeps changing even though the core workflow already works.
 
-* One core workflow
-* One user type
-* Basic authentication
-* A simple dashboard
-* A small database
-* One integration
+### Too many integrations
 
-That could be enough.
+Every additional service creates more implementation and maintenance work.
 
-Trying to squeeze:
+### Scope changes
 
-* AI
-* Payments
-* Teams
-* Analytics
-* Ten integrations
-* Admin tools
-
-into the same budget usually results in a worse product.
+A project rarely remains on budget when the definition of "done" keeps changing.
 
 ---
 
-# How to Reduce Web App Development Costs
+## Don't Forget Ongoing Costs
 
-The best way to reduce cost isn't necessarily finding the cheapest developer.
+The initial development budget isn't the entire cost of running a web application.
 
-It's reducing unnecessary work.
+You may also have:
 
-### Start with a narrow scope
-
-Define the smallest useful version.
-
-### Reuse proven components
-
-Don't build everything from scratch when established tools solve the problem.
-
-### Limit integrations
-
-Every external service adds implementation and maintenance work.
-
-### Keep the initial user model simple
-
-One user type is much easier than five.
-
-### Avoid premature scaling
-
-Build for your actual stage.
-
-### Make decisions before development
-
-Changing requirements repeatedly is expensive.
-
-The best cost-saving strategy is usually **better planning before writing code**.
-
----
-
-# Don't Forget the Ongoing Costs
-
-Development is only the beginning.
-
-A web application can also have recurring costs such as:
-
-* Hosting
-* Database
-* File storage
-* Email
+* hosting
+* database
+* storage
+* email
 * AI APIs
-* Monitoring
-* Domain
-* Maintenance
-* Further development
+* monitoring
+* domain
+* maintenance
+* future development
 
-Some current 2026 cost guides estimate ongoing hosting, maintenance, and future development can represent a meaningful annual percentage of the original build cost, depending on the project.
+A simple product can keep these costs relatively manageable.
 
-For a small application, these costs can remain relatively low.
+A product processing large files, high traffic volumes, or significant AI workloads can have much larger operating costs.
 
-For a product with heavy traffic, large files, or significant AI usage, operating costs can become much more important.
+That's another reason to design the first version around the actual stage of the business.
 
 ---
 
-# My Approach to Building a Web App
+## How Long Does It Take to Build a Web App?
 
-When I build a web application, I don't start by asking:
+A rough planning model might look like:
 
-> "What technology should we use?"
+| Project complexity | Possible timeline |
+| ------------------ | ----------------: |
+| Simple             |         2–4 weeks |
+| Standard           |         4–8 weeks |
+| Complex            |        2–4 months |
+| Highly complex     |       4–8+ months |
 
-I start with:
+These are not universal deadlines.
 
-> **"What does the user need to accomplish?"**
+Requirements, revisions, integrations, testing, and feedback can all change the timeline.
 
-Then I'd work through the project in roughly this order:
+For SaaS projects specifically, see [how long it takes to build a SaaS product](https://romani.vercel.app/blogs/how-long-does-it-really-take-to-build-a-saas-product).
+
+---
+
+## How I Approach Web App Development
+
+When I build a web application, I prefer this order:
 
 ```text
 Problem
@@ -790,7 +625,7 @@ Architecture
    ↓
 Database
    ↓
-UI
+Authentication
    ↓
 Core functionality
    ↓
@@ -803,59 +638,37 @@ Real users
 Iteration
 ```
 
-This keeps development tied to the actual product.
+This keeps technical decisions connected to the actual product.
 
-The architecture can evolve.
-
-The feature set can evolve.
-
-The technology can evolve.
-
-But the problem you're solving should remain at the center.
+It's also why I generally prefer a simple architecture that can evolve over a complicated architecture designed for a future that may never arrive.
 
 ---
 
-# The Most Important Number Isn't the Development Cost
-
-A web app that costs $5,000 and nobody uses is expensive.
-
-A web app that costs $20,000 and becomes an important part of a business can be cheap.
-
-That's why I wouldn't optimize purely for the lowest possible development price.
-
-I'd optimize for:
-
-**time to launch + quality + maintainability + ability to learn**
-
-The goal is to spend enough to build something genuinely useful without spending months building things you haven't validated.
-
----
-
-# Final Thoughts
+## Final Thoughts
 
 So, **how much does it cost to build a web app in 2026?**
 
-For a focused custom application, you may be looking at **a few thousand dollars**. A more standard business application can move into the **$8,000–$20,000 range**, while complex platforms can cost **tens of thousands of dollars or more**. Current 2026 estimates vary substantially, which is why a specific scope is more useful than any generic price list.
+A focused custom application can potentially cost a few thousand dollars.
 
-The biggest factors are:
+A standard business application can move into the $8,000–$20,000 range.
 
-* Features
-* User roles
-* Integrations
-* Design complexity
-* Authentication and permissions
-* AI and real-time functionality
-* Backend complexity
-* Developer or agency rates
-* Testing and deployment
+Complex platforms can cost tens of thousands of dollars or substantially more.
 
-The best place to start isn't a budget.
+But those numbers are only useful as a starting point.
 
-It's the product.
+The real question is:
 
-Define the problem, figure out the smallest useful version, and then price the work required to build **that version**.
+**What does the application need to do?**
 
-That's how you avoid paying for six months of development when you really needed six weeks.
+Define the workflows.
+
+Define the scope.
+
+Then estimate the work.
+
+The best way to control web app development cost is usually not finding the cheapest possible developer.
+
+It's making sure you're only paying to build things that matter.
 
 ---
 
@@ -863,6 +676,4 @@ That's how you avoid paying for six months of development when you really needed
 
 I build full-stack web applications and SaaS products using **Next.js, TypeScript, PostgreSQL, and Supabase**.
 
-Whether you have a product idea, an existing design, or a detailed specification, I can help turn it into a working web application.
-
-[Let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
+Have an idea, design, or specification? [Let's talk](https://romani.vercel.app/#contact) or explore [my work](https://romani.vercel.app/#work).
