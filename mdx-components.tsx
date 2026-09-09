@@ -73,5 +73,15 @@ export function useMDXComponents(
         </div>
       );
     },
+    
+    a: (props) => {
+  return (
+    <a
+      {...props}
+      target="_blank"
+      rel="noopener noreferrer"
+    />
+  );
+},
   };
 }

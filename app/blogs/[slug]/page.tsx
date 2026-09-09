@@ -131,7 +131,7 @@ export default async function BlogPostPage({
       </header>
 
       <main className="case-study-container post-layout">
-  <div className="post-toc">
+  <div className="">
     <TableOfContents headings={post.headings} />
   </div>
 
