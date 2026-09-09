@@ -60,7 +60,7 @@ export default function TableOfContents({
   };
 
   return (
-    <div className="flex justify-center mb-10">
+    <div className="flex justify-center mb-10 p-5 my-10">
       <nav
         className="toc w-full max-w-2xl rounded-xl border p-6 md:p-8"
         aria-label="Table of contents"

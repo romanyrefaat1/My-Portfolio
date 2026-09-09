@@ -136,7 +136,7 @@ export default async function BlogPostPage({
       {/* Article */}
       <main className="case-study-container post-layout">
         {/* Table of contents */}
-        <div id="table-of-contents">
+        <div id="table-of-contents my-10">
           <TableOfContents headings={post.headings} />
         </div>
 
