@@ -120,7 +120,7 @@ export function WorkSection({
   onMagicMouseMove,
 }: WorkSectionProps) {
   return (
-    <section id="work" className="container relative">
+    <section id="work" className="container relative mt-[50px]">
       <div className="absolute top-0 left-0 h-full w-full overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950">
   <NoiseTexture
     className={cn(
@@ -574,13 +574,15 @@ export function ContactSection() {
           enjoy?
         </p>
         <div className="contact-cta">
-          <Link
-            href="mailto:refaatRomani641@gmail.com"
-            className="btn-primary"
-            style={{ display: "inline-flex" }}
-          >
-            Say hello <ArrowIcon />
-          </Link>
+          <a
+  href="https://mail.google.com/mail/?view=cm&fs=1&to=refaatromany641@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-primary"
+  style={{ display: "inline-flex" }}
+>
+  Say hello <ArrowIcon />
+</a>
         </div>
       </div>
     </section>
