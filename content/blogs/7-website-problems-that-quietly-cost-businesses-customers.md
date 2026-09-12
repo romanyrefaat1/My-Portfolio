@@ -7,20 +7,14 @@ date: "2026-09-12"
 description: "Your website can look great and still lose customers. Learn the seven website problems that quietly hurt trust, conversions, and sales."
 
 tags: [
-
 "web-design",
-
 "conversion-rate",
-
 "websites",
-
 "marketing",
-
 "seo",
-
 "business"
-
-## ]
+]
+---
 
 A website can look professional and still lose customers every day.
 
@@ -51,8 +45,6 @@ These problems are especially expensive when you're already paying for traffic t
 You're not just losing a visitor.
 
 You're potentially losing the money you spent acquiring that visitor.
-
----
 
 ## 1. Your Website Doesn't Explain What You Do Quickly Enough
 
