@@ -1,63 +1,48 @@
-import { google } from "googleapis";
+"use server";
 
-function getSheetsClient() {
-  const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const key = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n");
+import { appendLeadRow } from "@/lib/google-sheets";
 
-  if (!email || !key) {
-    throw new Error(
-      "Missing GOOGLE_SERVICE_ACCOUNT_EMAIL or GOOGLE_PRIVATE_KEY env vars."
-    );
+const GUIDE_SOURCE = "7-website-problems-guide";
+const GUIDE_FILE_PATH = "/guides/website-problems-cost-customers.pdf";
+
+export type SubmitState = {
+  status: "idle" | "success" | "error";
+  message?: string;
+  downloadUrl?: string;
+};
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export async function submitGuideEmail(
+  _prevState: SubmitState,
+  formData: FormData
+): Promise<SubmitState> {
+  const email = String(formData.get("email") ?? "").trim();
+
+  if (!email || !EMAIL_RE.test(email)) {
+    return {
+      status: "error",
+      message: "That doesn't look like a valid email — mind trying again?",
+    };
   }
 
-  const auth = new google.auth.JWT({
-    email,
-    key,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
+  try {
+    await appendLeadRow({
+      email,
+      source: GUIDE_SOURCE,
+    });
+  } catch (err) {
+    console.error("[guide-lead] failed to append row:", err);
 
-  return google.sheets({ version: "v4", auth });
-}
-
-export async function appendLeadRow(params: {
-  email: string;
-  source: string;
-}): Promise<boolean> {
-  const sheetId = process.env.GOOGLE_SHEET_ID;
-
-  if (!sheetId) {
-    throw new Error("Missing GOOGLE_SHEET_ID env var.");
+    return {
+      status: "error",
+      message:
+        "Something went wrong on our end. Please try again in a moment.",
+    };
   }
 
-  const sheets = getSheetsClient();
-  const normalizedEmail = params.email.trim().toLowerCase();
-
-  // Check existing emails in column A.
-  const existing = await sheets.spreadsheets.values.get({
-    spreadsheetId: sheetId,
-    range: "Leads!A:A",
-  });
-
-  const emails = (existing.data.values ?? []).map((row) =>
-    String(row[0] ?? "").trim().toLowerCase()
-  );
-
-  // Already exists — don't insert another row.
-  if (emails.includes(normalizedEmail)) {
-    return true;
-  }
-
-  const timestamp = new Date().toISOString();
-
-  await sheets.spreadsheets.values.append({
-    spreadsheetId: sheetId,
-    range: "Leads!A:C",
-    valueInputOption: "USER_ENTERED",
-    insertDataOption: "INSERT_ROWS",
-    requestBody: {
-      values: [[normalizedEmail, params.source, timestamp]],
-    },
-  });
-
-  return true;
+  return {
+    status: "success",
+    downloadUrl: GUIDE_FILE_PATH,
+  };
 }

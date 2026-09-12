@@ -1,15 +1,18 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { appendLeadRow } from "./actions";
+import { submitGuideEmail } from "./actions";
 
-const initialState = { status: "idle" };
+const initialState = {
+  status: "idle" as const,
+};
 
 export function GuideForm() {
   const [state, formAction, pending] = useActionState(
-    appendLeadRow,
+    submitGuideEmail,
     initialState
   );
+
   const downloadTriggeredRef = useRef(false);
 
   useEffect(() => {
@@ -19,6 +22,7 @@ export function GuideForm() {
       !downloadTriggeredRef.current
     ) {
       downloadTriggeredRef.current = true;
+
       const link = document.createElement("a");
       link.href = state.downloadUrl;
       link.download = "";
@@ -42,11 +46,18 @@ export function GuideForm() {
             />
           </svg>
         </div>
+
         <div>
-          <p className="guide-form-success-title">Your download has started.</p>
+          <p className="guide-form-success-title">
+            Your download has started.
+          </p>
+
           <p className="guide-form-success-sub">
             If nothing happened,{" "}
-            <a href={state.downloadUrl} className="guide-form-success-link">
+            <a
+              href={state.downloadUrl}
+              className="guide-form-success-link"
+            >
               click here to download the guide
             </a>
             .
@@ -62,6 +73,7 @@ export function GuideForm() {
         <label htmlFor="guide-email" className="sr-only">
           Email address
         </label>
+
         <input
           id="guide-email"
           name="email"
@@ -71,12 +83,14 @@ export function GuideForm() {
           className="guide-form-input"
           disabled={pending}
         />
+
         <button
           type="submit"
           className="btn-primary guide-form-submit"
           disabled={pending}
         >
           {pending ? "Sending…" : "Get the free guide"}
+
           {!pending && (
             <svg
               width="14"
@@ -96,11 +110,13 @@ export function GuideForm() {
           )}
         </button>
       </div>
+
       {state.status === "error" && (
         <p className="guide-form-error" role="alert">
           {state.message}
         </p>
       )}
+
       <p className="guide-form-note">
         No spam. One-click unsubscribe. I'll only use this to occasionally
         share things worth reading.
