@@ -229,3 +229,55 @@
   white-space: nowrap;
   border: 0;
 }
+
+
+
+.guide-author-section {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.guide-author-section .case-study-container {
+  position: relative;
+  z-index: 1;
+}
+
+.guide-author-blob {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  top: 50%;
+  right: -180px;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.11);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.guide-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  text-decoration: none;
+}
+
+.guide-author-link svg {
+  transition: transform 180ms ease;
+}
+
+.guide-author-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+@media (max-width: 700px) {
+  .guide-author-blob {
+    width: 320px;
+    height: 320px;
+    right: -160px;
+    filter: blur(80px);
+  }
+}

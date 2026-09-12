@@ -115,6 +115,7 @@ const jsonLd = {
 export default function GuidePage() {
   return (
     <main className="guide-page">
+
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -196,6 +197,45 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+
+      <section className="case-study-section guide-author-section">
+  <div className="guide-author-blob" aria-hidden="true" />
+
+  <div className="case-study-container">
+    <div className="case-study-section-intro">
+      <p className="case-study-label">Want me to take a look?</p>
+
+      <h2 className="case-study-section-title">
+        Your website might have more than one problem.
+      </h2>
+
+      <p className="case-study-section-copy">
+        I’m Romany, a full-stack web developer. I build and redesign
+        websites with a focus on clarity, speed, trust, and conversion.
+        See my work and how I approach building for the web.
+      </p>
+
+      <a href="/" className="btn-primary guide-author-link">
+        See my work
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 11L11 3M11 3H4M11 3V10"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
 
       {/* ---------- SECOND CTA ---------- */}
       <section className="case-study-result">
