@@ -41,11 +41,15 @@ function getStaticRoutes(
         url: `${baseUrl}${route}`,
         lastModified: new Date(),
         changeFrequency: "monthly",
-        priority: route === "/guides" ? 0.9 : 0.8,
+        priority:
+          route === "/guides"
+            ? 0.9
+            : route === "/guides/free"
+              ? 0.85
+              : 0.8,
       });
     }
 
-    // Continue looking for nested routes.
     routes.push(...getStaticRoutes(routeDirectory, route));
   }
 
@@ -62,7 +66,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const guideUrls = getStaticRoutes(path.join(appDirectory, "guides"));
+  const guideUrls = getStaticRoutes(
+    path.join(appDirectory, "guides"),
+    "/guides"
+  );
 
   return [
     {
