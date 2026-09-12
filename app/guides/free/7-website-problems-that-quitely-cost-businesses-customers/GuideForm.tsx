@@ -1,13 +1,13 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
-import { submitGuideEmail, type SubmitState } from "./actions";
+import { appendLeadRow } from "./actions";
 
-const initialState: SubmitState = { status: "idle" };
+const initialState = { status: "idle" };
 
 export function GuideForm() {
   const [state, formAction, pending] = useActionState(
-    submitGuideEmail,
+    appendLeadRow,
     initialState
   );
   const downloadTriggeredRef = useRef(false);
