@@ -22,10 +22,10 @@ function Garment({
 }) {
   return (
     <div
-      className={\`case-visual-garment \${className}\`}
+      className={`case-visual-garment ${className}`}
       role="img"
       aria-label={label}
-      style={{ backgroundImage: \`url("\${src}")\` }}
+      style={{ backgroundImage: `url("\${src}")` }}
     />
   );
 }
