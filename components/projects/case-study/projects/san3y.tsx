@@ -24,7 +24,7 @@ export const san3yCaseStudy: CaseStudyProject = {
       "Telegram Bot API",
     ],
     image: {
-      src: "/projects/San3y/hero.png",
+      src: "/projects/san3y/hero.png",
       alt: "San3y homepage showing its Arabic local services marketplace experience",
       priority: true,
       caption: "San3y — A LOCAL SERVICES MARKETPLACE",
@@ -91,8 +91,8 @@ export const san3yCaseStudy: CaseStudyProject = {
         "The initial scope was deliberately focused on Faisal, Giza, with plumbing and electrical work as the first service categories. A focused starting point made more sense than presenting the product as a nationwide marketplace before it had the coverage to support that claim.",
       ],
       image: {
-        src: "/projects/San3y/marketplace-flow.png",
-        alt: "Diagram showing a customer job request moving through applications and craftsman selection",
+        visual: "san3y-marketplace-flow",
+        alt: "San3y marketplace workflow showing a customer posting a job, matching, craftsman applications, and customer selection",
         caption: "FROM A JOB REQUEST TO A DECISION",
       },
     },
@@ -130,7 +130,7 @@ export const san3yCaseStudy: CaseStudyProject = {
         },
       ],
       image: {
-        src: "/projects/San3y/applications.png",
+        src: "/projects/san3y/applications.png",
         alt: "Customer interface displaying applications submitted for a job",
         caption: "THE CUSTOMER'S APPLICATION REVIEW",
       },
@@ -153,12 +153,12 @@ export const san3yCaseStudy: CaseStudyProject = {
       ],
       images: [
         {
-          src: "/projects/San3y/job-posting.png",
+          src: "/projects/san3y/job-posting.png",
           alt: "San3y customer job creation interface",
           caption: "POSTING A JOB",
         },
         {
-          src: "/projects/San3y/craftsman-feed.png",
+          src: "/projects/san3y/craftsman-feed.png",
           alt: "San3y craftsman interface showing available jobs",
           caption: "DISCOVERING AVAILABLE WORK",
         },
@@ -201,7 +201,7 @@ export const san3yCaseStudy: CaseStudyProject = {
         },
       ],
       image: {
-        src: "/projects/San3y/applications.png",
+        src: "/projects/san3y/applications.png",
         alt: "San3y application details with proposed prices and craftsman messages",
         caption: "PRICE, MESSAGE, AND A CLEAR DECISION",
       },
@@ -252,7 +252,7 @@ export const san3yCaseStudy: CaseStudyProject = {
     }
   ],
   image: {
-    src: "/projects/San3y/admin-dashboard.png",
+    src: "/projects/san3y/admin-dashboard.png",
     alt: "San3y administrative dashboard showing marketplace operations",
     caption: "THE ADMINISTRATIVE WORKSPACE"
   }
@@ -304,7 +304,7 @@ export const san3yCaseStudy: CaseStudyProject = {
         },
       ],
       image: {
-        src: "/projects/San3y/telegram-notifications.png",
+        src: "/projects/san3y/telegram-notifications.png",
         alt: "San3y Telegram bots displaying marketplace notifications",
         caption: "IMPORTANT UPDATES, OUTSIDE THE WEBSITE",
       },
@@ -497,7 +497,7 @@ export const san3yCaseStudy: CaseStudyProject = {
     }
   ],
   image: {
-    src: "/projects/San3y/reviews.png",
+    src: "/projects/san3y/reviews.png",
     alt: "San3y two-sided review experience",
     caption: "FEEDBACK THAT BUILDS TRUST"
   }
@@ -531,12 +531,12 @@ export const san3yCaseStudy: CaseStudyProject = {
       },
       images: [
         {
-          src: "/projects/San3y/job-chat.png",
+          src: "/projects/san3y/job-chat.png",
           alt: "San3y conversation between a customer and a selected craftsman",
           caption: "JOB-SPECIFIC CONVERSATION",
         },
         {
-          src: "/projects/San3y/job-lifecycle.png",
+          src: "/projects/san3y/job-lifecycle.png",
           alt: "San3y job details and completion status interface",
           caption: "TRACKING THE JOB",
         },
@@ -580,7 +580,7 @@ export const san3yCaseStudy: CaseStudyProject = {
 
   finalCta: {
     image: {
-      src: "/projects/San3y/hero.png",
+      src: "/projects/san3y/hero.png",
       alt: "San3y local services marketplace homepage",
     },
     eyebrow: "San3y — THE WORK COMES FIRST",
