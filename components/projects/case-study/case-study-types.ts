@@ -1,7 +1,14 @@
 import type { ReactNode } from "react";
 
+export type CaseStudyVisualName =
+  | "lvry-product-direction"
+  | "lvry-brand-identity"
+  | "lvry-design-system"
+  | "san3y-marketplace-flow";
+
 export type CaseStudyImage = {
-  src: string;
+  src?: string;
+  visual?: CaseStudyVisualName;
   alt: string;
   caption?: string;
   priority?: boolean;

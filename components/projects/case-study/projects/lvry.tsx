@@ -76,8 +76,8 @@ export const lvryCaseStudy: CaseStudyProject = {
         "That idea influenced the product structure, the collections, the shopping flows, and eventually the website's signature feature.",
       ],
       image: {
-        src: "/projects/lvry/product-direction.png",
-        alt: "LVRY brand direction and clothing collection",
+        visual: "lvry-product-direction",
+        alt: "LVRY editorial product direction board showing its everyday uniform concept and collection palette",
         caption: "THE PRODUCT CONCEPT",
       },
     },
@@ -112,8 +112,8 @@ export const lvryCaseStudy: CaseStudyProject = {
         },
       ],
       image: {
-        src: "/projects/lvry/brand-identity.png",
-        alt: "LVRY visual identity, typography, colors, and art direction",
+        visual: "lvry-brand-identity",
+        alt: "LVRY brand identity presentation showing its wordmark, typography, colors, and art direction",
         caption: "THE LVRY VISUAL IDENTITY",
       },
     },
@@ -139,8 +139,8 @@ export const lvryCaseStudy: CaseStudyProject = {
           caption: "HOMEPAGE",
         },
         {
-          src: "/projects/lvry/design-system.png",
-          alt: "LVRY colors, typography, and interface components",
+          visual: "lvry-design-system",
+          alt: "LVRY interface design system showing color tokens, typography, buttons, product cards, and controls",
           caption: "VISUAL SYSTEM",
         },
       ],
