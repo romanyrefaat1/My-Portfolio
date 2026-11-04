@@ -125,59 +125,163 @@ export function LVRYProductDirection() {
 }
 
 export function LVRYBrandIdentity() {
+  const swatches = [
+    ["bone", "BONE", "#EFEBE4", "#111111"],
+    ["ink", "INK", "#111111", "#EFEBE4"],
+    ["signal", "SIGNAL", "#FF4A1C", "#FFFFFF"],
+    ["denim", "DENIM", "#3E5C8A", "#FFFFFF"],
+    ["canvas", "CANVAS", "#C9B79C", "#111111"],
+  ];
+
   return (
-    <div className="case-visual case-visual-lvry case-visual-identity">
+    <div
+      className="case-visual case-visual-lvry case-visual-identity"
+      style={{ height: "auto", minHeight: 0, maxHeight: "none", aspectRatio: "auto", overflow: "visible" }}
+    >
+      <style>{`
+        .lvid-wrap { container-type: inline-size; width: 100%; }
+        .lvid-board {
+          display: grid !important;
+          grid-template-columns: 1fr !important;
+          grid-template-rows: none !important;
+          gap: 32px !important;
+          height: auto !important;
+          min-height: 0 !important;
+          overflow: visible !important;
+          padding: 28px !important;
+          box-sizing: border-box;
+        }
+        .lvid-board > * {
+          position: static !important;
+          width: auto !important;
+          height: auto !important;
+          min-width: 0 !important;
+          margin: 0 !important;
+          border: 0 !important;
+          inset: auto !important;
+        }
+
+        /* wordmark column */
+        .lvid-board .case-identity-wordmark {
+          display: flex !important; flex-direction: column; align-items: flex-start; gap: 14px;
+          padding: 0 !important;
+        }
+        .lvid-board .case-visual-hand { display: block; margin: 0 !important; position: static !important; }
+        .lvid-board .case-identity-logo {
+          font-size: clamp(64px, 20cqw, 128px) !important;
+          line-height: .85 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          position: relative !important;
+          display: inline-block;
+          white-space: nowrap;
+        }
+        .lvid-board .case-identity-logo span {
+          position: static !important;
+          display: inline-block;
+          font-size: 14px !important;
+          line-height: 1 !important;
+          vertical-align: top;
+          margin-left: 4px;
+        }
+        .lvid-board .case-identity-rule { width: 100% !important; max-width: 220px; height: 1px !important; margin: 0 !important; }
+        .lvid-board .case-identity-wordmark h3 { margin: 0 !important; }
+        .lvid-board .case-identity-wordmark p { margin: 0 !important; max-width: 34ch; }
+        .lvid-board .case-identity-tag { margin: 0 !important; position: static !important; }
+
+        /* typography column */
+        .lvid-board .case-identity-type {
+          display: flex !important; flex-direction: column; gap: 14px; padding: 0 !important;
+        }
+        .lvid-board .case-identity-display {
+          font-size: clamp(44px, 9cqw, 76px) !important;
+          line-height: .95 !important;
+          margin: 0 !important;
+          overflow-wrap: anywhere;
+        }
+        .lvid-board .case-identity-body { display: flex; flex-direction: column; gap: 4px; padding-top: 14px; border-top: 1px solid rgba(17,17,17,.15); }
+        .lvid-board .case-identity-hand { margin: 0 !important; position: static !important; }
+        .lvid-board .case-identity-type-meta { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+        /* colors row */
+        .lvid-board .case-identity-colors {
+          display: grid !important;
+          grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)) !important;
+          gap: 10px !important;
+          padding: 0 !important;
+        }
+        .lvid-board .case-identity-colors .case-identity-section-label { grid-column: 1 / -1; margin: 0 0 4px !important; }
+        .lvid-board .lvid-sw {
+          display: flex !important; flex-direction: column; justify-content: flex-end; gap: 4px;
+          min-height: 84px !important; height: auto !important; padding: 10px 12px !important;
+          border-radius: 8px !important; border: 1px solid rgba(17,17,17,.15) !important;
+          width: auto !important; position: static !important;
+        }
+        .lvid-board .lvid-sw span { font-weight: 700; letter-spacing: .08em; font-size: 11px; color: inherit !important; }
+        .lvid-board .lvid-sw small { font-size: 10px !important; letter-spacing: 0; color: inherit !important; opacity: .8; line-height: 1.2; }
+
+        /* footer */
+        .lvid-foot {
+          display: flex !important; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px;
+          position: static !important; height: auto !important;
+          padding: 16px 28px 24px !important; margin: 0 !important;
+          border-top: 1px solid rgba(17,17,17,.15);
+        }
+
+        @container (min-width: 720px) {
+          .lvid-board { grid-template-columns: 1.15fr 1fr !important; column-gap: 48px !important; }
+          .lvid-board .case-identity-colors { grid-column: 1 / -1; }
+        }
+      `}</style>
+
       <VisualTopline left="LVRY / BRAND NOTES" right="IDENTITY SYSTEM — 002" />
 
-      <div className="case-identity-main">
-        <div className="case-identity-wordmark">
-          <span className="case-visual-hand">A considered everyday wardrobe</span>
-          <div className="case-identity-logo">LVRY<span>®</span></div>
-          <div className="case-identity-rule" />
-          <h3>The everyday<br /><em>uniform.</em></h3>
-          <p>
-            A clothing label built around a few good pieces — and the many
-            ways they can work together.
-          </p>
-          <div className="case-identity-tag">IDENTITY / 2026</div>
-        </div>
+      <div className="lvid-wrap">
+        <div className="case-identity-main lvid-board">
+          <div className="case-identity-wordmark">
+            <span className="case-visual-hand">A considered everyday wardrobe</span>
+            <div className="case-identity-logo">LVRY<span>®</span></div>
+            <div className="case-identity-rule" />
+            <h3>The everyday<br /><em>uniform.</em></h3>
+            <p>
+              A clothing label built around a few good pieces — and the many
+              ways they can work together.
+            </p>
+            <div className="case-identity-tag">IDENTITY / 2026</div>
+          </div>
 
-        <div className="case-identity-type">
-          <div className="case-identity-section-label">01 / TYPOGRAPHY</div>
-          <div className="case-identity-display">Everyday<br />uniform.</div>
-          <div className="case-identity-body">
-            <strong>Clear by design.</strong>
-            <span>Short copy. Useful details. No noise.</span>
+          <div className="case-identity-type">
+            <div className="case-identity-section-label">01 / TYPOGRAPHY</div>
+            <div className="case-identity-display">Everyday<br />uniform.</div>
+            <div className="case-identity-body">
+              <strong>Clear by design.</strong>
+              <span>Short copy. Useful details. No noise.</span>
+            </div>
+            <div className="case-identity-hand">Made to work together.</div>
+            <div className="case-identity-type-meta">
+              <span>DISPLAY / BRICOLAGE</span>
+              <span>BODY / GEIST</span>
+              <span>NOTES / CAVEAT</span>
+            </div>
           </div>
-          <div className="case-identity-hand">Made to work together.</div>
-          <div className="case-identity-type-meta">
-            <span>DISPLAY / BRICOLAGE</span>
-            <span>BODY / GEIST</span>
-            <span>NOTES / CAVEAT</span>
-          </div>
-        </div>
 
-        <div className="case-identity-colors">
-          <div className="case-identity-section-label">02 / COLOR</div>
-          <div className="case-identity-swatch swatch-bone">
-            <span>BONE</span><small>#EFEBE4</small>
-          </div>
-          <div className="case-identity-swatch swatch-ink">
-            <span>INK</span><small>#111111</small>
-          </div>
-          <div className="case-identity-swatch swatch-signal">
-            <span>SIGNAL</span><small>#FF4A1C</small>
-          </div>
-          <div className="case-identity-swatch swatch-denim">
-            <span>DENIM</span><small>#3E5C8A</small>
-          </div>
-          <div className="case-identity-swatch swatch-canvas">
-            <span>CANVAS</span><small>#C9B79C</small>
+          <div className="case-identity-colors">
+            <div className="case-identity-section-label">02 / COLOR</div>
+            {swatches.map(([cls, name, hex, fg]) => (
+              <div
+                key={cls}
+                className={`case-identity-swatch swatch-${cls} lvid-sw`}
+                style={{ background: hex, color: fg }}
+              >
+                <span>{name}</span>
+                <small>{hex}</small>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="case-identity-footer">
+      <div className="case-identity-footer lvid-foot">
         <span>03 / ART DIRECTION</span>
         <span>TACTILE · REFINED · PLAYFUL</span>
         <span>LVRY — THE EVERYDAY UNIFORM</span>
