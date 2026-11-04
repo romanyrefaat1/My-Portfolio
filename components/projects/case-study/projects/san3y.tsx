@@ -15,8 +15,7 @@ export const san3yCaseStudy: CaseStudyProject = {
     ),
     demoUrl: "https://san3y.vercel.app",
     description:
-      "San3y is a local services marketplace connecting people who need work done at home with craftsmen who can do it. I designed and built the product around job requests, applications, customer decisions, and the communication that follows.",
-    stack: [
+  "San3y is a local services marketplace connecting people who need work done at home with craftsmen who can do it. I built the product across three connected experiences: a customer marketplace, a craftsman workspace, and an administrative operations system. From job requests and geographical matching to application management, communication, and operational oversight, the entire workflow is built around getting work done.",  stack: [
       "Next.js",
       "TypeScript",
       "Supabase",
@@ -207,6 +206,57 @@ export const san3yCaseStudy: CaseStudyProject = {
         caption: "PRICE, MESSAGE, AND A CLEAR DECISION",
       },
     },
+
+    {
+  type: "feature",
+  kicker: "05 — ADMINISTRATIVE OPERATIONS",
+  title: (
+    <>
+      A marketplace needs
+      <br />
+      someone to run it, too.
+    </>
+  ),
+  paragraphs: [
+    "Building the customer and craftsman experiences was only part of the problem. A marketplace also needs an operational layer to monitor activity, manage participants, oversee applications, and help connect available craftsmen with the right jobs.",
+
+    "I built a dedicated administrative dashboard that provides visibility into the marketplace and gives administrators tools to manage its day-to-day operations.",
+
+    "Rather than treating administration as a separate collection of generic CRUD screens, I designed it around the actual workflows happening inside San3y."
+  ],
+  points: [
+    {
+      title: "Marketplace overview",
+      description:
+        "Monitor total jobs and their current lifecycle, including open, in-progress, and completed work."
+    },
+    {
+      title: "Matching oversight",
+      description:
+        "Inspect recommended craftsmen for each job, including their distance, availability, account status, verification, and application activity. Refresh recommendations when necessary."
+    },
+    {
+      title: "Application decisions",
+      description:
+        "Review proposed prices and messages, inspect the associated customer and craftsman, and manage application decisions directly."
+    },
+    {
+      title: "Craftsman onboarding",
+      description:
+        "Provision craftsman accounts with their professional information, service areas, profile details, and geographical coordinates."
+    },
+    {
+      title: "Operational follow-up",
+      description:
+        "Track manual phone calls, inspect Telegram connection and notification status, and record administrative activity."
+    }
+  ],
+  image: {
+    src: "/projects/San3y/admin-dashboard.png",
+    alt: "San3y administrative dashboard showing marketplace operations",
+    caption: "THE ADMINISTRATIVE WORKSPACE"
+  }
+},
 
     {
       type: "feature",
@@ -404,6 +454,54 @@ export const san3yCaseStudy: CaseStudyProject = {
       ],
       caption: "ONE JOB CONNECTS THE ENTIRE EXPERIENCE",
     },
+
+    {
+  type: "feature",
+  kicker: "08 — TRUST AND REPUTATION",
+  title: (
+    <>
+      The relationship
+      <br />
+      doesn't end
+      <br />
+      when the job does.
+    </>
+  ),
+  paragraphs: [
+    "A marketplace needs more than a way to connect people. It needs a way to help them make better decisions about whom to work with.",
+
+    "After a job is completed, both participants can leave feedback. Customers evaluate work quality and the craftsman's treatment, while craftsmen can report how the customer relationship went and identify specific issues.",
+
+    "These reviews become part of the public profile experience, alongside professional information and operational metrics such as response time, response rate, and completion rate."
+  ],
+  points: [
+    {
+      title: "Work quality",
+      description:
+        "Customers rate the quality of the completed work on a five-point scale."
+    },
+    {
+      title: "Professional treatment",
+      description:
+        "Customers separately evaluate the craftsman's respect and treatment."
+    },
+    {
+      title: "Two-sided feedback",
+      description:
+        "Craftsmen can report positive or problematic customer experiences, with categorized issues and optional comments."
+    },
+    {
+      title: "Public reputation",
+      description:
+        "Reviews and professional performance information help future customers evaluate craftsmen."
+    }
+  ],
+  image: {
+    src: "/projects/San3y/reviews.png",
+    alt: "San3y two-sided review experience",
+    caption: "FEEDBACK THAT BUILDS TRUST"
+  }
+},
 
     {
       type: "screens",

@@ -121,36 +121,46 @@ export function WorkSection({
 }: WorkSectionProps) {
   return (
     <section id="work" className="container relative mt-[50px]">
+      {/* Background */}
       <div className="absolute top-0 left-0 h-full w-full overflow-hidden rounded-lg border border-neutral-800 bg-neutral-950">
-  <NoiseTexture
-    className={cn(
-      "absolute inset-0",
-      "mask-[radial-gradient(420px_circle_at_center,white,transparent)]"
-    )}
-  />
-</div>
+        <NoiseTexture
+          className={cn(
+            "absolute inset-0",
+            "mask-[radial-gradient(420px_circle_at_center,white,transparent)]"
+          )}
+        />
+      </div>
+
+      {/* Introduction */}
       <div className="work-intro reveal py-8">
-        <div className="section-label">A FEW THINGS I'VE MADE</div>
-        <h2 className="section-heading">Not just projects.</h2>
+        <div className="section-label">SELECTED WORK</div>
+        <h2 className="section-heading">Things I've brought to life.</h2>
         <p className="section-sub">
-          We're not dumping a tech stack on you. Each one exists for a
-          reason.
+          Four different problems. Four different approaches. One obsession
+          with building things properly.
         </p>
       </div>
+
+      {/* 01 — SAN3Y */}
       <div className="project-hero reveal">
         <div className="project-hero-head">
-          <div className="project-category">MISSIONO — 01</div>
+          <div className="project-category">01 — SAN3Y</div>
+
           <h3 className="project-hero-title">
-            Missions are easy to plan.
+            Finding the right person
             <br />
-            Keeping track of them isn't.
+            is only the beginning.
           </h3>
+
           <p className="project-desc">
-            Missiono brings missions, tasks, budgets, and spending together —
-            in one place, instead of scattered across notes and
-            spreadsheets.
+            San3y is a local services marketplace connecting customers
+            with craftsmen. But behind the simple idea is an entire
+            operational system: job matching, applications, conversations,
+            notifications, and an administrative dashboard built to
+            manage the marketplace.
           </p>
         </div>
+
         <div
           className="magic-frame"
           id="missionoFrame"
@@ -158,14 +168,11 @@ export function WorkSection({
           onMouseMove={onMagicMouseMove}
         >
           <div className="magic-spotlight" id="missionoSpotlight"></div>
+
           <div className="shot-frame shot-frame-lg">
             <Image
-              src={
-                theme === "dark"
-                  ? "/projects/missiono/dashboard-darkmode.png"
-                  : "/projects/missiono/dashboard.png"
-              }
-              alt="Missiono dashboard showing missions, tasks, and budget overview"
+              src="/projects/San3y/hero.png"
+              alt="San3y local services marketplace interface"
               width={1200}
               height={700}
               priority
@@ -173,38 +180,48 @@ export function WorkSection({
             />
           </div>
         </div>
+
         <div className="project-hero-foot">
           <div className="project-stack mono">
-            Next.js · TypeScript · Supabase · PostgreSQL
+            Next.js · TypeScript · Supabase · PostgreSQL · Telegram
           </div>
+
           <div className="project-ctas">
-            <Link href="https://missiono.vercel.app" target="_blank" className="project-link">
+            <Link
+              href="https://san3y.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
               Live product ↗
             </Link>
-            <Link href="/missiono" className="project-link secondary">
+
+            <Link href="/san3y" className="project-link secondary">
               Case study ↗
             </Link>
           </div>
         </div>
+
         <div className="what-shows">
           <div className="what-label">WHAT THIS SHOWS</div>
+
           <div className="what-grid">
             {[
               [
-                "Product thinking",
-                "Designing workflows around missions, tasks, and spending.",
+                "Multi-sided product design",
+                "Building distinct customer, craftsman, and administrator experiences around the same marketplace.",
               ],
               [
-                "Full-stack development",
-                "Frontend, backend, authentication, database, and application logic.",
+                "Marketplace operations",
+                "Administrative tools for managing craftsmen, applications, jobs, and operational activity.",
               ],
               [
-                "Realtime systems",
-                "Keeping application state synchronized as data changes.",
+                "Geospatial matching",
+                "Connecting jobs with relevant craftsmen based on service type, location, and account eligibility.",
               ],
               [
-                "Production thinking",
-                "Responsive interfaces, state management, validation, deployment, edge cases.",
+                "Event-driven communication",
+                "Job-specific conversations, application events, and Telegram notifications through separate bots.",
               ],
             ].map(([title, description]) => (
               <div className="what-item" key={title}>
@@ -215,33 +232,151 @@ export function WorkSection({
           </div>
         </div>
       </div>
+
+      {/* 02 — LVRY */}
       <div className="project reveal">
         <div className="project-info">
-          <div className="project-category">02 — FLOOPR</div>
+          <div className="project-category">02 — LVRY</div>
+
+          <h3 className="project-title">
+            Fashion deserves
+            <br />
+            a better interface.
+          </h3>
+
+          <p className="project-desc">
+            LVRY is a fashion e-commerce experience built around more
+            than displaying products. From exploring individual pieces
+            to composing uniforms and managing a shopping bag, every
+            interaction contributes to the shopping experience.
+
+            <br />
+            <br />
+
+            A chance to explore the details: product presentation,
+            interaction design, responsive layouts, and the little
+            things that make an interface feel considered.
+          </p>
+
+          <div className="project-stack mono">
+            Next.js · TypeScript · React · Tailwind CSS
+          </div>
+
+          <div className="project-ctas">
+            <Link href="/lvry" className="project-link">
+              Explore LVRY <ArrowIcon />
+            </Link>
+          </div>
+        </div>
+
+        <div className="project-visual">
+          <div className="shot-frame">
+            <Image
+              src="/projects/lvry/hero.png"
+              alt="LVRY fashion e-commerce storefront"
+              width={640}
+              height={420}
+              className="project-image"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 03 — MISSIONO */}
+      <div className="project reveal">
+        <div className="project-info">
+          <div className="project-category">03 — MISSIONO</div>
+
+          <h3 className="project-title">
+            Missions are easy to plan.
+            <br />
+            Keeping track of them isn't.
+          </h3>
+
+          <p className="project-desc">
+            Missiono brings missions, tasks, budgets, and spending together
+            in one place, instead of scattering them across notes and
+            spreadsheets.
+
+            <br />
+            <br />
+
+            It explores what happens when personal organization and
+            financial awareness become part of the same workflow.
+          </p>
+
+          <div className="project-stack mono">
+            Next.js · TypeScript · Supabase · PostgreSQL
+          </div>
+
+          <div className="project-ctas">
+            <Link
+              href="https://missiono.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-link"
+            >
+              Live product ↗
+            </Link>
+
+            <Link href="/missiono" className="project-link secondary">
+              Case study ↗
+            </Link>
+          </div>
+        </div>
+
+        <div className="project-visual">
+          <div className="shot-frame">
+            <Image
+              src={
+                theme === "dark"
+                  ? "/projects/missiono/dashboard-darkmode.png"
+                  : "/projects/missiono/dashboard.png"
+              }
+              alt="Missiono dashboard showing missions, tasks, and budget overview"
+              width={640}
+              height={420}
+              className="project-image"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 04 — FLOOPR */}
+      <div className="project reveal">
+        <div className="project-info">
+          <div className="project-category">04 — FLOOPR</div>
+
           <h3 className="project-title">
             Feedback is easy.
             <br />
             Knowing what to do with it isn't.
           </h3>
+
           <p className="project-desc">
             Floopr explored what happens when feedback isn't just collected,
-            but actually understood — embeddable components, sentiment
+            but actually understood: embeddable components, sentiment
             analysis, and an AI-powered conversational layer.
+
             <br />
             <br />
+
             The project is paused. The idea isn't.
           </p>
+
           <div className="project-stack mono">
             Next.js · React · Supabase · AI
           </div>
+
           <div className="project-ctas">
             <Link href="/floopr" className="project-link">
               Explore Floopr <ArrowIcon />
             </Link>
           </div>
         </div>
+
         <div className="project-visual">
-          <div className="shot-frame rounded-">
+          <div className="shot-frame">
             <Image
               src={
                 theme === "dark"
@@ -256,19 +391,23 @@ export function WorkSection({
           </div>
         </div>
       </div>
+
+      {/* Other work */}
       <div className="more-work reveal">
         <div className="more-work-inner">
           <div>
             <div className="section-label">OTHER THINGS</div>
+
             <h3
               className="section-heading"
               style={{ fontSize: "clamp(26px,3vw,34px)" }}
             >
               Not everything needs to be a startup.
             </h3>
+
             <p className="section-sub" style={{ fontSize: "16px" }}>
-              Small experiments. Half-finished ideas. Things built because I
-              wanted to know if I could.
+              Small experiments. Half-finished ideas. Things built because
+              I wanted to know if I could.
             </p>
           </div>
         </div>
